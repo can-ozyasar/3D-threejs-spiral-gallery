@@ -26,15 +26,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setLang(document.documentElement.lang === 'tr' ? 'en' : 'tr');
   });
 
-  // Theme Logic
-  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
-  if (savedTheme === 'light') {
-    document.documentElement.classList.add('theme-light');
-    document.getElementById('theme-toggle').textContent = '🌙';
-  }
-  document.getElementById('theme-toggle')?.addEventListener('click', (e) => {
-    const isLight = document.documentElement.classList.toggle('theme-light');
-    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
-    e.target.textContent = isLight ? '🌙' : '☀️';
-  });
+
 });

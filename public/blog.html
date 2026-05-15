@@ -91,7 +91,6 @@
     <a href="/#iletisim" data-en="Contact">İletişim</a>
   </nav>
   <div style="display:flex;gap:8px;">
-    <button id="theme-toggle" aria-label="Temayı değiştir">☀️</button>
     <button id="lang-toggle" aria-label="Dili değiştir">EN</button>
   </div>
 </header>
@@ -241,17 +240,7 @@ document.getElementById('filter-bar').addEventListener('click',e=>{
 
 document.getElementById('back-btn').addEventListener('click',showListing);
 
-// Theme (matches main site logic)
-function applyTheme(t){
-  document.documentElement.classList.toggle('theme-light',t==='light');
-  document.getElementById('theme-toggle').textContent=t==='light'?'🌙':'☀️';
-}
-const savedTheme=localStorage.getItem('theme')||'dark';
-applyTheme(savedTheme);
-document.getElementById('theme-toggle').addEventListener('click',()=>{
-  const next=document.documentElement.classList.contains('theme-light')?'dark':'light';
-  localStorage.setItem('theme',next);applyTheme(next);
-});
+
 
 // Language — use innerHTML to preserve <em> tags; store original TR as data-tr
 function applyLang(l){

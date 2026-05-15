@@ -1,69 +1,81 @@
-// rag.js — Portfolio RAG chat widget
+// rag.js — AXIOM: The Iron Owl — Portfolio RAG chat widget
 // Connects to the FastAPI backend at /api/chat
 // Bilingual: respects the lang toggle from i18n.js
 
 const RAG_URL = import.meta.env.VITE_RAG_URL || "http://localhost:8000";
-
 const SESSION_ID = crypto.randomUUID();
 
 const UI = {
   tr: {
-    title: "Can'a Sor",
-    subtitle: "YZ Asistan — Yalnızca CV bilgileri",
-    placeholder: "Proje, deneyim veya beceriler hakkında sor…",
+    title: "AXIOM",
+    subtitle: "Demir Baykuş · Yalnızca arşiv bilgileri",
+    placeholder: "Can'ın projeleri, deneyimi veya becerileri hakkında sor…",
     send: "Gönder",
-    thinking: "Düşünüyor…",
+    thinking: "AXIOM arşivleri taranıyor…",
     error429: "Çok fazla soru. Lütfen bir dakika bekleyin.",
-    error400: "Geçersiz giriş. Lütfen sorunuzu yeniden yazın.",
-    errorGeneric: "Sunucuya bağlanılamadı. Daha sonra tekrar deneyin.",
+    error400:
+      "AXIOM bu girdiyi tanımıyor. Lütfen sorunuzu yeniden yazın.",
+    errorGeneric: "AXIOM şu an ulaşılamıyor. Daha sonra tekrar deneyin.",
     welcome:
-      "Merhaba! Can'ın projeleri, deneyimi veya becerileri hakkında soru sorabilirsin.",
+      "Merhaba. Ben AXIOM — Can Özyaşar'ın araştırmalarını, projelerini ve deneyimlerini sessizce gözlemleyen demir baykuşum. Ne öğrenmek istiyorsun?",
   },
   en: {
-    title: "Ask Can",
-    subtitle: "AI Assistant — CV content only",
-    placeholder: "Ask about projects, experience or skills…",
+    title: "AXIOM",
+    subtitle: "The Iron Owl · Archive knowledge only",
+    placeholder: "Ask about Can's projects, experience or skills…",
     send: "Send",
-    thinking: "Thinking…",
+    thinking: "AXIOM scanning archives…",
     error429: "Too many questions. Please wait a minute.",
-    error400: "Invalid input. Please rephrase your question.",
-    errorGeneric: "Could not reach the server. Try again later.",
+    error400:
+      "AXIOM does not recognise that input. Please rephrase your question.",
+    errorGeneric: "AXIOM is unreachable right now. Try again later.",
     welcome:
-      "Hi! You can ask me about Can's projects, experience, or technical skills.",
+      "Greetings. I am AXIOM — the iron owl who has silently observed every line of Can Özyaşar's research, projects, and experience. What would you like to know?",
   },
 };
 
 function getLang() {
   return document.documentElement.lang === "en" ? "en" : "tr";
 }
-
 function t(key) {
   return UI[getLang()][key] || UI.tr[key];
 }
 
+// ─── Owl SVG icon ─────────────────────────────────────────────────────────────
+const OWL_SVG = `<svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="32" cy="36" rx="18" ry="22" fill="currentColor" opacity="0.15"/>
+  <path d="M14 36C14 25 22 14 32 14C42 14 50 25 50 36C50 49 42 56 32 56C22 56 14 49 14 36Z" stroke="currentColor" stroke-width="2" fill="none"/>
+  <circle cx="24" cy="32" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+  <circle cx="40" cy="32" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+  <circle cx="24" cy="32" r="2.5" fill="currentColor"/>
+  <circle cx="40" cy="32" r="2.5" fill="currentColor"/>
+  <path d="M28 38 Q32 42 36 38" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M20 18 L14 10 L22 16" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M44 18 L50 10 L42 16" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M26 44 L24 52 M38 44 L40 52" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+</svg>`;
+
 // ─── Build DOM ────────────────────────────────────────────────────────────────
 function buildWidget() {
-  // Toggle button
   const toggle = document.createElement("button");
   toggle.id = "rag-toggle";
-  toggle.setAttribute("aria-label", "RAG asistanı aç");
+  toggle.setAttribute("aria-label", "AXIOM — Demir Baykuş asistanı aç");
   toggle.setAttribute("aria-expanded", "false");
-  toggle.innerHTML = `
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-    </svg>`;
+  toggle.innerHTML = OWL_SVG;
 
-  // Panel
   const panel = document.createElement("div");
   panel.id = "rag-panel";
   panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", "RAG Asistan");
+  panel.setAttribute("aria-label", "AXIOM RAG Asistan");
   panel.setAttribute("aria-hidden", "true");
   panel.innerHTML = `
     <div class="rag-header">
-      <div>
-        <span class="rag-title" id="rag-title"></span>
-        <span class="rag-subtitle" id="rag-subtitle"></span>
+      <div class="rag-header-identity">
+        <span class="rag-owl-icon">${OWL_SVG}</span>
+        <div>
+          <span class="rag-title" id="rag-title"></span>
+          <span class="rag-subtitle" id="rag-subtitle"></span>
+        </div>
       </div>
       <button class="rag-close" id="rag-close" aria-label="Kapat">×</button>
     </div>
@@ -76,7 +88,7 @@ function buildWidget() {
         maxlength="500"
         required
       />
-      <button class="rag-send" id="rag-send" type="submit">
+      <button class="rag-send" id="rag-send" type="submit" aria-label="Gönder">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
         </svg>
@@ -92,7 +104,17 @@ function buildWidget() {
 function addMessage(container, text, role) {
   const el = document.createElement("div");
   el.className = `rag-message rag-message--${role}`;
-  el.textContent = text;
+  // Use innerHTML for assistant messages to support line breaks in long answers
+  if (role === "assistant") {
+    // Convert newlines to <br> for readability
+    el.innerHTML = text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\n/g, "<br>");
+  } else {
+    el.textContent = text;
+  }
   container.appendChild(el);
   container.scrollTop = container.scrollHeight;
   return el;
@@ -101,7 +123,7 @@ function addMessage(container, text, role) {
 function addTyping(container) {
   const el = document.createElement("div");
   el.className = "rag-message rag-message--assistant rag-message--typing";
-  el.innerHTML = `<span></span><span></span><span></span>`;
+  el.innerHTML = `<span class="rag-typing-owl">${OWL_SVG}</span><span></span><span></span><span></span>`;
   container.appendChild(el);
   container.scrollTop = container.scrollHeight;
   return el;
