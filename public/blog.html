@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+  <title>Blog — Muhammed Can Özyaşar</title>
+  <meta name="description" content="Applied AI, Federated Learning, RAG ve Backend Mühendisliği üzerine teknik yazılar."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/src/styles.css"/>
+  <link rel="stylesheet" href="/src/overrides.css"/>
+  <style>
+    /* Blog-specific extras only */
+    .blog-wrap { max-width: var(--max); margin: 0 auto; padding: clamp(120px,18vh,200px) var(--gutter) clamp(80px,12vh,140px); }
+    .blog-hero { margin-bottom: clamp(64px,10vh,120px); }
+    .blog-hero__eyebrow { font-family:var(--mono); font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:24px; display:flex; align-items:center; gap:14px; }
+    .blog-hero__eyebrow::before { content:''; width:28px; height:1px; background:var(--accent); display:inline-block; }
+    .blog-hero h1 { font-family:var(--serif); font-size:clamp(44px,7vw,110px); font-weight:400; line-height:1.02; letter-spacing:-.018em; margin-bottom:28px; }
+    .blog-hero h1 em { color:var(--accent); font-style:italic; }
+    .blog-hero p { font-size:16px; line-height:1.8; opacity:.78; max-width:520px; }
+
+    /* Filter tabs */
+    .filter-bar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:56px; }
+    .filter-btn { font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; padding:6px 16px; border:1px solid var(--rule); border-radius:20px; background:transparent; color:var(--fg-dim); cursor:pointer; transition:all .25s; }
+    .filter-btn:hover,.filter-btn.is-active { border-color:var(--accent); color:var(--accent); }
+
+    /* Featured card */
+    .blog-featured { position:relative; border-radius:4px; overflow:hidden; min-height:420px; display:flex; align-items:flex-end; cursor:pointer; margin-bottom:56px; }
+    .blog-featured__bg { position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.35) saturate(.5); transition:filter .5s,transform .5s; }
+    .blog-featured:hover .blog-featured__bg { filter:brightness(.5) saturate(.65); transform:scale(1.03); }
+    .blog-featured__overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(11,10,8,1) 0%,rgba(11,10,8,.6) 50%,rgba(11,10,8,.1) 100%); }
+    html.theme-light .blog-featured__overlay { background:linear-gradient(to top,rgba(253,251,247,1) 0%,rgba(253,251,247,.65) 50%,rgba(253,251,247,.05) 100%); }
+    .blog-featured__content { position:relative; z-index:2; padding:clamp(28px,4vw,56px); }
+    .featured-tag { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; display:block; }
+    .blog-featured h2 { font-family:var(--serif); font-size:clamp(26px,3.5vw,48px); font-weight:400; line-height:1.15; letter-spacing:-.012em; margin-bottom:14px; max-width:18ch; }
+    .blog-featured p { font-size:15px; line-height:1.75; opacity:.78; max-width:520px; margin-bottom:20px; }
+    .post-meta { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-dim); }
+
+    /* Post grid */
+    .post-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:clamp(20px,3vw,36px); margin-bottom:80px; }
+    .post-card { border:1px solid var(--rule); border-radius:2px; overflow:hidden; cursor:pointer; background:var(--bg-soft); transition:border-color .3s,transform .3s; display:flex; flex-direction:column; }
+    .post-card:hover { border-color:var(--accent-dim); transform:translateY(-3px); }
+    .post-card__img { height:160px; width:100%; object-fit:cover; filter:brightness(.45) saturate(.5); transition:filter .4s; }
+    .post-card:hover .post-card__img { filter:brightness(.65) saturate(.7); }
+    .post-card__body { padding:24px; flex:1; display:flex; flex-direction:column; }
+    .post-card__tag { font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; display:block; }
+    .post-card__title { font-family:var(--serif); font-size:1.3rem; line-height:1.25; margin-bottom:12px; font-weight:400; }
+    .post-card__excerpt { font-size:13px; line-height:1.7; opacity:.72; flex:1; margin-bottom:16px; }
+    .post-card__meta { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--fg-dim); display:flex; justify-content:space-between; margin-top:auto; }
+
+    /* Post detail */
+    .post-detail { display:none; max-width:720px; margin:0 auto; }
+    .post-detail.is-active { display:block; }
+    .listing-wrap.is-hidden { display:none; }
+    .back-btn { font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--fg-dim); cursor:pointer; background:none; border:none; display:inline-flex; align-items:center; gap:10px; margin-bottom:48px; transition:color .2s; padding:0; }
+    .back-btn:hover { color:var(--accent); }
+    .detail-tag { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; display:block; }
+    .detail-title { font-family:var(--serif); font-size:clamp(28px,4.5vw,60px); font-weight:400; line-height:1.1; letter-spacing:-.015em; margin-bottom:20px; }
+    .detail-meta { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-dim); border-bottom:1px solid var(--rule); padding-bottom:24px; margin-bottom:40px; }
+    .detail-hero-img { width:100%; height:280px; object-fit:cover; border-radius:2px; margin-bottom:48px; filter:brightness(.5) saturate(.5); }
+    .post-body h2 { font-family:var(--serif); font-size:1.7rem; font-weight:400; margin:40px 0 18px; }
+    .post-body h3 { font-family:var(--serif); font-size:1.2rem; color:var(--accent); margin:28px 0 12px; }
+    .post-body p { font-size:16px; line-height:1.9; opacity:.82; margin-bottom:18px; }
+    .post-body ul { padding-left:22px; margin-bottom:18px; }
+    .post-body ul li { font-size:15px; line-height:1.8; opacity:.8; margin-bottom:8px; }
+    .post-body blockquote { border-left:2px solid var(--accent); padding-left:20px; margin:24px 0; font-family:var(--serif); font-style:italic; font-size:1.1rem; opacity:.8; }
+    .post-body pre { background:var(--bg-soft); border:1px solid var(--rule); border-radius:2px; padding:20px; overflow-x:auto; margin:24px 0; }
+    .post-body code { font-family:var(--mono); font-size:13px; color:var(--accent); }
+    .post-body pre code { color:var(--fg); }
+    .no-posts { font-family:var(--serif); font-size:1.2rem; opacity:.5; grid-column:1/-1; padding:40px 0; }
+
+    @media(max-width:820px){.blog-featured{min-height:320px;}}
+    @media(max-width:520px){.post-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a href="/" class="nav__brand" aria-label="Ana sayfa">
+    <span class="nav__mark" aria-hidden="true"></span>
+    <span>Canoz</span>
+  </a>
+  <nav class="nav__links" aria-label="Ana menü">
+    <a href="/#hakkimda" data-en="About">Hakkımda</a>
+    <a href="/#beceriler" data-en="Skills">Beceriler</a>
+    <a href="/#projeler" data-en="Projects">Projeler</a>
+    <a href="/#deneyim" data-en="Experience">Deneyim</a>
+    <a href="/#makaleler" data-en="Articles">Makaleler</a>
+    <a href="/blog.html" data-en="Blog">Blog</a>
+    <a href="/#iletisim" data-en="Contact">İletişim</a>
+  </nav>
+  <div style="display:flex;gap:8px;">
+    <button id="theme-toggle" aria-label="Temayı değiştir">☀️</button>
+    <button id="lang-toggle" aria-label="Dili değiştir">EN</button>
+  </div>
+</header>
+
+<div class="blog-wrap">
+
+  <!-- LISTING -->
+  <div class="listing-wrap" id="listing-wrap">
+    <div class="blog-hero">
+      <p class="blog-hero__eyebrow" data-en="Architecture Notes · Research · Engineering">Mimari Notlar · Araştırma · Mühendislik</p>
+      <h1 data-en="Writing at the <em>Edge of AI</em>">YZ'nin <em>Sınırında</em> Yazmak</h1>
+      <p data-en="Deep dives into federated learning, production RAG systems, secure backend architecture, and applied AI engineering. No lorem ipsum — only real experience.">Federe öğrenme, üretim RAG sistemleri, güvenli backend mimarisi ve uygulamalı YZ mühendisliği üzerine derin analizler. Lorem ipsum yok — sadece gerçek deneyim.</p>
+    </div>
+
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn is-active" data-tag="all" data-en="All">Tümü</button>
+      <button class="filter-btn" data-tag="Research" data-en="Research">Araştırma</button>
+      <button class="filter-btn" data-tag="Engineering" data-en="Engineering">Mühendislik</button>
+      <button class="filter-btn" data-tag="MLOps">MLOps</button>
+      <button class="filter-btn" data-tag="Backend">Backend</button>
+    </div>
+
+    <div class="blog-featured" id="featured-card">
+      <div class="blog-featured__bg" id="featured-bg"></div>
+      <div class="blog-featured__overlay"></div>
+      <div class="blog-featured__content">
+        <span class="featured-tag" id="featured-tag"></span>
+        <h2 id="featured-title"></h2>
+        <p id="featured-excerpt"></p>
+        <span class="post-meta" id="featured-meta"></span>
+      </div>
+    </div>
+
+    <div class="post-grid" id="post-grid"></div>
+
+    <div class="graph-wrapper" style="margin-top: 40px; margin-bottom: 80px;">
+      <h3 data-en="Interactive Knowledge Graph" class="graph-title">Etkileşimli Bilgi Grafı</h3>
+      <p class="graph-subtitle" data-en="Live view of my Obsidian vault — D3.js Force-Directed Graph">Obsidian vault'umun canlı görünümü — D3.js Kuvvet Yönelimli Graf</p>
+      <div id="obsidian-graph" class="graph-container"></div>
+    </div>
+  </div>
+
+  <!-- DETAIL -->
+  <div class="post-detail" id="post-detail">
+    <button class="back-btn" id="back-btn" data-en="← All Posts">← Tüm Yazılar</button>
+    <span class="detail-tag" id="detail-tag"></span>
+    <h1 class="detail-title" id="detail-title"></h1>
+    <div class="detail-meta" id="detail-meta"></div>
+    <img class="detail-hero-img" id="detail-img" src="" alt=""/>
+    <div class="post-body" id="post-body"></div>
+  </div>
+
+</div>
+
+<script>
+const POSTS=[
+  {id:'federated-privacy',tag:'Research',
+   tr:{title:`Federe Öğrenme: Gizlilik Korumalı YZ Neden Gelecek?`,excerpt:`Federe öğrenme mimarilerinin neden sadece akademik bir ilgi değil, sağlık ve finans YZ'si için düzenleyici bir zorunluluk haline geldiğine dair mühendislik perspektifi.`,date:`Mayıs 2026`},
+   en:{title:`Federated Learning: Why Privacy-Preserving AI is the Next Frontier`,excerpt:`An engineering perspective on why federated learning architectures are becoming a regulatory necessity for healthcare and finance AI.`,date:`May 2026`},
+   readTime:'8 dk',img:'/images/proj_federated.jpg',featured:true,
+   externalUrl:'https://medium.com/@canozyasar35/federated-learning-nedir-veri-gizlili%C4%9Finde-yeni-%C3%A7a%C4%9F-86d750b8ad98',
+   body:{tr:`<h2>Veri Merkezileştirme Sorunu</h2><p>Modern derin öğrenme başarılarının çoğu tek bir varsayıma dayanır: tüm eğitim verilerini tek bir yerde toplayabilirsiniz. Tüketici sistemleri için bu yalnızca bir gizlilik endişesidir. Tıbbi YZ için ise yasal bir imkânsızlıktır.</p><blockquote>Modeli veriye taşı, veriyi modele değil.</blockquote><h2>FedAvg: Temel Algoritma</h2><p>Her istemci düğümü kendi yerel verisini kullanarak eğitir ve yalnızca gradyan güncellemelerini — ham veriyi değil — merkezi toplayıcıya gönderir. TÜBİTAK 2209-A projemizde ResNet-18'i 3 simüle edilmiş istemci düğümüne dağıtarak %84 doğruluk elde ettik; merkezi baseline %81'di.</p>`,
+   en:`<h2>The Data Centralization Problem</h2><p>Every modern deep learning success relies on one assumption: you can aggregate all training data in one place. For medical AI, this is a legal impossibility under KVKK/GDPR.</p><blockquote>Move the model to the data, not the data to the model.</blockquote><h2>FedAvg: The Core Algorithm</h2><p>Each client node trains locally and sends only gradient updates — never raw records — to the aggregation server. Our TÜBİTAK 2209-A implementation achieved 84% accuracy vs 81% centralized baseline across 3 client nodes.</p>`}
+  },
+  {id:'rag-security',tag:'Engineering',
+   tr:{title:`Üretim RAG Sistemi için 6 Katmanlı Güvenlik Mimarisi`,excerpt:`Çoğu LLM API sarmalayıcısının sıfır güvenliği vardır. Canlı portföy asistanım için tasarladığım mimari: prompt injection, veri sızıntısı ve kötüye kullanımı önleyen altı katman.`,date:`Mayıs 2026`},
+   en:{title:`How I Built a 6-Layer Security Architecture for a Production RAG System`,excerpt:`Most LLM API wrappers have zero security. Here is the architecture I designed for my live portfolio assistant — six concrete layers that prevent prompt injection, data leakage, and abuse.`,date:`May 2026`},
+   readTime:'11 dk',img:'/images/proj_rag.jpg',featured:false,
+   body:{tr:`<h2>LLM Uygulamalarındaki Güvenlik Açığı</h2><p>Geliştiriciler LLM API'lerini ilk entegre ettiğinde genellikle kullanıcı girdisini doğrudan prompt'a dahil eder. Bu, trivial injection saldırılarına kapı açan bir güvenlik hatasıdır.</p><h2>6 Katmanlı Savunma Modeli</h2><h3>Katman 1: Girdi Uzunluğu Kapısı</h3><p>500 karakter sert limit. Uzun girdiler istatistiksel olarak injection girişimleriyle ilişkilidir.</p><h3>Katman 2: Regex Injection Dedektörü</h3><p>50+ kalıptan oluşan liste: "önceki talimatları yoksay", rol yapma kurulumları, base64 yükleri.</p><h3>Katman 3: Kontrol Karakteri Temizleme</h3><p>Prompt sınırlarını kıran görünmez Unicode karakterleri temizlenir.</p><h3>Katman 4: Kayan Pencere Hız Sınırlayıcı</h3><p>IP başına dakikada 10 istek. Kayan pencere, sabit pencere sıfırlama zamanlamasını kullanan burst saldırılarını önler.</p><h3>Katman 5: Durumsuz Tasarım</h3><p>Her istek tamamen bağımsızdır. Oturumlar arası bağlam sızıntısını tamamen ortadan kaldırır.</p><h3>Katman 6: Çıktı Taraması</h3><p>Sistem prompt içeriği sızdıysa yanıt güvenli bir geri dönüşle değiştirilir.</p>`,
+   en:`<h2>The Security Gap</h2><p>Most developers directly embed user input into prompts — a catastrophic security mistake enabling trivial injection attacks.</p><h2>The 6-Layer Defense Model</h2><h3>Layer 1: Input Length Gate</h3><p>Hard 500-character limit. Long inputs correlate with injection and jailbreak attempts.</p><h3>Layer 2: Regex Injection Detector</h3><p>50+ patterns: "ignore previous instructions", role-play setups, base64 payloads.</p><h3>Layer 3: Control Character Stripping</h3><p>Unicode control characters that break prompt boundaries are stripped before processing.</p><h3>Layer 4: Sliding-Window Rate Limiter</h3><p>10 requests/min per IP. Sliding window prevents burst attacks on fixed-window resets.</p><h3>Layer 5: Stateless Session Design</h3><p>Each request is fully independent — eliminates cross-session context leakage entirely.</p><h3>Layer 6: Output Scan</h3><p>If system prompt content leaks into output, response is replaced with a safe fallback.</p>`}
+  },
+  {id:'mlops-teknofest',tag:'MLOps',
+   tr:{title:'Baskı Altında MLOps: Teknofest Bana Üretim ML Hakkında Neler Öğretti',excerpt:'Hackathon zaman kısıtlamaları zor trade-off kararları almayı zorlar. SAÜ SYNAPSE takımına liderlik etmek bana gerçekten işe yarayan üretim MLOps pipeline mimarileri hakkında çok şey öğretti.',date:'Nisan 2026'},
+   en:{title:'MLOps Under Pressure: What Teknofest Taught Me About Production ML',excerpt:'Competition time constraints force hard architectural trade-offs. Here is what leading the SAÜ SYNAPSE team taught me about MLOps pipelines that actually work.',date:'April 2026'},
+   readTime:'9 dk',img:'/images/proj_synapse.jpg',featured:false,
+   body:{tr:`<h2>Yarışma ML'sinin Baskısı</h2><p>Teknofest bize sınırsız zaman, olgun bir veri platformu ya da özel mühendisler vermedi. Bunların yerine sert bir son tarih, heterojen tıbbi veri ve gerçekten çalışan bir şey inşa etme görevi vardı.</p><h2>İnşa Ettiğimiz Pipeline</h2><p>Her aşama kontrol noktasına alınır. Değerlendirmede bir hata yaşasak, özellik çıkarmadan yeniden başlarız — sıfırdan değil. Tek hedefe sahip bir pipeline: zaman baskısı altında maksimum güvenilirlik.</p><h2>Temel Dersler</h2><ul><li>Tekrarlanabilirlik zorunludur: her şeyi tohumlayın, her eseri sürümlendirin</li><li>Model doğruluk sorunu olmadan önce veri dağılımı kaymasını izleyin</li><li>Düşük veri rejimlerinde ensemble modeller tek karmaşık modeli geçer</li><li>1. gündeki çalışan baseline, 6. gündeki mükemmel modelden daha değerlidir</li></ul>`,
+   en:`<h2>The Pressure Cooker of Competition ML</h2><p>Teknofest gave us a hard deadline, heterogeneous medical data, and a mandate to build something that works. Every design decision prioritized reliability over elegance.</p><h2>The Pipeline</h2><p>Every stage is checkpointed. If we hit a bug at evaluation, we restart from feature extraction — not from scratch. Single goal: maximum reliability under time pressure.</p><h2>Key Lessons</h2><ul><li>Reproducibility is non-negotiable: seed everything, version every artifact</li><li>Monitor data distribution shift before it becomes a model accuracy problem</li><li>Simple models ensembled beat complex single models in low-data regimes</li><li>A working baseline on day 1 is worth more than a perfect model on day 6</li></ul>`}
+  },
+  {id:'hibernate-orm',tag:'Backend',
+   tr:{title:'Hibernate ORM Derinlemesine: Temellerin Ötesinde',excerpt:'ORM frameworkler genellikle yanlış anlaşılır ve gerçekte ne olduklarının yerine sihirli sorgu oluşturucular olarak kullanılır.',date:'Mart 2026'},
+   en:{title:'Hibernate ORM Deep Dive: Object-Relational Mapping Beyond the Basics',excerpt:'ORM frameworks are often misunderstood — used as magic query generators instead of the sophisticated persistence layer they actually are.',date:'March 2026'},
+   readTime:'7 dk',img:'/images/pic/pic7.jpeg',featured:false,
+   externalUrl:'https://medium.com/@canozyasar35/hibernate-orm-object-relational-mapping-nedir-temel-%C3%B6zellikler-f07aba72407c',
+   body:{tr:'',en:''}
+  }
+];
+
+let lang=document.documentElement.lang==='en'?'en':'tr';
+let currentTag='all';
+
+function t(post,field){return post[lang]?.[field]||post.tr[field];}
+
+function renderFeatured(){
+  const f=POSTS.find(p=>p.featured);
+  if(!f)return;
+  document.getElementById('featured-tag').textContent=f.tag;
+  document.getElementById('featured-title').textContent=t(f,'title');
+  document.getElementById('featured-excerpt').textContent=t(f,'excerpt');
+  document.getElementById('featured-meta').textContent=t(f,'date')+' · '+f.readTime;
+  document.getElementById('featured-bg').style.backgroundImage=`url('${f.img}')`;
+  document.getElementById('featured-card').onclick=()=>openPost(f.id);
+}
+
+function renderGrid(tag){
+  const grid=document.getElementById('post-grid');
+  const items=POSTS.filter(p=>!p.featured&&(tag==='all'||p.tag===tag));
+  if(!items.length){grid.innerHTML=`<p class="no-posts">${lang==='en'?'More posts coming soon.':'Yakında daha fazla yazı.'}</p>`;return;}
+  grid.innerHTML=items.map(p=>`
+    <article class="post-card" onclick="openPost('${p.id}')">
+      <img class="post-card__img" src="${p.img}" alt="${t(p,'title')}" loading="lazy"/>
+      <div class="post-card__body">
+        <span class="post-card__tag">${p.tag}</span>
+        <h3 class="post-card__title">${t(p,'title')}</h3>
+        <p class="post-card__excerpt">${t(p,'excerpt')}</p>
+        <div class="post-card__meta"><span>${t(p,'date')}</span><span>${p.readTime}</span></div>
+      </div>
+    </article>`).join('');
+}
+
+function openPost(id){
+  const p=POSTS.find(x=>x.id===id);if(!p)return;
+  if(p.externalUrl){window.open(p.externalUrl,'_blank');return;}
+  document.getElementById('detail-tag').textContent=p.tag;
+  document.getElementById('detail-title').textContent=t(p,'title');
+  document.getElementById('detail-meta').textContent=t(p,'date')+' · '+p.readTime;
+  document.getElementById('detail-img').src=p.img;
+  document.getElementById('post-body').innerHTML=p.body[lang]||p.body.tr;
+  document.getElementById('listing-wrap').classList.add('is-hidden');
+  document.getElementById('post-detail').classList.add('is-active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showListing(){
+  document.getElementById('listing-wrap').classList.remove('is-hidden');
+  document.getElementById('post-detail').classList.remove('is-active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// Filter
+document.getElementById('filter-bar').addEventListener('click',e=>{
+  const btn=e.target.closest('.filter-btn');if(!btn)return;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('is-active'));
+  btn.classList.add('is-active');
+  currentTag=btn.dataset.tag;
+  renderGrid(currentTag);
+});
+
+document.getElementById('back-btn').addEventListener('click',showListing);
+
+// Theme (matches main site logic)
+function applyTheme(t){
+  document.documentElement.classList.toggle('theme-light',t==='light');
+  document.getElementById('theme-toggle').textContent=t==='light'?'🌙':'☀️';
+}
+const savedTheme=localStorage.getItem('theme')||'dark';
+applyTheme(savedTheme);
+document.getElementById('theme-toggle').addEventListener('click',()=>{
+  const next=document.documentElement.classList.contains('theme-light')?'dark':'light';
+  localStorage.setItem('theme',next);applyTheme(next);
+});
+
+// Language — use innerHTML to preserve <em> tags; store original TR as data-tr
+function applyLang(l){
+  lang=l;
+  document.documentElement.lang=l;
+  document.getElementById('lang-toggle').textContent=l==='tr'?'EN':'TR';
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    // Save original TR content on first run
+    if(!el.dataset.tr) el.dataset.tr=el.innerHTML;
+    el.innerHTML=l==='en'?el.dataset.en:el.dataset.tr;
+  });
+  renderFeatured();renderGrid(currentTag);
+}
+const savedLang=localStorage.getItem('lang')||'tr';
+applyLang(savedLang);
+document.getElementById('lang-toggle').addEventListener('click',()=>{
+  const next=lang==='tr'?'en':'tr';
+  localStorage.setItem('lang',next);applyLang(next);
+});
+</script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script type="module" src="/src/obsidian_graph.js"></script>
+</body>
+</html>

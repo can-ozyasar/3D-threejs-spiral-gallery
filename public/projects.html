@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Projects — Muhammed Can Özyaşar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#0b0a08;--bg2:#111;--fg:#f1ece1;--fg2:#a09880;--accent:#d9a76a;--rule:rgba(255,255,255,0.08);--serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace}
+    html.light{--bg:#fdfbf7;--bg2:#f0ece6;--fg:#1a1918;--fg2:#6b6863;--rule:rgba(0,0,0,0.1);--accent:#b07c3f}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--fg);font-family:var(--sans);min-height:100vh}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 40px;background:rgba(11,10,8,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+    html.light nav{background:rgba(253,251,247,0.85)}
+    .nav-brand{font-family:var(--mono);font-size:13px;letter-spacing:.15em;text-decoration:none;color:var(--fg)}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{font-size:13px;letter-spacing:.1em;text-decoration:none;color:var(--fg2);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+    .nav-btns{display:flex;gap:8px}
+    .nav-btns button{background:transparent;border:1px solid var(--rule);color:var(--fg2);font-family:var(--mono);font-size:11px;padding:5px 12px;cursor:pointer;border-radius:2px;transition:all .2s}
+    .nav-btns button:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* Hero */
+    .proj-hero{position:relative;min-height:55vh;display:flex;align-items:flex-end;padding:80px 40px 60px;overflow:hidden;margin-top:0}
+    .proj-hero__bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.35) saturate(.5)}
+    .proj-hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(11,10,8,.7) 60%,transparent 100%)}
+    html.light .proj-hero__overlay{background:linear-gradient(to top,var(--bg) 0%,rgba(253,251,247,.7) 60%,transparent 100%)}
+    .proj-hero__content{position:relative;z-index:2;max-width:900px}
+    .proj-badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:4px 12px;border-radius:2px;margin-bottom:20px}
+    .proj-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:500;line-height:1.1;margin-bottom:16px}
+    .proj-hero p.abstract{font-size:16px;line-height:1.8;color:var(--fg2);max-width:680px}
+
+    /* Body */
+    main{max-width:900px;margin:0 auto;padding:60px 40px 100px}
+    .proj-section{margin-bottom:60px}
+    .proj-section h2{font-family:var(--serif);font-size:1.6rem;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+    .proj-section p{font-size:15px;line-height:1.9;color:var(--fg2);margin-bottom:14px}
+    .proj-section ul{padding-left:20px;color:var(--fg2);font-size:15px;line-height:2}
+    .proj-section ul li{margin-bottom:8px}
+    .stack-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .stack-tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:6px 14px;border:1px solid var(--rule);border-radius:2px;color:var(--accent)}
+    .links-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:24px}
+    .link-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-size:13px;font-family:var(--mono);letter-spacing:.08em;text-decoration:none;border-radius:2px;transition:all .2s}
+    .link-btn--primary{background:var(--accent);color:var(--bg)}
+    .link-btn--primary:hover{opacity:.85}
+    .link-btn--ghost{border:1px solid var(--rule);color:var(--fg2)}
+    .link-btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+    .back-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--fg2);text-decoration:none;margin-bottom:40px;transition:color .2s}
+    .back-btn:hover{color:var(--accent)}
+    .metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;margin:24px 0}
+    .metric{padding:20px;border:1px solid var(--rule);border-radius:4px;text-align:center}
+    .metric__val{font-family:var(--serif);font-size:2rem;color:var(--accent);display:block}
+    .metric__label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg2);margin-top:4px;display:block}
+    #proj-not-found{text-align:center;padding:120px 40px;font-family:var(--serif);font-size:1.5rem;color:var(--fg2)}
+    @media(max-width:600px){nav{padding:14px 20px}.nav-links{display:none}main{padding:40px 20px 80px}.proj-hero{padding:80px 20px 40px}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-brand">CANÖZYAŞAR</a>
+    <ul class="nav-links">
+      <li><a href="/#hakkimda">About</a></li>
+      <li><a href="/#projeler">Projects</a></li>
+      <li><a href="/#deneyim">Experience</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/#iletisim">Contact</a></li>
+    </ul>
+    <div class="nav-btns">
+      <button id="theme-toggle">☀️</button>
+    </div>
+  </nav>
+
+  <div id="proj-hero-wrap">
+    <section class="proj-hero" id="proj-hero">
+      <div class="proj-hero__bg" id="proj-bg"></div>
+      <div class="proj-hero__overlay"></div>
+      <div class="proj-hero__content">
+        <span class="proj-badge" id="proj-badge"></span>
+        <h1 id="proj-title"></h1>
+        <p class="abstract" id="proj-abstract"></p>
+      </div>
+    </section>
+  </div>
+
+  <main>
+    <a href="/#projeler" class="back-btn">← All Projects</a>
+
+    <div id="proj-body"></div>
+    <div id="proj-not-found" style="display:none">Project not found. <a href="/" style="color:var(--accent)">Go home →</a></div>
+  </main>
+
+  <script>
+  const PROJECTS = {
+    federated: {
+      badge:'TÜBİTAK 2209-A · Research',
+      title:'Privacy-Preserving Federated Learning',
+      bg:'/images/proj_federated.jpg',
+      abstract:'Engineered a distributed machine learning system that trains a global ResNet-18 model across multiple hospital nodes without ever centralizing sensitive patient data — achieving 84% diagnostic accuracy while remaining fully KVKK/GDPR-compliant.',
+      metrics:[{val:'84%',label:'Accuracy'},{val:'3+',label:'Client Nodes'},{val:'GDPR',label:'Compliant'},{val:'HAM10000',label:'Dataset'}],
+      overview:`<p>This TÜBİTAK 2209-A funded project tackles one of healthcare AI's most critical challenges: how to train powerful diagnostic models without exposing confidential patient records. Using the Federated Learning paradigm (FedAvg algorithm), each hospital node trains locally and only shares gradient updates — never raw data.</p>
+      <p>The system achieved 84% classification accuracy on the HAM10000 dermoscopy dataset, a 3-point improvement over the centralized baseline (81%), demonstrating that privacy preservation does not have to come at the cost of model performance.</p>`,
+      problem:'Centralizing medical data for AI training violates patient privacy laws (KVKK/GDPR). Hospitals cannot legally share raw datasets. This creates a data silo problem that prevents building large, high-quality diagnostic models.',
+      architecture:`<ul><li><strong>Framework:</strong> Flower (flwr) federated learning framework</li><li><strong>Model:</strong> ResNet-18 with transfer learning from ImageNet</li><li><strong>Aggregation:</strong> FedAvg — weighted average of client gradients by dataset size</li><li><strong>Communication:</strong> Secure gRPC channels between server and clients</li><li><strong>Compliance:</strong> No raw data leaves the node; only model weights are transmitted</li></ul>`,
+      stack:['Python','PyTorch','Flower Framework','ResNet-18','gRPC','HAM10000','FedAvg'],
+      links:[{label:'GitHub →',href:'https://github.com/can-ozyasar',cls:'link-btn--primary'},{label:'TÜBİTAK Program ↗',href:'#',cls:'link-btn--ghost'}]
+    },
+    teklifakis: {
+      badge:'TÜBİTAK 1812 BIGG · Founder',
+      title:'TeklifAkış — AI-Powered Bid Intelligence',
+      bg:'/images/proj_teklifakis.jpg',
+      abstract:'Architected and pitched an end-to-end AI decision support platform that automates the manual, error-prone bid management process for Turkish SMEs in manufacturing — securing competitive selection into the prestigious TÜBİTAK 1812 BIGG program.',
+      metrics:[{val:'MVP',label:'Stage'},{val:'1812',label:'BIGG Program'},{val:'SME',label:'Target Market'},{val:'LLM',label:'Powered'}],
+      overview:`<p>TeklifAkış addresses a widespread operational pain in Turkish manufacturing SMEs: the chaotic, spreadsheet-driven process of tracking RFQs (requests for quotation), managing bids, and analyzing win/loss patterns. The platform replaces this with an intelligent AI pipeline.</p>
+      <p>As Founder and Technical Project Manager, I led the end-to-end product lifecycle from customer discovery interviews through architectural design and MVP deployment.</p>`,
+      problem:'Manufacturing SMEs in Turkey lose significant revenue due to missed bid deadlines, inaccurate cost estimation, and lack of historical win-rate intelligence. Manual processes fail to scale.',
+      architecture:`<ul><li><strong>OCR Layer:</strong> Tesseract / Azure Form Recognizer processes scanned RFQ documents</li><li><strong>LLM Pipeline:</strong> Structured output extraction (line items, deadlines, specs) via Gemini API</li><li><strong>Backend:</strong> FastAPI REST API with PostgreSQL for bid history and analytics</li><li><strong>ML Scoring:</strong> Win probability model trained on historical bid data</li><li><strong>Frontend:</strong> React dashboard with bid timeline and KPI widgets</li></ul>`,
+      stack:['Python','FastAPI','PostgreSQL','Gemini API','OCR','React','LLM Structured Output'],
+      links:[{label:'GitHub →',href:'https://github.com/can-ozyasar',cls:'link-btn--primary'}]
+    },
+    rag: {
+      badge:'Production · Live System',
+      title:'Secure RAG Portfolio Assistant',
+      bg:'/images/proj_rag.jpg',
+      abstract:'Deployed a production-grade Retrieval-Augmented Generation system backed by a 6-layer security architecture. The assistant answers questions about my background, projects, and research using semantic vector search — live at canozyasar.dev.',
+      metrics:[{val:'6',label:'Security Layers'},{val:'<200ms',label:'Response P95'},{val:'Live',label:'Production'},{val:'Qdrant',label:'Vector DB'}],
+      overview:`<p>This project demonstrates production AI engineering beyond a notebook demo. Every design decision — from the security architecture to the embedding strategy — prioritizes reliability, security, and real-world performance.</p>
+      <p>The RAG assistant uses Gemini's text-embedding-004 model for semantic chunking and retrieval, with a stateless FastAPI backend that enforces strict isolation between sessions.</p>`,
+      problem:'Most portfolio chatbots are insecure wrappers around LLM APIs — vulnerable to prompt injection, data leakage, and abuse. This project proves production-grade AI security is achievable even at the portfolio scale.',
+      architecture:`<ul><li><strong>Layer 1:</strong> Input length check (hard 500-token limit)</li><li><strong>Layer 2:</strong> Regex injection pattern detection (50+ patterns)</li><li><strong>Layer 3:</strong> Control character stripping</li><li><strong>Layer 4:</strong> Sliding-window rate limiter (10 req/min per IP)</li><li><strong>Layer 5:</strong> Stateless design — no cross-session context</li><li><strong>Layer 6:</strong> Output scan for leaked system-prompt keywords</li><li><strong>Retrieval:</strong> Top-5 cosine similarity chunks from Qdrant</li></ul>`,
+      stack:['Python','FastAPI','Qdrant','Google Gemini API','text-embedding-004','JavaScript','Vanilla JS'],
+      links:[{label:'Live Demo ↗',href:'/',cls:'link-btn--primary'},{label:'GitHub →',href:'https://github.com/can-ozyasar',cls:'link-btn--ghost'}]
+    },
+    battery: {
+      badge:'TÜBİTAK 2247-C STAR · Research',
+      title:'Li-ion Battery SoH/SoC Prediction',
+      bg:'/images/proj_battery.jpg',
+      abstract:'Developed and optimized ensemble ML models (LSTM + Random Forest) to estimate State-of-Health and State-of-Charge of Lithium-ion batteries from large-scale time-series data, under TÜBİTAK\'s STAR student researcher program.',
+      metrics:[{val:'LSTM',label:'Architecture'},{val:'Bayesian',label:'HPO Method'},{val:'SoH+SoC',label:'Targets'},{val:'2026',label:'Ongoing'}],
+      overview:`<p>Accurate SoH and SoC estimation is critical for battery management systems in EVs, grid storage, and industrial applications. This project develops production-ready ML models targeting conference publication under TÜBİTAK 2247-C STAR supervision.</p>`,
+      problem:'Existing BMS systems rely on physics-based models that degrade in accuracy as batteries age. Data-driven ML models trained on large-scale cycling data can significantly improve prediction accuracy and extend battery lifespan.',
+      architecture:`<ul><li><strong>Feature Engineering:</strong> Sliding window extraction on voltage/current/temperature time series</li><li><strong>Model 1:</strong> LSTM networks for sequential capacity fade prediction</li><li><strong>Model 2:</strong> Random Forest for robust SoC point estimation</li><li><strong>HPO:</strong> Bayesian optimization (Optuna) for hyperparameter search</li><li><strong>Validation:</strong> Walk-forward cross-validation on charge cycle data</li></ul>`,
+      stack:['Python','TensorFlow/Keras','Scikit-Learn','Pandas','NumPy','Optuna','Matplotlib'],
+      links:[{label:'GitHub →',href:'https://github.com/can-ozyasar',cls:'link-btn--primary'}]
+    },
+    bios: {
+      badge:'Autonomous Intelligence · 2025',
+      title:'BIOS Signal Radar — Industrial Intelligence',
+      bg:'/images/pic/pic5.jpeg',
+      abstract:'Built an autonomous RSS-based intelligence pipeline that monitors hundreds of European industrial news sources, extracts factory relocations and closures using LLaMA3, and visualizes company relationship networks in an interactive knowledge graph.',
+      metrics:[{val:'100+',label:'RSS Sources'},{val:'LLaMA3',label:'LLM Engine'},{val:'Graph',label:'Visualization'},{val:'Auto',label:'Pipeline'}],
+      overview:`<p>BIOS Signal Radar is an autonomous system designed to track industrial movements in Europe. It continuously monitors RSS feeds, applies keyword filtering to minimize token usage, and passes relevant articles to LLaMA3 for structured entity extraction.</p>`,
+      problem:'Industrial intelligence (tracking factory relocations, closures, expansions) is currently a manual, analyst-driven process. Automating this with LLMs enables real-time competitive intelligence at scale.',
+      architecture:`<ul><li><strong>RSS Ingestion:</strong> Scheduled fetching from 100+ European industrial news sources</li><li><strong>Keyword Filter:</strong> Pre-LLM filtering reduces token consumption by ~85%</li><li><strong>LLM Extraction:</strong> LLaMA3 via Ollama extracts company, location, event type, date</li><li><strong>Graph Storage:</strong> Obsidian-compatible knowledge graph with wikilinks</li><li><strong>Scoring:</strong> Dual BIOS-Fit and Synapse AI relevance scores</li></ul>`,
+      stack:['Python','LLaMA3','Ollama','RSS Parser','Obsidian Graph','D3.js'],
+      links:[{label:'GitHub →',href:'https://github.com/can-ozyasar',cls:'link-btn--primary'}]
+    },
+    vocab: {
+      badge:'.NET 8 · 2025',
+      title:'Vocabulary Cards — SM-2 Spaced Repetition',
+      bg:'/images/pic/pic7.jpeg',
+      abstract:'A production .NET 8 Web API platform implementing the SuperMemo SM-2 algorithm for adaptive vocabulary learning, with an ML-ready event logging subsystem capturing user interaction sequences for future personalization.',
+      metrics:[{val:'SM-2',label:'Algorithm'},{val:'ML-Ready',label:'Event Log'},{val:'.NET 8',label:'Platform'},{val:'React',label:'Frontend'}],
+      overview:`<p>Vocabulary Cards applies cognitive science (the Ebbinghaus forgetting curve) to language learning through spaced repetition. The SM-2 algorithm dynamically adjusts review intervals based on user performance, maximizing long-term retention.</p>`,
+      problem:'Generic flashcard apps use fixed intervals. Adaptive systems that adjust to individual learning curves dramatically improve retention rates. The ML-ready event log enables future personalization with sequence models.',
+      architecture:`<ul><li><strong>API:</strong> ASP.NET Core (.NET 8) REST API with clean architecture layers</li><li><strong>Algorithm:</strong> SM-2 implementation with ease factor (EF) per card per user</li><li><strong>Database:</strong> Entity Framework Core with PostgreSQL</li><li><strong>Event Log:</strong> Structured interaction sequences for ML training readiness</li><li><strong>Frontend:</strong> React + TypeScript SPA with TypeScript API client</li></ul>`,
+      stack:['C#','.NET 8','ASP.NET Core','Entity Framework Core','PostgreSQL','React','TypeScript'],
+      links:[{label:'GitHub →',href:'https://github.com/can-ozyasar',cls:'link-btn--primary'}]
+    },
+    hayalperest: {
+      badge:'BTK Hackathon · GenAI · 2024',
+      title:'Hayalperest Hikayeler — Generative AI',
+      bg:'/images/pic/pic9.jpeg',
+      abstract:'A child-safe generative AI storytelling web application built under BTK Hackathon constraints, featuring advanced content filtering and optimized prompt engineering for age-appropriate creative content generation.',
+      metrics:[{val:'GenAI',label:'Technology'},{val:'Safe',label:'Content Filter'},{val:'Node.js',label:'Backend'},{val:'Hackathon',label:'Winner'}],
+      overview:`<p>Hayalperest Hikayeler (Dreamer Stories) was developed during the BTK Hackathon to demonstrate responsible generative AI for children. The system generates personalized bedtime stories based on child-provided characters and themes.</p>`,
+      problem:'Consumer LLM APIs lack robust child-safety filters out of the box. Building a reliable content pipeline for children requires multi-layered filtering, prompt isolation, and output validation.',
+      architecture:`<ul><li><strong>Backend:</strong> Node.js REST API with session management</li><li><strong>LLM:</strong> Google Gemini API with custom system prompt isolation</li><li><strong>Safety:</strong> Multi-layer keyword and semantic content filter before output</li><li><strong>Prompt Optimization:</strong> Template-based prompt construction for consistent tone</li></ul>`,
+      stack:['Node.js','Google Gemini API','JavaScript','REST API','HTML/CSS'],
+      links:[{label:'GitHub →',href:'https://github.com/can-ozyasar',cls:'link-btn--primary'}]
+    },
+    gym: {
+      badge:'Full-Stack · 2024',
+      title:'Gym Management System',
+      bg:'/images/pic/pic11.jpeg',
+      abstract:'A comprehensive full-stack gym management platform built with ASP.NET Core MVC and PostgreSQL, handling memberships, scheduling, billing, and operational reporting for fitness facilities.',
+      metrics:[{val:'MVC',label:'Architecture'},{val:'PostgreSQL',label:'Database'},{val:'.NET 8',label:'Platform'},{val:'Full',label:'Stack'}],
+      overview:`<p>This production-ready gym management system demonstrates clean architecture principles applied to a complex domain: multi-entity membership management with temporal scheduling, recurring billing, and multi-dimensional reporting.</p>`,
+      problem:'Most gym software is either too simple (spreadsheets) or too expensive (enterprise SaaS). This system delivers enterprise-grade features with a maintainable, extensible .NET architecture.',
+      architecture:`<ul><li><strong>Architecture:</strong> ASP.NET Core MVC with repository pattern and service layer</li><li><strong>Database:</strong> PostgreSQL with Entity Framework Core migrations</li><li><strong>Auth:</strong> ASP.NET Identity with role-based access (admin/staff/member)</li><li><strong>Billing:</strong> Recurring payment scheduling with invoice generation</li><li><strong>Reporting:</strong> Aggregate queries for occupancy, revenue, and retention KPIs</li></ul>`,
+      stack:['C#','.NET 8 MVC','PostgreSQL','Entity Framework Core','ASP.NET Identity','Bootstrap'],
+      links:[{label:'GitHub →',href:'https://github.com/can-ozyasar',cls:'link-btn--primary'}]
+    }
+  };
+
+  function render(){
+    const id=new URLSearchParams(location.search).get('id');
+    const p=PROJECTS[id];
+    if(!p){document.getElementById('proj-not-found').style.display='block';document.getElementById('proj-hero-wrap').style.display='none';return;}
+    document.title=p.title+' — Canoz';
+    document.getElementById('proj-badge').textContent=p.badge;
+    document.getElementById('proj-title').textContent=p.title;
+    document.getElementById('proj-abstract').textContent=p.abstract;
+    document.getElementById('proj-bg').style.backgroundImage=`url('${p.bg}')`;
+    const metrics=p.metrics.map(m=>`<div class="metric"><span class="metric__val">${m.val}</span><span class="metric__label">${m.label}</span></div>`).join('');
+    const stack=p.stack.map(s=>`<span class="stack-tag">${s}</span>`).join('');
+    const links=p.links.map(l=>`<a href="${l.href}" class="link-btn ${l.cls}" target="_blank">${l.label}</a>`).join('');
+    document.getElementById('proj-body').innerHTML=`
+      <div class="metric-row">${metrics}</div>
+      <div class="proj-section"><h2>Overview</h2>${p.overview}</div>
+      <div class="proj-section"><h2>Problem Solved</h2><p>${p.problem}</p></div>
+      <div class="proj-section"><h2>Architecture & Tech Stack</h2>${p.architecture}<div class="stack-grid">${stack}</div></div>
+      <div class="proj-section"><h2>Links</h2><div class="links-row">${links}</div></div>`;
+  }
+
+  // Theme toggle
+  const saved=localStorage.getItem('theme');
+  if(saved==='light')document.documentElement.classList.add('light');
+  document.getElementById('theme-toggle').addEventListener('click',()=>{
+    document.documentElement.classList.toggle('light');
+    localStorage.setItem('theme',document.documentElement.classList.contains('light')?'light':'dark');
+  });
+
+  render();
+  </script>
+</body>
+</html>

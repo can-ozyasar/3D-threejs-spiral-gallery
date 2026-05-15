@@ -1,318 +1,566 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <meta name="theme-color" content="#0b0a08" />
-    <title>Lumen Practice — Independent creative studio</title>
-    <meta
-      name="description"
-      content="Lumen Practice is a small independent studio crafting cinematic identities, brand films and digital surfaces for cultural and product-led brands."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/src/styles.css" />
-  </head>
-  <body>
-    <div class="grain" aria-hidden="true"></div>
+<html lang="tr">
 
-    <header class="nav">
-      <a href="#" class="nav__brand" aria-label="Lumen Practice — home">
-        <span class="nav__mark" aria-hidden="true"></span>
-        <span>Lumen Practice</span>
-      </a>
-      <nav class="nav__links" aria-label="Primary">
-        <a href="#manifesto">Manifesto</a>
-        <a href="#practice">Practice</a>
-        <a href="#field">Field</a>
-        <a href="#approach">Approach</a>
-        <a href="#conversation">Conversation</a>
-      </nav>
-      <span class="nav__status" aria-label="Studio availability">
-        Available · Autumn 2026
-      </span>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0a08" />
+  <title>Muhammed Can Özyaşar — YZ/ML Araştırmacısı &amp; Backend Geliştirici</title>
+  <meta name="description"
+    content="YZ/ML Araştırmacısı, TÜBİTAK Proje Yürütücüsü ve ML odaklı backend geliştirici. Federe öğrenme, RAG pipeline ve üretim YZ sistemleri." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles.css" />
+  <link rel="stylesheet" href="/src/overrides.css" />
+</head>
 
-    <main>
-      <section class="hero" id="hero" aria-label="Studio introduction">
-        <div class="hero__topbar">
-          <span>Vol. I · Lumen.Field</span>
-          <span>AMS 52.3° N · LIS 38.7° N</span>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#hero" class="nav__brand" aria-label="Ana sayfa">
+      <span class="nav__mark" aria-hidden="true"></span>
+      <span>Canoz</span>
+    </a>
+    <nav class="nav__links" aria-label="Ana menü">
+      <a href="#hakkimda" data-en="About">Hakkımda</a>
+      <a href="#beceriler" data-en="Skills">Beceriler</a>
+      <a href="#projeler" data-en="Projects">Projeler</a>
+      <a href="#deneyim" data-en="Experience">Deneyim</a>
+      <a href="#makaleler" data-en="Articles">Makaleler</a>
+      <a href="/blog.html" data-en="Blog">Blog</a>
+      <a href="#referanslar" data-en="References">Referanslar</a>
+      <a href="#iletisim" data-en="Contact">İletişim</a>
+    </nav>
+    <div style="display: flex; gap: 8px;">
+      <button id="theme-toggle" aria-label="Temayı değiştir">☀️</button>
+      <button id="lang-toggle" aria-label="Dili değiştir">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero" aria-label="Giriş">
+      <div class="hero__topbar">
+        <span data-en="AI/ML · Sakarya University · 2026"></span>
+        <span></span>
+      </div>
+      <div class="hero__core">
+        <p class="hero__eyebrow" data-en="Federated Learning · RAG · Backend Engineering">Federe Öğrenme · RAG · Backend
+          Mühendisliği</p>
+        <h1 class="hero__title" style="margin-bottom: 16px;">Muhammed Can Özyaşar</h1>
+        <div class="hero__typewriter"
+          style="font-family: var(--mono); font-size: clamp(16px, 2.5vw, 24px); color: var(--accent); min-height: 2em; letter-spacing: 0.05em; font-weight: 400;">
+          <span id="typewriter-text"></span><span class="cursor">|</span>
         </div>
+      </div>
+      <div class="hero__bottom">
+        <p class="hero__caption"
+          data-en="I bridge the gap between AI research and production reality. As an Applied AI & Backend Engineer, I build highly scalable data architectures, train privacy-preserving models via federated learning, and provide technical leadership for award-winning TÜBİTAK & Teknofest projects.">
+          Veriyi iş değerine, algoritmaları üretime dönüştürüyorum. Uygulamalı YZ ve Backend Geliştiricisi olarak;
+          yüksek ölçekli veri mimarileri kuruyor, federe öğrenme ile veri gizliliğini koruyan modeller eğitiyor ve
+          TÜBİTAK/Teknofest ödüllü projelere teknik liderlik yapıyorum.</p>
+        <span class="hero__scroll" aria-hidden="true">
+          <span class="hero__scroll-line"></span>
+          <span data-en="Explore">Keşfet</span>
+        </span>
+        <span class="hero__signoff">
+          Muhammed Can Özyaşar<br />
+          <span data-en="Sakarya · İzmir · İstanbul">Sakarya · İzmir · İstanbul</span>
+        </span>
+      </div>
+    </section>
 
-        <div class="hero__core">
-          <p class="hero__eyebrow">Identity · Moving image · Interactive</p>
-          <h1 class="hero__title">
-            <span class="hero__line">A studio of</span>
-            <span class="hero__line hero__line--italic">long shadows</span>
-            <span class="hero__line">&amp; warm light.</span>
-          </h1>
-        </div>
+    <div class="page-stack">
 
-        <div class="hero__bottom">
-          <p class="hero__caption">
-            We design cinematic brand worlds — identity systems, films and
-            websites made for the long arc, not the launch week.
-          </p>
-          <span class="hero__scroll" aria-hidden="true">
-            <span class="hero__scroll-line"></span>
-            <span>Descend</span>
-          </span>
-          <span class="hero__signoff">
-            Est. MMXXII<br />
-            Amsterdam &amp; Lisbon
-          </span>
+      <!-- HAKKIMDA -->
+      <section class="manifesto" id="hakkimda" aria-label="Hakkımda">
+        <p class="section-tag reveal-text" data-en="About · Chapter I">Hakkımda · Bölüm I</p>
+        <p class="manifesto__lede reveal-text"
+          data-en="Turning theoretical AI research into &lt;em&gt;production-ready&lt;/em&gt; software.">Teorik YZ
+          araştırmalarını <em>üretime hazır</em> yazılımlara dönüştürüyorum.</p>
+        <div class="manifesto__grid manifesto__grid--with-img">
+          <div class="manifesto__img-col reveal-text">
+            <img src="/images/pic/pic4.jpeg" alt="Muhammed Can Özyaşar" class="about-img" loading="lazy" />
+          </div>
+          <div class="manifesto__col reveal-text">
+            <h3 data-en="Who I am">Ben Kimim</h3>
+            <p
+              data-en="I am a Computer Engineering student at Sakarya University and a software engineer dedicated to building production-ready AI solutions. I serve as the Founder of 'TeklifAkış,' an AI-driven decision support system backed by the TÜBİTAK 1812 BIGG program.">
+              Sakarya Üniversitesi Bilgisayar Mühendisliği öğrencisi ve üretime hazır yapay zeka çözümleri geliştiren
+              bir mühendisim. Bugüne kadar "TeklifAkış" adlı YZ tabanlı karar destek sistemi ile prestijli TÜBİTAK 1812
+              BİGG programında kurucu rolünü üstlendim.</p>
+            <p
+              data-en="As Team Captain and ML Architect for SAÜ SYNAPSE at Teknofest Health AI, I designed complex ensemble models and full MLOps pipelines. My core passion lies in turning theoretical research into robust software products that deliver measurable real-world results.">
+              Teknofest Sağlıkta Yapay Zeka yarışmasında SAÜ SYNAPSE takım kaptanı ve ML Mimarı olarak karmaşık ensemble
+              modelleri ve uçtan uca MLOps süreçleri tasarladım. Temel tutkum, teorik bilgiyi, gerçek dünyada
+              ölçülebilir sonuçlar veren güvenilir yazılım ürünlerine dönüştürmektir.</p>
+          </div>
+          <div class="manifesto__col reveal-text">
+            <h3 data-en="How I work">Nasıl Çalışırım</h3>
+            <p
+              data-en="I believe a successful project is far more than just code. While engaging in deep research—such as Li-ion battery health estimation (TÜBİTAK 2247-C STAR) and Federated Learning (TÜBİTAK 2209-A)—I never lose sight of robust software engineering.">
+              Bir projenin sadece koddan ibaret olmadığına inanıyorum. Lityum-iyon batarya sağlığı tahmini (TÜBİTAK
+              2247-C STAR) ve Federe Öğrenme (TÜBİTAK 2209-A) gibi derin araştırma gerektiren konularda çalışırken, işin
+              mühendislik ve mimari tarafını hiçbir zaman göz ardı etmiyorum.</p>
+            <p
+              data-en="I seamlessly integrate data science tools like PyTorch and scikit-learn with modern backend architectures across .NET 8, Node.js, and Spring Boot to build highly scalable, secure, and end-to-end AI/ML systems.">
+              PyTorch ve scikit-learn gibi veri bilimi araçlarını; .NET 8, Node.js ve Spring Boot gibi modern backend
+              mimarileriyle kusursuz biçimde harmanlayarak, yüksek ölçeklenebilir ve güvenli AI/ML sistemleri
+              geliştiriyorum.</p>
+          </div>
         </div>
       </section>
 
-      <div class="page-stack">
-        <section class="manifesto" id="manifesto" aria-label="Manifesto">
-          <p class="section-tag reveal-text">Manifesto · Chapter I</p>
+      <!-- BECERİLER -->
+      <section class="practice" id="beceriler" aria-label="Beceriler">
+        <p class="section-tag reveal-text" data-en="Skills · Chapter II">Beceriler · Bölüm II</p>
+        <ol class="practice__list">
+          <li class="practice__row reveal-text">
+            <span class="practice__num">/ 01</span>
+            <span class="practice__title" data-en="AI / ML Engineering">YZ / ML Mühendisliği</span>
+            <p class="practice__body"
+              data-en="Deep Learning (CNN/ResNet-18, LSTM), Federated Learning (FedAvg), Random Forest, time-series analysis, Bayesian hyperparameter optimization, transfer learning.">
+              Derin Öğrenme (CNN/ResNet-18, LSTM), Federe Öğrenme (FedAvg), Random Forest, zaman serisi analizi,
+              Bayesian hiperparametre optimizasyonu, transfer öğrenme.</p>
+            <span class="practice__tags">PyTorch<br />scikit-learn<br />ResNet · LSTM</span>
+          </li>
+          <li class="practice__row reveal-text">
+            <span class="practice__num">/ 02</span>
+            <span class="practice__title" data-en="LLM &amp; RAG Systems">LLM &amp; RAG Sistemleri</span>
+            <p class="practice__body"
+              data-en="Retrieval-Augmented Generation, prompt engineering, embedding-based semantic search, Google Gemini API, OpenAI API, Qdrant vector database, structured LLM output pipelines.">
+              Retrieval-Augmented Generation, prompt mühendisliği, embedding tabanlı anlamsal arama, Google Gemini API,
+              OpenAI API, Qdrant vektör veritabanı, yapılandırılmış LLM çıktı pipeline'ları.</p>
+            <span class="practice__tags">Gemini API<br />Qdrant<br />RAG · Embedding</span>
+          </li>
+          <li class="practice__row reveal-text">
+            <span class="practice__num">/ 03</span>
+            <span class="practice__title" data-en="Backend Engineering">Backend Mühendisliği</span>
+            <p class="practice__body"
+              data-en="Production REST APIs and ML-serving backends. ASP.NET Core (.NET 8), Spring Boot, Node.js, FastAPI. Clean architecture, Entity Framework, Docker containerization.">
+              Üretim REST API'leri ve ML servisleme backend'leri. ASP.NET Core (.NET 8), Spring Boot, Node.js, FastAPI.
+              Temiz mimari, Entity Framework, Docker konteynerizasyonu.</p>
+            <span class="practice__tags">.NET 8<br />Spring Boot<br />Node.js · FastAPI</span>
+          </li>
+          <li class="practice__row reveal-text">
+            <span class="practice__num">/ 04</span>
+            <span class="practice__title" data-en="Data &amp; Research">Veri &amp; Araştırma</span>
+            <p class="practice__body"
+              data-en="NumPy, Pandas, Matplotlib. Sliding window feature extraction, data preprocessing pipelines, academic literature synthesis. Python (primary), TypeScript, Java, C#, SQL.">
+              NumPy, Pandas, Matplotlib. Kayan pencere özellik çıkarımı, veri ön işleme pipeline'ları, akademik
+              literatür sentezi. Python (birincil), TypeScript, Java, C#, SQL.</p>
+            <span class="practice__tags">Python<br />NumPy · Pandas<br />SQL · TypeScript</span>
+          </li>
+        </ol>
+      </section>
 
-          <p class="manifesto__lede reveal-text">
-            We work for clients who would rather make <em>one thing that lasts</em>
-            than ten that don't.
-          </p>
-
-          <div class="manifesto__grid">
-            <div class="manifesto__col reveal-text">
-              <h3>What we do</h3>
-              <p>
-                Lumen is an eight-person studio working at the seam of brand
-                systems, moving image and engineered web. We partner with
-                founders, cultural institutions and small product teams who
-                treat design as a long, patient practice.
-              </p>
-              <p>
-                Each engagement begins with weeks of listening — references,
-                archives, conversations in person — and ends with a system you
-                can grow into for years.
-              </p>
-            </div>
-            <div class="manifesto__col reveal-text">
-              <h3>How we work</h3>
-              <p>
-                We take on six engagements a year. Small teams, long timelines,
-                generous edit rounds. We share working files instead of polished
-                decks, and we keep the prototype open the whole way through.
-              </p>
-              <p>
-                Marks, type, motion and code, finished with a quiet manual you
-                can keep extending years after we're done.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="practice" id="practice" aria-label="Practice">
-          <p class="section-tag reveal-text">Practice · Chapter II</p>
-
-          <ol class="practice__list">
-            <li class="practice__row reveal-text">
-              <span class="practice__num">/ 01</span>
-              <span class="practice__title">Identity systems</span>
-              <p class="practice__body">
-                Logotypes, type systems and the written rules that hold a brand
-                across surfaces, decades and quiet acquisitions.
-              </p>
-              <span class="practice__tags">
-                Naming<br />Logotype<br />Type · Guidelines
-              </span>
-            </li>
-            <li class="practice__row reveal-text">
-              <span class="practice__num">/ 02</span>
-              <span class="practice__title">Brand films</span>
-              <p class="practice__body">
-                Title sequences, brand films and looping textures, written,
-                shot and finished with a small in-house crew.
-              </p>
-              <span class="practice__tags">
-                Direction<br />Cinematography<br />Edit · Sound
-              </span>
-            </li>
-            <li class="practice__row reveal-text">
-              <span class="practice__num">/ 03</span>
-              <span class="practice__title">Digital surfaces</span>
-              <p class="practice__body">
-                Editorial websites, portfolios and product surfaces engineered
-                for weight, slowness and a long shelf-life.
-              </p>
-              <span class="practice__tags">
-                Site design<br />WebGL<br />Engineering · CMS
-              </span>
-            </li>
-            <li class="practice__row reveal-text">
-              <span class="practice__num">/ 04</span>
-              <span class="practice__title">Editorial &amp; print</span>
-              <p class="practice__body">
-                Books, catalogues and print-led campaigns made with archivists,
-                photographers and the smallest possible team.
-              </p>
-              <span class="practice__tags">
-                Books<br />Catalogues<br />Posters · Print
-              </span>
-            </li>
-          </ol>
-        </section>
-
-        <section class="field" id="field" aria-label="Selected field work">
-          <p class="section-tag reveal-text">Field · Chapter III</p>
-
-          <div class="field__head">
-            <h2 class="field__heading reveal-text">
-              A small archive of <em>recent &amp; restless</em> work.
-            </h2>
-            <p class="field__lede reveal-text">
-              Six engagements a year, never two of the same kind. Below is a
-              short, edited cut from the last eighteen months.
-            </p>
-          </div>
-
-          <div class="field__grid">
-            <figure class="field__card field__card--lg">
-              <img src="/images/img1.jpg" alt="Halm Maritime — brand film still" loading="lazy" />
-              <figcaption class="field__caption">
-                <span>Halm Maritime — Brand film</span>
-                <span>2026</span>
-              </figcaption>
-            </figure>
-            <figure class="field__card field__card--sm">
-              <img src="/images/img2.jpg" alt="Nordmark Coffee — packaging" loading="lazy" />
-              <figcaption class="field__caption">
-                <span>Nordmark Coffee — Identity</span>
-                <span>2025</span>
-              </figcaption>
-            </figure>
-            <figure class="field__card field__card--tall">
-              <img src="/images/img3.jpg" alt="Veld Editions — editorial site" loading="lazy" />
-              <figcaption class="field__caption">
-                <span>Veld Editions — Editorial</span>
-                <span>2025</span>
-              </figcaption>
-            </figure>
-            <figure class="field__card field__card--wide">
-              <img src="/images/img4.jpg" alt="Studio Ostro — direction" loading="lazy" />
-              <figcaption class="field__caption">
-                <span>Studio Ostro — Direction</span>
-                <span>2024</span>
-              </figcaption>
-            </figure>
-            <figure class="field__card field__card--wide">
-              <img src="/images/img5.jpg" alt="Folvik Optics — campaign motion" loading="lazy" />
-              <figcaption class="field__caption">
-                <span>Folvik Optics — Campaign</span>
-                <span>2024</span>
-              </figcaption>
-            </figure>
-            <figure class="field__card field__card--tall">
-              <img src="/images/img6.jpg" alt="Kindersson Press — book" loading="lazy" />
-              <figcaption class="field__caption">
-                <span>Kindersson Press — Book</span>
-                <span>2023</span>
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section class="approach" id="approach" aria-label="Approach">
-          <p class="section-tag reveal-text">Approach · Chapter IV</p>
-
-          <p class="approach__intro reveal-text">
-            We work in <em>four slow movements.</em> Each is open to revision,
-            and none of them happens in a hurry.
-          </p>
-
-          <ol class="approach__steps">
-            <li class="approach__step reveal-text">
-              <h4>Listen</h4>
-              <p>
-                Weeks of conversation. We trade references, archives, sketches
-                and the questions we haven't answered yet.
-              </p>
-              <span class="approach__step-line" aria-hidden="true"></span>
-            </li>
-            <li class="approach__step reveal-text">
-              <h4>Frame</h4>
-              <p>
-                A one-page written direction — the spine that every visual and
-                editorial decision will hang from for the rest of the project.
-              </p>
-              <span class="approach__step-line" aria-hidden="true"></span>
-            </li>
-            <li class="approach__step reveal-text">
-              <h4>Make</h4>
-              <p>
-                Slow iterations in small batches. We share working files, not
-                polished decks, and edit in public with you, weekly.
-              </p>
-              <span class="approach__step-line" aria-hidden="true"></span>
-            </li>
-            <li class="approach__step reveal-text">
-              <h4>Hand off</h4>
-              <p>
-                A complete system — type, motion, code and a quiet manual you
-                can keep extending years after we're gone.
-              </p>
-              <span class="approach__step-line" aria-hidden="true"></span>
-            </li>
-          </ol>
-        </section>
-
-        <section
-          class="conversation"
-          id="conversation"
-          aria-label="Conversation"
-        >
-          <p class="section-tag reveal-text">Conversation · Chapter V</p>
-
-          <h2 class="conversation__headline reveal-text">
-            Have something worth <em>making slowly?</em>
+      <!-- PROJELER -->
+      <section class="field" id="projeler" aria-label="Projeler">
+        <p class="section-tag reveal-text" data-en="Projects · Chapter III">Projeler · Bölüm III</p>
+        <div class="field__head">
+          <h2 class="field__heading reveal-text"
+            data-en="Eight projects built &lt;em&gt;for production,&lt;/em&gt; not portfolios.">Portföy için değil,
+            <em>üretim için</em> sekiz proje.
           </h2>
+          <p class="field__lede reveal-text"
+            data-en="From TÜBİTAK-funded research to live systems processing real queries. Each solves a concrete problem.">
+            TÜBİTAK destekli araştırmadan gerçek sorguları işleyen canlı sistemlere. Her biri somut bir sorunu çözüyor.
+          </p>
+        </div>
+        <div class="field__grid">
+          <figure class="field__card field__card--lg" style="cursor:pointer"
+            onclick="location.href='/projects.html?id=federated'">
+            <img src="/images/projects/federated.png" alt="Federe Öğrenme — dağıtık sinir ağı düğümleri"
+              loading="lazy" />
+            <figcaption class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="TÜBİTAK 2209-A — Federated Learning">TÜBİTAK 2209-A — Federe Öğrenme</span>
+                <span>2025–</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li
+                    data-en="Privacy-preserving architecture keeping medical data local while training global models.">
+                    Hasta verilerini merkezi sunucuya göndermeden dağıtılmış düğümler üzerinde yerel eğitim.</li>
+                  <li data-en="Training ResNet-18 on HAM10000 dataset across multiple client nodes.">HAM10000 veri seti
+                    üzerinde ResNet-18 modelinin çoklu istemci ile eğitilmesi.</li>
+                  <li data-en="Supported by TÜBİTAK 2209-A University Students Research Projects Support Program.">
+                    TÜBİTAK 2209-A programı kapsamında desteklenmektedir.</li>
+                </ul>
+                <p class="field__tags">Python · PyTorch · Flower Framework</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="field__card field__card--sm" style="cursor:pointer"
+            onclick="location.href='/projects.html?id=bios'">
+            <img src="/images/projects/bios.png" alt="Endüstriyel İstihbarat — RSS + LLaMA3" loading="lazy" />
+            <figcaption class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="Industrial Intelligence — RSS · LLaMA3 · Graph">Endüstriyel İstihbarat — RSS · LLaMA3 ·
+                  Graf</span>
+                <span>2025</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li
+                    data-en="Automated intelligence pipeline extracting industrial events (relocations, closures) from RSS feeds.">
+                    RSS kaynaklarından fabrika taşınma ve kapanma olaylarını tespit eden otomatik istihbarat akışı.</li>
+                  <li data-en="Keyword filtering to minimize token usage before processing with LLaMA3.">LLaMA3'e
+                    gönderilecek token hacmini minimize eden anahtar kelime tabanlı filtreleme.</li>
+                  <li data-en="Interactive knowledge graph mapping relations between companies, locations, and events.">
+                    Şirket, konum ve olayları ilişkilendiren Obsidian tabanlı bilgi grafı.</li>
+                </ul>
+                <p class="field__tags">Python · LLaMA3 (Ollama) · RSS Parser · Obsidian Graph</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="field__card field__card--tall" style="cursor:pointer"
+            onclick="location.href='/projects.html?id=rag'">
+            <img src="/images/projects/rag.png" alt="RAG Portföy Asistanı — vektör embedding" loading="lazy" />
+            <figcaption class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="RAG Portfolio Assistant — Live">RAG Portföy Asistanı — Canlı</span>
+                <span>2025–</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li
+                    data-en="Deployed a secure, production-ready RAG pipeline utilizing Gemini's text-embedding models and vector search functionality.">
+                    Gemini'nin metin yerleştirme modelleri ve vektör arama işlevselliğini kullanarak güvenli, üretime
+                    hazır bir RAG pipeline dağıttı.
+                  </li>
+                  <li
+                    data-en="Architected a 6-layer security backend in FastAPI, implementing strict rate-limiting, prompt injection defenses, and stateless session isolation.">
+                    Sıkı hız sınırlaması, prompt injection savunmaları ve durumsuz oturum izolasyonu uygulayarak
+                    FastAPI'de 6 katmanlı bir güvenlik backend mimarisi tasarladı.
+                  </li>
+                  <li data-en="Semantic search powered by Qdrant vector database and text-embedding-004.">Qdrant vektör
+                    veritabanı ve text-embedding-004 ile desteklenen anlamsal arama.</li>
+                </ul>
+                <p class="field__tags">FastAPI · Qdrant · Google Gemini API · JavaScript</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="field__card field__card--wide" style="cursor:pointer"
+            onclick="location.href='/projects.html?id=teklifakis'">
+            <img src="/images/proj_teklifakis.jpg" alt="TeklifAkış — OCR + LLM belge pipeline" loading="lazy" />
+            <figcaption class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="TeklifAkış — OCR · LLM · TÜBİTAK 1812">TeklifAkış — OCR · LLM · TÜBİTAK 1812</span>
+                <span>2026–</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li
+                    data-en="Architected and successfully pitched an AI-driven decision support system to optimize manufacturing workflows, securing backing from the prestigious TÜBİTAK 1812 BIGG program.">
+                    Üretim iş akışlarını optimize eden YZ destekli bir karar destek sistemi tasarlayıp başarıyla sunarak
+                    prestijli TÜBİTAK 1812 BİGG programından destek aldı.</li>
+                  <li
+                    data-en="Led the end-to-end product lifecycle, directing cross-functional development from initial algorithmic conception to a fully deployed MVP.">
+                    İlk algoritmik konseptten tam olarak dağıtılmış bir MVP'ye kadar çapraz fonksiyonlu geliştirmeyi
+                    yöneterek uçtan uca ürün yaşam döngüsüne liderlik etti.</li>
+                  <li
+                    data-en="Engineered secure backend integrations connecting raw operational data with structured LLM outputs to automate complex quoting processes.">
+                    Karmaşık teklif süreçlerini otomatikleştirmek için ham operasyonel verileri yapılandırılmış LLM
+                    çıktılarıyla birleştiren güvenli backend entegrasyonları mühendisliği.</li>
+                </ul>
+                <p class="field__tags">Python · OCR (Tesseract / Azure) · LLM Structured Output · REST API</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="field__card field__card--wide" style="cursor:pointer"
+            onclick="location.href='/projects.html?id=vocab'">
+            <img src="/images/projects/vocab.png" alt="Vocabulary Cards — SM-2 aralıklı tekrar" loading="lazy" />
+            <figcaption class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="Vocabulary Cards — SM-2 Spaced Repetition">Vocabulary Cards — SM-2 Aralıklı Tekrar</span>
+                <span>2025</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li data-en=".NET 8 Web API utilizing the SM-2 algorithm for dynamic difficulty estimation.">SM-2
+                    algoritması ile kullanıcı bazlı dinamik zorluk tahmini yapan .NET 8 Web API platformu.</li>
+                  <li data-en="ML-Ready event logging subsystem capturing user interaction sequences.">Kullanıcı
+                    etkileşim dizilerini yapılandırılmış formatta kaydeden ML-Ready olay günlüğü alt sistemi.</li>
+                  <li data-en="Lays the groundwork for adaptive learning model training based on the Ebbinghaus curve.">
+                    Ebbinghaus Unutma Eğrisi parametrelerine dayalı uyarlanabilir öğrenme modellerine zemin hazırlar.
+                  </li>
+                </ul>
+                <p class="field__tags">.NET 8 Web API · Entity Framework Core · React · TypeScript</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="field__card field__card--tall" style="cursor:pointer"
+            onclick="location.href='/projects.html?id=hayalperest'">
+            <img src="/images/projects/hayalperest.png" alt="Hayalperest Hikayeler — Üretken YZ" loading="lazy" />
+            <figcaption class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="Hayalperest Hikayeler — GenAI · BTK Hackathon">Hayalperest Hikayeler — GenAI</span>
+                <span>2024</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li data-en="Generative AI web application developed during the BTK Hackathon constraints.">BTK
+                    Hackathon kısıtlamaları içinde geliştirilen üretken YZ web uygulaması.</li>
+                  <li data-en="Features child-friendly content filtering and prompt optimization.">Çocuk dostu içerik
+                    filtreleme ve gelişmiş prompt optimizasyonu içerir.</li>
+                </ul>
+                <p class="field__tags">Node.js · Google Gemini API · REST API</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="field__card field__card--med" style="cursor:pointer"
+            onclick="location.href='/projects.html?id=battery'">
+            <img src="/images/proj_battery.jpg" alt="BSM Batarya Yönetim — LSTM · Random Forest" loading="lazy" />
+            <figcaption class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="BSM Battery Management — LSTM · Random Forest">BSM Batarya Yönetim — LSTM</span>
+                <span>2026–</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li data-en="State of Health (SoH) and State of Charge (SoC) prediction for Li-ion batteries.">
+                    Lityum-iyon bataryalar için SoH ve SoC tahmini.</li>
+                  <li data-en="Leveraging LSTM networks and Random Forest models on large scale time-series data.">Büyük
+                    ölçekli zaman serilerinde eğitilmiş Random Forest ve LSTM modellerinin kullanımı.</li>
+                  <li data-en="Hyperparameter tuning via Bayesian Optimization.">Bayesian Optimizasyonu ile
+                    hiperparametre ayarı.</li>
+                </ul>
+                <p class="field__tags">Python · TensorFlow / Keras · Scikit-Learn · Pandas</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="field__card field__card--med" style="cursor:pointer"
+            onclick="location.href='/projects.html?id=gym'">
+            <img src="/images/projects/gym.png" alt="Spor Salonu Yönetim Sistemi — ASP.NET Core" loading="lazy" />
+            <figcaption class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="Gym Management System — ASP.NET Core · PostgreSQL">Spor Salonu Yönetim — ASP.NET
+                  Core</span>
+                <span>2024</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li data-en="Comprehensive full-stack management system for gym facilities.">Spor salonları için
+                    kapsamlı yönetim sistemi.</li>
+                  <li data-en="Handles active memberships, scheduling, billing, and reporting modules.">Üyelik
+                    işlemleri, takvim planlama, faturalandırma ve raporlama modüllerini yönetir.</li>
+                  <li data-en="Built with .NET 8 architecture and backed by a relational PostgreSQL database.">.NET 8
+                    mimarisi ve ilişkisel PostgreSQL veritabanı ile inşa edilmiştir.</li>
+                </ul>
+                <p class="field__tags">C# · .NET 8 MVC · PostgreSQL · Entity Framework</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
-          <div class="conversation__row">
-            <a
-              href="mailto:studio@lumen.practice"
-              class="conversation__email reveal-text"
-              aria-label="Email the studio"
-            >
-              studio@lumen.practice
-              <span aria-hidden="true">↗</span>
-            </a>
-            <div class="conversation__col reveal-text">
-              <h5>Availability</h5>
-              <p>
-                We accept six engagements each year. Next opening is Autumn
-                2026. Earlier conversations welcome from late spring.
-              </p>
-            </div>
-            <div class="conversation__col reveal-text">
-              <h5>Elsewhere</h5>
-              <p>
-                <a href="#">Are.na · lumen.practice</a><br />
-                <a href="#">Instagram · @lumen.practice</a><br />
-                <a href="#">Press · press@lumen.practice</a>
-              </p>
+      <!-- DENEYİM -->
+      <section class="approach" id="deneyim" aria-label="Deneyim">
+        <p class="section-tag reveal-text" data-en="Experience · Chapter IV">Deneyim · Bölüm IV</p>
+        <p class="approach__intro reveal-text"
+          data-en="Different roles, one singular focus: &lt;em&gt;applied AI engineering&lt;/em&gt; from research to scalable production.">
+          Farklı roller, tek bir ortak hedef: <em>uygulamalı YZ araştırmalarını</em> Ölçeklenebilir gerçek dünyaya
+          taşımak.</p>
+        <ol class="approach__steps">
+          <li class="approach__step reveal-text">
+            <h4 data-en="TÜBİTAK STAR"><img src="/images/logos/tubitakDarkTheme.png" alt=""
+                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">TÜBİTAK STAR</h4>
+            <p
+              data-en="Applied AI Researcher (Feb 2026–). Developed and optimized predictive ML models (using LSTM and Random Forests) for state-of-health (SoH) and state-of-charge (SoC) estimation in Lithium-ion batteries. Processed and analyzed large-scale time-series datasets, applying Bayesian hyperparameter optimization to significantly enhance predictive reliability for industrial energy systems.">
+              Uygulamalı YZ Araştırmacısı (Şubat 2026–). Lityum-iyon bataryalarda SoH ve SoC tahmini için tahmine dayalı
+              ML modelleri (LSTM ve Random Forest kullanarak) geliştirdi ve optimize etti. Endüstriyel enerji sistemleri
+              için tahmine dayalı güvenilirliği önemli ölçüde artırmak üzere Bayesian hiperparametre optimizasyonu
+              uygulayarak büyük ölçekli zaman serisi veri setlerini işledi ve analiz etti.</p>
+            <span class="approach__step-line" aria-hidden="true"></span>
+          </li>
+          <li class="approach__step reveal-text">
+            <h4 data-en="TÜBİTAK 2209-A"><img src="/images/logos/tubitakDarkTheme.png" alt=""
+                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">TÜBİTAK 2209-A</h4>
+            <p
+              data-en="Lead AI Researcher (2025–). Engineered a privacy-preserving Federated Learning pipeline, enabling the decentralized training of deep neural networks (ResNet-18) without exposing sensitive raw data. Deployed secure node communication protocols, ensuring strict compliance with data privacy standards (KVKK/GDPR) while outperforming baseline model accuracy (84% vs 81%).">
+              Lider YZ Araştırmacısı (2025–). Hassas ham verileri ifşa etmeden derin sinir ağlarının (ResNet-18) merkezi
+              olmayan eğitimini sağlayan gizlilik korumalı bir Federe Öğrenme pipeline'ı tasarladı. Temel model
+              doğruluğunu (%81'e karşı %84) aşarken, veri gizliliği standartlarına (KVKK/GDPR) tam uyum sağlayan güvenli
+              düğüm iletişim protokollerini devreye aldı.</p>
+            <span class="approach__step-line" aria-hidden="true"></span>
+          </li>
+          <li class="approach__step reveal-text">
+            <h4 data-en="SAÜ SYNAPSE | Teknofest"><img src="/images/logos/synapse.svg" alt=""
+                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;"><img
+                src="/images/logos/synapse.png" alt=""
+                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">SAÜ SYNAPSE | Teknofest</h4>
+            <p
+              data-en="Team Captain & ML Architect. Directed a multidisciplinary engineering team to design, train, and deploy complex ensemble ML models for healthcare diagnostics. Designed robust MLOps pipelines ensuring seamless data preprocessing and deployment under strict competition constraints, optimizing model inference times for clinical accuracy.">
+              Takım Kaptanı ve ML Mimarı. Sağlık teşhisi için karmaşık topluluk (ensemble) ML modelleri tasarlamak,
+              eğitmek ve devreye almak üzere çok disiplinli bir mühendislik ekibini yönetti. Sıkı yarışma kısıtlamaları
+              altında sorunsuz veri ön işleme ve dağıtım sağlayan sağlam MLOps pipeline'ları tasarladı ve klinik
+              doğruluk için model çıkarım sürelerini optimize etti.</p>
+            <span class="approach__step-line" aria-hidden="true"></span>
+          </li>
+          <li class="approach__step reveal-text">
+            <h4><img src="/images/logos/turkcell.png" alt=""
+                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">Turkcell Global Bilgi</h4>
+            <p
+              data-en="IT Intern (Summer 2025). Automated workflows with UiPath, built Power BI dashboards, managed 500+ accounts via Active Directory and VMware Horizon. L1/L2 support with root-cause analysis.">
+              BT Stajyeri (Yaz 2025). UiPath ile iş akışlarını otomasyona aldı, Power BI panoları oluşturdu, Active
+              Directory ve VMware Horizon üzerinden 500+ kullanıcı hesabı yönetti. Kök neden analizi yöntemiyle L1/L2 BT
+              destek süreçleri.</p>
+            <span class="approach__step-line" aria-hidden="true"></span>
+          </li>
+          <li class="approach__step reveal-text">
+            <h4 data-en="Education"><img src="/images/logos/sauLogo.png" alt=""
+                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">Eğitim</h4>
+            <p
+              data-en="Sakarya University · Computer Engineering B.Sc. (2023–). GPA 3.27/4.00. 1 High Honor + 4 Honor. YÖK AI Academy, Milli Teknoloji Akademisi.">
+              Sakarya Üniversitesi · Bilgisayar Mühendisliği (2023–). GNO 3,27/4,00. 1 Yüksek Onur + 4 Onur Belgesi. YÖK
+              Yapay Zeka Akademisi, Milli Teknoloji Akademisi.</p>
+            <span class="approach__step-line" aria-hidden="true"></span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- MAKALELER -->
+      <section class="manifesto" id="makaleler" aria-label="Makaleler ve notlar">
+        <p class="section-tag reveal-text" data-en="Articles · Chapter V">Makaleler · Bölüm V</p>
+        <p class="manifesto__lede reveal-text"
+          data-en="Research notes, paper reviews &amp; &lt;em&gt;technical writing.&lt;/em&gt;">Araştırma notları,
+          makale incelemeleri ve <em>teknik yazılar.</em></p>
+        <div class="manifesto__grid">
+          <div class="manifesto__col reveal-text">
+            <h3 data-en="Medium Posts">Medium Yazıları</h3>
+            <p><a
+                href="https://medium.com/@canozyasar35/federated-learning-nedir-veri-gizlili%C4%9Finde-yeni-%C3%A7a%C4%9F-86d750b8ad98"
+                target="_blank" rel="noopener" data-en="Federated Learning: The New Era in Data Privacy ↗">Federated
+                Learning Nedir? Veri Gizliliğinde Yeni Çağ ↗</a></p>
+            <p><a
+                href="https://medium.com/@canozyasar35/hibernate-orm-object-relational-mapping-nedir-temel-%C3%B6zellikler-f07aba72407c"
+                target="_blank" rel="noopener" data-en="Hibernate ORM: Object Relational Mapping Basics ↗">Hibernate ORM
+                (ORM) Nedir? Temel Özellikler ↗</a></p>
+            <p><a
+                href="https://medium.com/@canozyasar35/slaytlar%C4%B1n-%C3%B6tesinde-bir-e-ticaret-yolculu%C4%9Fu-sisterslab-x-hepsiburadayar%C4%B1nlara-s%C3%B6z-program%C4%B1-1cd92c753840"
+                target="_blank" rel="noopener"
+                data-en="SistersLab × Hepsiburada — Entrepreneurship Experience ↗">SistersLab × Hepsiburada —
+                Girişimcilik Deneyimim ↗</a></p>
+          </div>
+          <div class="manifesto__col reveal-text">
+            <h3 data-en="Obsidian Research Notes">Obsidian Araştırma Notları</h3>
+            <p
+              data-en="I maintain a structured knowledge graph of AI/ML paper summaries, experiment logs and concept maps — all publicly available.">
+              Yapılandırılmış bir Obsidian bilgi grafıyla YZ/ML makale özetleri, deney günlükleri ve kavram haritaları
+              tutuyorum. Hepsi kamuya açık.</p>
+            <p><a href="https://github.com/can-ozyasar/MY_Paper_Library" target="_blank" rel="noopener"
+                data-en="View research vault on GitHub ↗">Araştırma vault'unu GitHub'da görüntüle ↗</a></p>
+          </div>
+        </div>
+
+        <div class="blog-cta-simple reveal-text">
+          <a href="/blog.html" class="blog-cta-pill" data-en="Check out my blogs →">Bloglarımı İncele →</a>
+        </div>
+      </section>
+
+      <!-- REFERANSLAR -->
+      <section class="references" id="referanslar" aria-label="Referanslar">
+        <p class="section-tag reveal-text" data-en="References · Chapter VI">Referanslar · Bölüm VI</p>
+        <div class="references__grid">
+          <div class="reference-card reveal-text">
+            <h4>Volkan SALGAR</h4>
+            <p data-en="IT Regional Manager, Turkcell Global Bilgi">Bölgesel BT Yöneticisi, Turkcell Global Bilgi</p>
+          </div>
+          <div class="reference-card reveal-text">
+            <h4>Sancar SÜTEN</h4>
+            <p data-en="IT Service Desk Team Lead, Turkcell Global Bilgi">BT Hizmet Masası Takım Lideri, Turkcell Global
+              Bilgi</p>
+          </div>
+          <div class="reference-card reveal-text">
+            <h4>Mert KARAKOÇ</h4>
+            <p data-en="CEO / Founder, MTK Uzay ve Savunma A.Ş.">CEO / Kurucu, MTK Uzay ve Savunma A.Ş.</p>
+          </div>
+          <div class="reference-card reveal-text">
+            <h4>Burak YILMAZ</h4>
+            <p data-en="IT Specialist, Turkcell Global Bilgi">BT Uzmanı, Turkcell Global Bilgi</p>
+          </div>
+          <div class="reference-card reveal-text">
+            <h4>Yalçın YAYLA</h4>
+            <p data-en="Faculty Secretary, SAÜ Faculty of Business">Fakülte Sekreteri, SAÜ İşletme Fakültesi</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- İLETİŞİM -->
+      <section class="conversation" id="iletisim" aria-label="İletişim">
+        <p class="section-tag reveal-text" data-en="Contact · Chapter VII">İletişim · Bölüm VII</p>
+        <h2 class="conversation__headline reveal-text"
+          data-en="Let's build something &lt;em&gt;worth building.&lt;/em&gt;">Birlikte <em>değer yaratan</em> bir şey
+          inşa edelim.</h2>
+        <div class="conversation__row">
+          <a href="mailto:can.ozyasarr@gmail.com" class="conversation__email reveal-text" aria-label="E-posta gönder">
+            can.ozyasarr@gmail.com
+            <span aria-hidden="true">↗</span>
+          </a>
+          <div class="conversation__col reveal-text">
+            <h5 data-en="Find me online">Çevrimiçi Bul</h5>
+            <div class="social-links">
+              <a href="https://linkedin.com/in/muhammed-can-ozyasar" target="_blank" rel="noopener" class="social-link"
+                aria-label="LinkedIn">
+                <svg class="social-link__icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                <span class="social-link__label">LinkedIn</span>
+                <span class="social-link__handle">muhammed-can-ozyasar</span>
+              </a>
+              <a href="https://github.com/can-ozyasar" target="_blank" rel="noopener" class="social-link"
+                aria-label="GitHub">
+                <svg class="social-link__icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
+                <span class="social-link__label">GitHub</span>
+                <span class="social-link__handle">can-ozyasar</span>
+              </a>
+              <a href="https://medium.com/@canozyasar35" target="_blank" rel="noopener" class="social-link"
+                aria-label="Medium">
+                <svg class="social-link__icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+                </svg>
+                <span class="social-link__label">Medium</span>
+                <span class="social-link__handle">@canozyasar35</span>
+              </a>
             </div>
           </div>
-        </section>
-
-        <footer class="footer">
-          <div class="footer__row">
-            <span>© Lumen Practice — Independent studio</span>
-            <span>Made with patience</span>
-            <span><a href="#hero">Back to top ↑</a></span>
+          <div class="conversation__col reveal-text">
+            <h5 data-en="Location &amp; availability">Konum &amp; Müsaitlik</h5>
+            <p
+              data-en="Based in Sakarya / İzmir / İstanbul, Turkey. Open to AI/ML engineering roles, research collaborations, and technical internships.">
+              Sakarya / İzmir / İstanbul. YZ/ML mühendisliği pozisyonlarına, araştırma işbirliklerine ve teknik stajlara
+              açık.</p>
           </div>
-        </footer>
-      </div>
-    </main>
+        </div>
+      </section>
 
-    <script type="module" src="/src/script.js"></script>
-  </body>
+      <footer class="footer">
+        <div class="footer__row">
+          <span data-en="2026 © Muhammed Can Özyaşar">2026 © Muhammed Can Özyaşar</span>
+          <span data-en="Built with Three.js &amp; GSAP">Three.js &amp; GSAP ile yapıldı</span>
+          <span><a href="#" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});"
+              data-en="Back to top ↑">Yukarı çık ↑</a></span>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script type="module" src="/src/script.js"></script>
+  <script type="module" src="/src/i18n.js"></script>
+  <script type="module" src="/src/typewriter.js"></script>
+  <script type="module" src="/src/rag.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script type="module" src="/src/obsidian_graph.js"></script>
+</body>
+
 </html>

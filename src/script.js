@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 // ---------------------------------------------------------------------------
 
 const CONFIG = {
-  totalImages: 10,
+  totalImages: 13,
   tilesPerRevolution: 15,
   revolutions: 5,
   startRadius: 5,
@@ -89,6 +89,21 @@ function lenisRaf(time) {
   requestAnimationFrame(lenisRaf);
 }
 requestAnimationFrame(lenisRaf);
+
+// Handle direct hash navigation from external pages (e.g. blog.html → /#makaleler).
+// Lenis starts at y=0 and overrides native anchor scroll, so we must do it manually.
+if (window.location.hash) {
+  const target = document.querySelector(window.location.hash);
+  if (target) {
+    // Instantly scroll natively before paint to prevent visual flash at the top of the page.
+    const yPos = target.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo(0, yPos);
+    
+    // Sync Lenis internal state immediately to match the new native position.
+    lenis.scrollTo(target, { immediate: true, offset: -80 });
+  }
+}
+
 
 // ---------------------------------------------------------------------------
 // Scroll reveals — slow, cinematic fade-up for every `.reveal-text` block
@@ -176,9 +191,10 @@ function loadTexture(url) {
   });
 }
 
+// Hero spiral uses the pic/ images (atmospheric, low-key)
 const textureUrls = Array.from(
   { length: CONFIG.totalImages },
-  (_, i) => `/images/img${i + 1}.jpg`
+  (_, i) => `/images/pic/pic${i + 1}.jpeg`
 );
 
 // ---------------------------------------------------------------------------
