@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+  <meta name="theme-color" content="#0b0a08"/>
+  <title>HR Modu — Muhammed Can Özyaşar</title>
+  <meta name="description" content="İşe alımcılar ve yöneticiler için Muhammed Can Özyaşar'ın teknik profil özeti, kanıt haritası, proje sinyalleri ve iletişim bağlantıları."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/src/styles.css"/>
+  <link rel="stylesheet" href="/src/overrides.css"/>
+  <style>
+    :root {
+      --hr-bg: #0b0a08;
+      --hr-panel: rgba(255, 248, 232, 0.055);
+      --hr-panel-strong: rgba(255, 248, 232, 0.09);
+      --hr-line: rgba(255, 255, 255, 0.11);
+      --hr-text: #f8f1e4;
+      --hr-muted: rgba(248, 241, 228, 0.68);
+      --hr-gold: #f5c76b;
+      --hr-blue: #7dd3fc;
+      --hr-green: #9ae6b4;
+      --hr-coral: #fb9a8d;
+      --hr-max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(245, 199, 107, 0.16), transparent 28%),
+        radial-gradient(circle at 86% 8%, rgba(125, 211, 252, 0.12), transparent 30%),
+        linear-gradient(180deg, #0b0a08 0%, #11110f 52%, #0b0a08 100%);
+      color: var(--hr-text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    .hr-shell {
+      width: min(var(--hr-max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: clamp(110px, 16vh, 150px) 0 72px;
+    }
+
+    .hr-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+      gap: clamp(28px, 5vw, 70px);
+      align-items: center;
+      min-height: 72vh;
+    }
+
+    .hr-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 22px;
+      color: var(--hr-gold);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hr-kicker::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: currentColor;
+      box-shadow: 0 0 14px currentColor;
+    }
+
+    .hr-title {
+      max-width: 11ch;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(58px, 9vw, 124px);
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: -0.045em;
+    }
+
+    .hr-title em {
+      color: var(--hr-gold);
+      font-style: italic;
+    }
+
+    .hr-lede {
+      max-width: 680px;
+      margin: 28px 0 0;
+      color: var(--hr-muted);
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.72;
+    }
+
+    .hr-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .hr-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 18px;
+      border: 1px solid var(--hr-line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--hr-text);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .hr-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(245, 199, 107, 0.7);
+      background: rgba(245, 199, 107, 0.12);
+    }
+
+    .hr-btn--primary {
+      border-color: rgba(245, 199, 107, 0.68);
+      color: #10100d;
+      background: linear-gradient(135deg, #ffe7a6, #f5c76b);
+      box-shadow: 0 14px 36px rgba(245, 199, 107, 0.2);
+    }
+
+    .hr-card {
+      border: 1px solid var(--hr-line);
+      border-radius: 28px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.025)),
+        rgba(11, 10, 8, 0.74);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+    }
+
+    .snapshot {
+      position: relative;
+      padding: clamp(22px, 3vw, 34px);
+      overflow: hidden;
+    }
+
+    .snapshot::before {
+      content: '';
+      position: absolute;
+      inset: -30% -20% auto auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(245, 199, 107, 0.25), transparent 64%);
+    }
+
+    .snapshot__top {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .snapshot__photo {
+      width: 86px;
+      height: 86px;
+      border-radius: 24px;
+      object-fit: cover;
+      border: 1px solid rgba(245, 199, 107, 0.4);
+      filter: saturate(0.9) contrast(1.04);
+    }
+
+    .snapshot h2 {
+      margin: 0 0 6px;
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    .snapshot p {
+      margin: 0;
+      color: var(--hr-muted);
+      line-height: 1.55;
+    }
+
+    .fit-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .fit {
+      min-height: 108px;
+      padding: 16px;
+      border: 1px solid var(--hr-line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .fit strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--hr-gold);
+      font-family: var(--mono);
+      font-size: 22px;
+    }
+
+    .fit span {
+      color: var(--hr-muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .logo-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin: 50px 0 28px;
+    }
+
+    .logo-tile {
+      min-height: 96px;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      border: 1px solid var(--hr-line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .logo-tile img {
+      max-width: 116px;
+      max-height: 46px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.24));
+    }
+
+    .logo-tile span {
+      color: var(--hr-muted);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.11em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.75fr 1fr;
+      gap: 28px;
+      align-items: end;
+      margin: 86px 0 26px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--hr-muted);
+      line-height: 1.72;
+    }
+
+    .section-label {
+      margin: 0 0 12px;
+      color: var(--hr-gold);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 70px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.025em;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .proof {
+      padding: 22px;
+      border: 1px solid var(--hr-line);
+      border-radius: 24px;
+      background: var(--hr-panel);
+      min-height: 220px;
+    }
+
+    .proof__icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      border-radius: 14px;
+      background: rgba(245, 199, 107, 0.12);
+      color: var(--hr-gold);
+      font-family: var(--mono);
+    }
+
+    .proof h3,
+    .project-signal h3,
+    .role-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.22;
+    }
+
+    .proof p,
+    .project-signal p,
+    .role-card p {
+      margin: 0;
+      color: var(--hr-muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .role-card {
+      position: relative;
+      padding: 24px;
+      border: 1px solid var(--hr-line);
+      border-radius: 26px;
+      background: var(--hr-panel);
+      overflow: hidden;
+    }
+
+    .role-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245, 199, 107, 0.12), transparent 48%);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .role-card > * { position: relative; }
+
+    .role-card__match {
+      display: inline-flex;
+      margin-bottom: 30px;
+      padding: 6px 10px;
+      border: 1px solid rgba(245, 199, 107, 0.28);
+      border-radius: 999px;
+      color: var(--hr-gold);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .signal-board {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .project-signal {
+      display: grid;
+      grid-template-columns: 92px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid var(--hr-line);
+      border-radius: 22px;
+      background: var(--hr-panel);
+      text-decoration: none;
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .project-signal:hover {
+      transform: translateX(4px);
+      border-color: rgba(245, 199, 107, 0.48);
+      background: var(--hr-panel-strong);
+    }
+
+    .project-signal img {
+      width: 92px;
+      height: 68px;
+      border-radius: 16px;
+      object-fit: cover;
+      filter: saturate(0.86) contrast(1.05);
+    }
+
+    .project-signal small {
+      color: var(--hr-gold);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .project-signal b {
+      color: var(--hr-gold);
+      font-family: var(--mono);
+      font-size: 18px;
+    }
+
+    .stack-map {
+      padding: 28px;
+      border: 1px solid var(--hr-line);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(125, 211, 252, 0.16), transparent 32%),
+        var(--hr-panel);
+    }
+
+    .stack-map h3 {
+      margin: 0 0 20px;
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    .stack-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-top: 1px solid var(--hr-line);
+    }
+
+    .stack-row strong {
+      color: var(--hr-gold);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .stack-row span {
+      color: var(--hr-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .vision {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .vision-card {
+      padding: 28px;
+      border: 1px solid var(--hr-line);
+      border-radius: 28px;
+      background: var(--hr-panel);
+    }
+
+    .vision-card--gold {
+      background:
+        radial-gradient(circle at 80% 12%, rgba(245, 199, 107, 0.22), transparent 34%),
+        var(--hr-panel-strong);
+    }
+
+    .vision-card h3 {
+      margin: 0 0 14px;
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 400;
+    }
+
+    .vision-card p {
+      margin: 0;
+      color: var(--hr-muted);
+      line-height: 1.75;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      padding: 16px 0;
+      border-top: 1px solid var(--hr-line);
+    }
+
+    .timeline-item time {
+      color: var(--hr-gold);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .timeline-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item span {
+      color: var(--hr-muted);
+      line-height: 1.55;
+    }
+
+    .hr-cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      margin-top: 92px;
+      padding: clamp(26px, 4vw, 44px);
+      border: 1px solid rgba(245, 199, 107, 0.28);
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(245, 199, 107, 0.16), rgba(125, 211, 252, 0.06)),
+        rgba(255, 255, 255, 0.045);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .hr-cta h2 {
+      margin: 0 0 10px;
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 400;
+      line-height: 1.02;
+    }
+
+    .hr-cta p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--hr-muted);
+      line-height: 1.7;
+    }
+
+    .hr-cta__actions {
+      display: grid;
+      gap: 10px;
+      min-width: 230px;
+    }
+
+    @media (max-width: 1020px) {
+      .hr-shell { padding-top: 72px; }
+      .hr-hero,
+      .section-head,
+      .signal-board,
+      .vision,
+      .hr-cta {
+        grid-template-columns: 1fr;
+      }
+      .proof-grid,
+      .role-grid,
+      .logo-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hr-cta__actions { min-width: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .hr-shell { width: min(100% - 28px, var(--hr-max)); }
+      .fit-grid,
+      .proof-grid,
+      .role-grid,
+      .logo-strip {
+        grid-template-columns: 1fr;
+      }
+      .project-signal {
+        grid-template-columns: 72px 1fr;
+      }
+      .project-signal img {
+        width: 72px;
+        height: 58px;
+      }
+      .project-signal b { display: none; }
+      .stack-row,
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="/#hero" class="nav__brand" aria-label="Ana sayfa">
+      <span class="nav__mark" aria-hidden="true"></span>
+      <span>Canoz</span>
+    </a>
+    <nav class="nav__links" aria-label="Ana menü">
+      <a href="/#hakkimda" data-en="About">Hakkımda</a>
+      <a href="/#beceriler" data-en="Skills">Beceriler</a>
+      <a href="/#projeler" data-en="Projects">Projeler</a>
+      <a href="/#deneyim" data-en="Experience">Deneyim</a>
+      <a href="/#makaleler" data-en="Articles">Makaleler</a>
+      <a href="/blog.html" data-en="Blog">Blog</a>
+      <a href="/hr.html" class="nav__hr" data-en="HR Mode">HR Modu</a>
+      <a href="/#referanslar" data-en="References">Referanslar</a>
+      <a href="/#iletisim" data-en="Contact">İletişim</a>
+    </nav>
+    <div class="nav__toggles">
+      <button id="lang-toggle" aria-label="Dili değiştir">EN</button>
+    </div>
+  </header>
+
+  <main class="hr-shell">
+    <section class="hr-hero" aria-label="HR hızlı profil">
+      <div>
+        <p class="hr-kicker" data-en="Recruiter view · 60-second profile">İşe alımcı görünümü · 60 saniyelik profil</p>
+        <h1 class="hr-title" data-en="AI/ML engineer with <em>real signals</em>">Gerçek kanıtlı <em>YZ/ML</em> profili</h1>
+        <p class="hr-lede" data-en="Computer Engineering student focused on applied AI/ML, RAG systems and ML-serving backends. My strongest signal is the combination of TÜBİTAK research, production-minded projects, Turkcell IT experience and continuous technical reading.">
+          Uygulamalı YZ/ML, RAG sistemleri ve ML servis eden backend mimarilerine odaklanan Bilgisayar Mühendisliği öğrencisi. En güçlü sinyalim; TÜBİTAK araştırmaları, üretime yakın projeler, Turkcell BT deneyimi ve sürekli teknik okuma pratiğinin birleşimi.
+        </p>
+        <div class="hr-actions" aria-label="Hızlı aksiyonlar">
+          <a class="hr-btn hr-btn--primary" href="mailto:can.ozyasarr@gmail.com" data-en="Email directly">E-posta gönder</a>
+          <a class="hr-btn" href="/Muhammed-Can-Ozyasar-CV.md" data-en="Open CV">CV aç</a>
+          <a class="hr-btn" href="/#projeler" data-en="View projects">Projeleri gör</a>
+          <a class="hr-btn" href="https://github.com/can-ozyasar" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="hr-card snapshot" aria-label="Profil özeti">
+        <div class="snapshot__top">
+          <img class="snapshot__photo" src="/images/pic/pic4.jpeg" alt="Muhammed Can Özyaşar" loading="lazy"/>
+          <div>
+            <h2>Muhammed Can Özyaşar</h2>
+            <p data-en="Sakarya · İzmir · İstanbul<br/>AI/ML Research · Backend Engineering">Sakarya · İzmir · İstanbul<br/>YZ/ML Araştırma · Backend Mühendisliği</p>
+          </div>
+        </div>
+        <div class="fit-grid">
+          <div class="fit"><strong>3.27</strong><span data-en="GPA · Sakarya University Computer Engineering">GNO · Sakarya Üniversitesi Bilgisayar Müh.</span></div>
+          <div class="fit"><strong>3x</strong><span data-en="TÜBİTAK-linked research and venture programs">TÜBİTAK bağlantılı araştırma ve girişim programı</span></div>
+          <div class="fit"><strong>500+</strong><span data-en="User account operations in Turkcell Global Bilgi IT">Turkcell Global Bilgi BT'de kullanıcı operasyonu</span></div>
+          <div class="fit"><strong>RAG</strong><span data-en="Live AI assistant, vector search and LLM integration">Canlı YZ asistan, vektör arama ve LLM entegrasyonu</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="logo-strip" aria-label="Kanıt logoları">
+      <div class="logo-tile"><img src="/images/logos/tubitakDarkTheme.png" alt="TÜBİTAK"/></div>
+      <div class="logo-tile"><img src="/images/logos/turkcellDarkTheme.png" alt="Turkcell Global Bilgi"/></div>
+      <div class="logo-tile"><img src="/images/logos/sauLogo.png" alt="Sakarya Üniversitesi"/></div>
+      <div class="logo-tile"><img src="/images/logos/synapse.png" alt="SAÜ Synapse"/></div>
+      <div class="logo-tile"><span>YÖK AI Academy<br/>Milli Teknoloji</span></div>
+    </div>
+
+    <section aria-label="Neden dikkat çekmeli">
+      <div class="section-head">
+        <div>
+          <p class="section-label" data-en="Why shortlist">Neden kısa listeye alınmalı</p>
+          <h2 data-en="Signals that reduce hiring risk">İşe alım riskini azaltan sinyaller</h2>
+        </div>
+        <p data-en="This page is intentionally built for fast evaluation: fewer paragraphs, stronger proof. Each card points to a capability that can be verified through projects, research programs or real operational experience.">
+          Bu sayfa hızlı değerlendirme için tasarlandı: daha az paragraf, daha güçlü kanıt. Her kart; proje, araştırma programı veya gerçek operasyon deneyimiyle doğrulanabilir bir yetkinliğe işaret ediyor.
+        </p>
+      </div>
+      <div class="proof-grid">
+        <article class="proof">
+          <div class="proof__icon">01</div>
+          <h3 data-en="Research discipline">Araştırma disiplini</h3>
+          <p data-en="Federated learning, battery SoH/SoC estimation and radar signal analysis with TÜBİTAK-linked workflows, reports and literature synthesis.">
+            Federe öğrenme, batarya SoH/SoC tahmini ve radar sinyal analizi: TÜBİTAK bağlantılı iş akışı, raporlama ve literatür sentezi.
+          </p>
+        </article>
+        <article class="proof">
+          <div class="proof__icon">02</div>
+          <h3 data-en="Production mindset">Üretim zihniyeti</h3>
+          <p data-en="RAG assistant, .NET 8 APIs, REST design, Qdrant vector search and secure LLM integration focused on usable systems.">
+            RAG asistan, .NET 8 API'ler, REST tasarımı, Qdrant vektör arama ve kullanılabilir sistem odaklı güvenli LLM entegrasyonu.
+          </p>
+        </article>
+        <article class="proof">
+          <div class="proof__icon">03</div>
+          <h3 data-en="Operational exposure">Operasyon deneyimi</h3>
+          <p data-en="Turkcell Global Bilgi IT internship: UiPath automation, Power BI dashboards, Active Directory, VMware Horizon and L1/L2 support.">
+            Turkcell Global Bilgi BT stajı: UiPath otomasyon, Power BI panoları, Active Directory, VMware Horizon ve L1/L2 destek.
+          </p>
+        </article>
+        <article class="proof">
+          <div class="proof__icon">04</div>
+          <h3 data-en="Learning velocity">Öğrenme hızı</h3>
+          <p data-en="Current AI/ML papers are converted into Obsidian graph notes and practical GitHub experiments instead of staying as passive reading.">
+            Güncel YZ/ML makaleleri pasif okumada kalmıyor; Obsidian graph notlarına ve GitHub'da uygulanabilir deneylere dönüşüyor.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-label="Rol uyumu">
+      <div class="section-head">
+        <div>
+          <p class="section-label" data-en="Best-fit roles">En uygun roller</p>
+          <h2 data-en="Where I create value fastest">En hızlı değer üreteceğim alanlar</h2>
+        </div>
+        <p data-en="The target is not a generic software role. The best fit is where AI research, backend engineering and product awareness meet.">
+          Hedef genel bir yazılım rolü değil. En iyi uyum; YZ araştırması, backend mühendisliği ve ürün farkındalığının kesiştiği yer.
+        </p>
+      </div>
+      <div class="role-grid">
+        <article class="role-card">
+          <span class="role-card__match" data-en="Strong fit">Güçlü uyum</span>
+          <h3>AI/ML Engineer Intern</h3>
+          <p data-en="PyTorch, scikit-learn, CNN/ResNet-18, LSTM, Random Forest, time-series feature extraction and model evaluation.">
+            PyTorch, scikit-learn, CNN/ResNet-18, LSTM, Random Forest, zaman serisi özellik çıkarımı ve model değerlendirme.
+          </p>
+        </article>
+        <article class="role-card">
+          <span class="role-card__match" data-en="Strong fit">Güçlü uyum</span>
+          <h3>LLM / RAG Developer</h3>
+          <p data-en="Document ingestion, embeddings, Qdrant, Gemini/OpenAI APIs, prompt engineering and secure answer generation.">
+            Doküman işleme, embedding, Qdrant, Gemini/OpenAI API, prompt mühendisliği ve güvenli cevap üretimi.
+          </p>
+        </article>
+        <article class="role-card">
+          <span class="role-card__match" data-en="Growing fit">Gelişen uyum</span>
+          <h3>ML Backend Developer</h3>
+          <p data-en=".NET 8, REST APIs, Spring Boot, Node.js, SQL and service design for AI-powered products.">
+            .NET 8, REST API, Spring Boot, Node.js, SQL ve YZ destekli ürünler için servis tasarımı.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-label="Projeler ve beceri haritası">
+      <div class="section-head">
+        <div>
+          <p class="section-label" data-en="Project proof">Proje kanıtları</p>
+          <h2 data-en="Work that maps to real business problems">Gerçek iş problemlerine dokunan çalışmalar</h2>
+        </div>
+        <p data-en="The projects below are selected for recruiter relevance: privacy, automation, intelligence, learning systems and operational efficiency.">
+          Aşağıdaki projeler işe alımcı ilgisi için seçildi: gizlilik, otomasyon, istihbarat, öğrenme sistemleri ve operasyonel verimlilik.
+        </p>
+      </div>
+      <div class="signal-board">
+        <div class="project-list">
+          <a class="project-signal" href="/projects.html?id=federated">
+            <img src="/images/proj_federated.jpg" alt="Federated learning project" loading="lazy"/>
+            <span><small>TÜBİTAK 2209-A</small><h3>Federe Öğrenme</h3><p data-en="Privacy-preserving medical image classification with ResNet-18 and FedAvg.">ResNet-18 ve FedAvg ile gizlilik koruyan tıbbi görüntü sınıflandırma.</p></span>
+            <b>84%</b>
+          </a>
+          <a class="project-signal" href="/projects.html?id=battery">
+            <img src="/images/proj_battery.jpg" alt="Battery ML project" loading="lazy"/>
+            <span><small>TÜBİTAK STAR</small><h3>Batarya SoH/SoC</h3><p data-en="LSTM and Random Forest models for lithium-ion battery health and charge estimation.">Lityum-iyon batarya sağlık/şarj tahmini için LSTM ve Random Forest modelleri.</p></span>
+            <b>ML</b>
+          </a>
+          <a class="project-signal" href="/projects.html?id=rag">
+            <img src="/images/proj_rag.jpg" alt="RAG assistant project" loading="lazy"/>
+            <span><small>Live System</small><h3>RAG Portföy Asistanı</h3><p data-en="Vector search and LLM integration for a live portfolio assistant.">Canlı portföy asistanı için vektör arama ve LLM entegrasyonu.</p></span>
+            <b>RAG</b>
+          </a>
+          <a class="project-signal" href="/projects.html?id=teklifakis">
+            <img src="/images/proj_teklifakis.jpg" alt="TeklifAkış project" loading="lazy"/>
+            <span><small>TÜBİTAK 1812</small><h3>TeklifAkış</h3><p data-en="OCR and LLM pipeline for SME bid process automation.">KOBİ teklif süreçleri için OCR ve LLM pipeline otomasyonu.</p></span>
+            <b>OCR</b>
+          </a>
+        </div>
+
+        <aside class="stack-map">
+          <h3 data-en="Technical map">Teknik harita</h3>
+          <div class="stack-row"><strong>AI/ML</strong><span>PyTorch · scikit-learn · CNN/ResNet-18 · LSTM · Random Forest · FedAvg</span></div>
+          <div class="stack-row"><strong>LLM/RAG</strong><span>Qdrant · Gemini API · OpenAI API · Embeddings · Prompt Engineering · Structured Output</span></div>
+          <div class="stack-row"><strong>Backend</strong><span>.NET 8 · Spring Boot · Node.js · REST API · SQL · Postman</span></div>
+          <div class="stack-row"><strong>Data</strong><span>NumPy · Pandas · Matplotlib · Sliding Window · Bayesian HPO · Power BI</span></div>
+          <div class="stack-row"><strong>Workflow</strong><span>GitHub · Obsidian Graph · Fabric · AI Agent Tooling · Literature Notes</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section aria-label="Vizyon ve geçmiş">
+      <div class="section-head">
+        <div>
+          <p class="section-label" data-en="Vision and trajectory">Vizyon ve gidişat</p>
+          <h2 data-en="Not only building, also reading the field">Sadece geliştirmiyor, alanı da okuyorum</h2>
+        </div>
+        <p data-en="A recruiter should be able to see the technical direction: I follow current AI/ML articles to gain vision for my own projects, connect notes in Obsidian, and share useful learning openly.">
+          Bir işe alımcı teknik yönü görebilmeli: Güncel YZ/ML makalelerini kendi projelerime vizyon kazandırmak için takip ediyor, Obsidian'da ilişkilendiriyor ve faydalı öğrendiklerimi açık şekilde paylaşıyorum.
+        </p>
+      </div>
+      <div class="vision">
+        <article class="vision-card vision-card--gold">
+          <h3 data-en="Reading becomes product judgment">Okuma ürün sezgisine dönüşüyor</h3>
+          <p data-en="I follow current articles and research notes, read them to gain vision for my own projects, and turn useful ideas into experiments. The goal is not to collect links, but to make better technical decisions.">
+            Güncel makaleleri ve araştırma notlarını takip ediyor, kendi projelerime vizyon kazandırmak için okuyorum ve faydalı fikirleri deneylere dönüştürüyorum. Amaç link biriktirmek değil; daha iyi teknik kararlar almak.
+          </p>
+        </article>
+        <article class="vision-card">
+          <h3 data-en="Trajectory">Gelişim çizgisi</h3>
+          <div class="timeline">
+            <div class="timeline-item"><time>2026</time><span><strong>TÜBİTAK 2247-C STAR</strong> <span data-en="Battery SoH/SoC ML research, radar signal analysis and academic output target.">Batarya SoH/SoC ML araştırması, radar sinyal analizi ve akademik çıktı hedefi.</span></span></div>
+            <div class="timeline-item"><time>2026</time><span><strong>TÜBİTAK 1812</strong> <span data-en="TeklifAkış venture track: customer discovery, MVP iteration and AI workflow design.">TeklifAkış girişim süreci: müşteri keşfi, MVP iterasyonu ve YZ iş akışı tasarımı.</span></span></div>
+            <div class="timeline-item"><time>2025</time><span><strong>Turkcell Global Bilgi</strong> <span data-en="IT internship with automation, analytics dashboards and enterprise support experience.">Otomasyon, analitik dashboard ve kurumsal destek deneyimi içeren BT stajı.</span></span></div>
+            <div class="timeline-item"><time>2025</time><span><strong>TÜBİTAK 2209-A</strong> <span data-en="Project lead for privacy-preserving federated learning in medical imaging.">Tıbbi görüntülemede gizlilik koruyan federe öğrenme projesi yürütücülüğü.</span></span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="hr-cta" aria-label="İletişim">
+      <div>
+        <h2 data-en="If the role needs AI depth plus engineering follow-through, I am worth a closer look.">Rol YZ derinliği ve mühendislik takibi istiyorsa, yakından bakmaya değerim.</h2>
+        <p data-en="Best contact channel: email. I am open to AI/ML engineering roles, research internships, ML backend work and startup teams building practical AI products.">
+          En iyi iletişim kanalı: e-posta. YZ/ML mühendisliği rolleri, araştırma stajları, ML backend çalışmaları ve pratik YZ ürünleri geliştiren startup ekiplerine açığım.
+        </p>
+      </div>
+      <div class="hr-cta__actions">
+        <a class="hr-btn hr-btn--primary" href="mailto:can.ozyasarr@gmail.com">can.ozyasarr@gmail.com</a>
+        <a class="hr-btn" href="/Muhammed-Can-Ozyasar-CV.md" data-en="Open CV">CV aç</a>
+        <a class="hr-btn" href="/#referanslar" data-en="View references">Referansları gör</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/i18n.js"></script>
+</body>
+</html>

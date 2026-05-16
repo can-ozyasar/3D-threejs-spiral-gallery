@@ -13,8 +13,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap"
     rel="stylesheet" />
-  <script type="module" crossorigin src="/assets/index-DC8HPxhM.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-Bac3UZAi.css">
+  <link rel="stylesheet" href="/src/styles.css" />
+  <link rel="stylesheet" href="/src/overrides.css" />
+  <script type="module" crossorigin src="/assets/index-Dx3geQMx.js"></script>
 </head>
 
 <body>
@@ -32,6 +33,7 @@
       <a href="#deneyim" data-en="Experience">Deneyim</a>
       <a href="#makaleler" data-en="Articles">Makaleler</a>
       <a href="/blog.html" data-en="Blog">Blog</a>
+      <a href="/hr.html" class="nav__hr" data-en="HR Mode">HR Modu</a>
       <a href="#referanslar" data-en="References">Referanslar</a>
       <a href="#iletisim" data-en="Contact">İletişim</a>
     </nav>
@@ -48,12 +50,18 @@
         <span></span>
       </div>
       <div class="hero__core">
-        <p class="hero__eyebrow" data-en="AI/ML Research · Computer Engineering">YZ/ML
-          Araştırmaları · Bilgisayar Mühendisi</p>
+        <p class="hero__eyebrow" data-en="AI/ML Research · Computer Engineering Student">YZ/ML
+          Araştırmaları · Bilgisayar Mühendisliği Öğrencisi</p>
         <h1 class="hero__title" style="margin-bottom: 16px;">Muhammed Can Özyaşar</h1>
         <div class="hero__typewriter"
           style="font-family: var(--mono); font-size: clamp(16px, 2.5vw, 24px); color: var(--accent); min-height: 2em; letter-spacing: 0.05em; font-weight: 400;">
           <span id="typewriter-text"></span><span class="cursor">|</span>
+        </div>
+        <div class="hero__actions" aria-label="Hızlı bağlantılar">
+          <a href="#projeler" data-en="View Projects">Projeleri Gör</a>
+          <a href="#iletisim" data-en="Contact">İletişim</a>
+          <a href="https://github.com/can-ozyasar" target="_blank" rel="noopener">GitHub</a>
+          <a href="/CV_MCanOzyasar.pdf" download data-en="Download CV">CV İndir</a>
         </div>
       </div>
       <div class="hero__bottom">
@@ -173,11 +181,10 @@
           </p>
         </div>
         <div class="field__grid">
-          <figure class="field__card field__card--lg" style="cursor:pointer"
-            onclick="location.href='/projects.html?id=federated'">
+          <a class="field__card field__card--lg" href="/projects.html?id=federated">
             <img src="/images/projects/federated.png" alt="Federe Öğrenme — dağıtık sinir ağı düğümleri"
               loading="lazy" />
-            <figcaption class="field__caption">
+            <div class="field__caption">
               <div class="field__caption-top">
                 <span data-en="TÜBİTAK 2209-A — Federated Learning">TÜBİTAK 2209-A — Federe Öğrenme</span>
                 <span>2025–</span>
@@ -194,12 +201,11 @@
                 </ul>
                 <p class="field__tags">Python · PyTorch · Flower Framework</p>
               </div>
-            </figcaption>
-          </figure>
-          <figure class="field__card field__card--sm" style="cursor:pointer"
-            onclick="location.href='/projects.html?id=bios'">
+            </div>
+          </a>
+          <a class="field__card field__card--sm" href="/projects.html?id=bios">
             <img src="/images/projects/bios.png" alt="Endüstriyel İstihbarat — RSS + LLaMA3" loading="lazy" />
-            <figcaption class="field__caption">
+            <div class="field__caption">
               <div class="field__caption-top">
                 <span data-en="Industrial Intelligence — RSS · LLaMA3 · Graph">Endüstriyel İstihbarat — RSS · LLaMA3 ·
                   Graf</span>
@@ -217,12 +223,11 @@
                 </ul>
                 <p class="field__tags">Python · LLaMA3 (Ollama) · RSS Parser · Obsidian Graph</p>
               </div>
-            </figcaption>
-          </figure>
-          <figure class="field__card field__card--tall" style="cursor:pointer"
-            onclick="location.href='/projects.html?id=rag'">
+            </div>
+          </a>
+          <a class="field__card field__card--tall" href="/projects.html?id=rag">
             <img src="/images/projects/rag.png" alt="RAG Portföy Asistanı — vektör embedding" loading="lazy" />
-            <figcaption class="field__caption">
+            <div class="field__caption">
               <div class="field__caption-top">
                 <span data-en="RAG Portfolio Assistant — Live">RAG Portföy Asistanı — Canlı</span>
                 <span>2025–</span>
@@ -244,12 +249,11 @@
                 </ul>
                 <p class="field__tags">FastAPI · Qdrant · Google Gemini API · JavaScript</p>
               </div>
-            </figcaption>
-          </figure>
-          <figure class="field__card field__card--wide" style="cursor:pointer"
-            onclick="location.href='/projects.html?id=teklifakis'">
+            </div>
+          </a>
+          <a class="field__card field__card--wide" href="/projects.html?id=teklifakis">
             <img src="/images/proj_teklifakis.jpg" alt="TeklifAkış — OCR + LLM belge pipeline" loading="lazy" />
-            <figcaption class="field__caption">
+            <div class="field__caption">
               <div class="field__caption-top">
                 <span data-en="TeklifAkış — OCR · LLM · TÜBİTAK 1812">TeklifAkış — OCR · LLM · TÜBİTAK 1812</span>
                 <span>2026–</span>
@@ -271,12 +275,11 @@
                 </ul>
                 <p class="field__tags">Python · OCR (Tesseract / Azure) · LLM Structured Output · REST API</p>
               </div>
-            </figcaption>
-          </figure>
-          <figure class="field__card field__card--wide" style="cursor:pointer"
-            onclick="location.href='/projects.html?id=vocab'">
+            </div>
+          </a>
+          <a class="field__card field__card--wide" href="/projects.html?id=vocab">
             <img src="/images/projects/vocab.png" alt="Vocabulary Cards — SM-2 aralıklı tekrar" loading="lazy" />
-            <figcaption class="field__caption">
+            <div class="field__caption">
               <div class="field__caption-top">
                 <span data-en="Vocabulary Cards — SM-2 Spaced Repetition">Vocabulary Cards — SM-2 Aralıklı Tekrar</span>
                 <span>2025</span>
@@ -293,12 +296,11 @@
                 </ul>
                 <p class="field__tags">.NET 8 Web API · Entity Framework Core · React · TypeScript</p>
               </div>
-            </figcaption>
-          </figure>
-          <figure class="field__card field__card--tall" style="cursor:pointer"
-            onclick="location.href='/projects.html?id=hayalperest'">
+            </div>
+          </a>
+          <a class="field__card field__card--tall" href="/projects.html?id=hayalperest">
             <img src="/images/projects/hayalperest.png" alt="Hayalperest Hikayeler — Üretken YZ" loading="lazy" />
-            <figcaption class="field__caption">
+            <div class="field__caption">
               <div class="field__caption-top">
                 <span data-en="Hayalperest Hikayeler — GenAI · BTK Hackathon">Hayalperest Hikayeler — GenAI</span>
                 <span>2024</span>
@@ -312,12 +314,11 @@
                 </ul>
                 <p class="field__tags">Node.js · Google Gemini API · REST API</p>
               </div>
-            </figcaption>
-          </figure>
-          <figure class="field__card field__card--med" style="cursor:pointer"
-            onclick="location.href='/projects.html?id=battery'">
+            </div>
+          </a>
+          <a class="field__card field__card--med" href="/projects.html?id=battery">
             <img src="/images/proj_battery.jpg" alt="BSM Batarya Yönetim — LSTM · Random Forest" loading="lazy" />
-            <figcaption class="field__caption">
+            <div class="field__caption">
               <div class="field__caption-top">
                 <span data-en="BSM Battery Management — LSTM · Random Forest">BSM Batarya Yönetim — LSTM</span>
                 <span>2026–</span>
@@ -333,12 +334,11 @@
                 </ul>
                 <p class="field__tags">Python · TensorFlow / Keras · Scikit-Learn · Pandas</p>
               </div>
-            </figcaption>
-          </figure>
-          <figure class="field__card field__card--med" style="cursor:pointer"
-            onclick="location.href='/projects.html?id=gym'">
+            </div>
+          </a>
+          <a class="field__card field__card--med" href="/projects.html?id=gym">
             <img src="/images/projects/gym.png" alt="Spor Salonu Yönetim Sistemi — ASP.NET Core" loading="lazy" />
-            <figcaption class="field__caption">
+            <div class="field__caption">
               <div class="field__caption-top">
                 <span data-en="Gym Management System — ASP.NET Core · PostgreSQL">Spor Salonu Yönetim — ASP.NET
                   Core</span>
@@ -355,8 +355,8 @@
                 </ul>
                 <p class="field__tags">C# · .NET 8 MVC · PostgreSQL · Entity Framework</p>
               </div>
-            </figcaption>
-          </figure>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -468,6 +468,10 @@
       <!-- REFERANSLAR -->
       <section class="references" id="referanslar" aria-label="Referanslar">
         <p class="section-tag reveal-text" data-en="References · Chapter VI">Referanslar · Bölüm VI</p>
+        <p class="references__note reveal-text"
+          data-en="Real professional references from academic, industry and startup contexts. Contact details can be shared when requested.">
+          Akademi, sektör ve girişim ekosisteminden gerçek profesyonel referanslar. İletişim bilgileri talep edildiğinde
+          paylaşılabilir.</p>
         <div class="references__grid">
           <div class="reference-card reveal-text">
             <h4>Volkan SALGAR</h4>
@@ -557,7 +561,9 @@
     </div>
   </main>
 
+  <script type="module" src="/src/i18n.js"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script type="module" src="/src/obsidian_graph.js"></script>
 </body>
 
 </html>

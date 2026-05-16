@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "sync-public-src": "mkdir -p public/src && cp src/styles.css src/overrides.css src/i18n.js src/obsidian_graph.js public/src/",
+    "build": "npm run sync-public-src && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
