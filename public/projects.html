@@ -103,6 +103,41 @@
       title:'TeklifAkış — AI-Powered Bid Intelligence',
       bg:'/images/proj_teklifakis.jpg'
     },
+    'ajanpazar-fitai': {
+      badge:'BTK Hackathon 2026 · Multi-Agent Commerce',
+      title:'AjanPazar × FitAI — Product Page Intelligence',
+      bg:'/images/projects/ajanpazar-fitai.svg',
+      abstract:'E-ticaret ürün sayfalarını 10 farklı alıcı kişiliği ve siteyi canlı gezen gerçek bir AI ajan üzerinden test eden BTK 2026 hackathon platformu. Sistem ürün satmaz; ürün sayfasının insan kullanıcıya, persona ajanlara ve gelecekte sipariş verecek AI alışveriş ajanlarına ne kadar hazır olduğunu ölçer.',
+      metrics:[
+        {val:'10',label:'Persona Agents'},
+        {val:'1',label:'Live Agent'},
+        {val:'8',label:'Score Areas'},
+        {val:'2',label:'Applications'}
+      ],
+      sections:[
+        {
+          title:'Problem',
+          body:'Ürün sayfalarında başlık, açıklama, görsel, ölçü, malzeme, garanti, kargo ve hedef kullanıcı bilgileri eksik olduğunda hem insan alıcı hem de AI alışveriş ajanı ürünü doğru anlayamaz. Gelecekte kullanıcılar ürünleri tek tek gezmek yerine ajanlara sipariş verdireceği için, ürün sayfasının ajan tarafından okunabilir, gezilebilir ve önerilebilir olması doğrudan satış sinyaline dönüşür.'
+        },
+        {
+          title:'Ajan Yapısı',
+          body:'Sistem 10 farklı kişilikte alıcı ajan çalıştırır: bütçe odaklı, kalite odaklı, hediye alan, kararsız kullanıcı, iade etmek istemeyen kullanıcı gibi profiller ürün sayfasını kendi motivasyonlarıyla değerlendirir. Buna ek olarak bir gerçek gezinme ajanı siteyi ajan modunda dolaşır; ürün bilgisine erişebiliyor mu, kritik detayları bulabiliyor mu ve sayfa AI alışveriş ajanı için yeterince anlaşılır mı sorularını canlı test eder.'
+        },
+        {
+          title:'Skorlama ve Çıktılar',
+          body:'AjanPazar satıcı tarafında Human Conversion, AI Agent Readiness, Recommendability, Trust, Return Risk, Missing Information Risk, Comparison Strength ve Clarity alanlarında analiz üretir. FitAI alıcı tarafında beden tavsiyesi, yorum özeti, iade senaryosu, kombin ve stil analizi sunar. Sonuçta ürün pasaportu, SSS, SEO açıklaması, AI ajanlara uygun yapılandırılmış özet ve hazır düzeltme paketi oluşur.'
+        },
+        {
+          title:'Mimari',
+          body:'Proje iki uygulamadan oluşur: Ana analiz platformu ve gerçekçi mock e-ticaret sitesi. Ana platform Next.js API routes üzerinden ürün verisini işler; Gemini API AjanPazar analizlerinde, Claude API FitAI kişisel değerlendirme akışlarında kullanılır. Mock mağaza ürün, yorum, satıcı, beden tablosu ve kullanıcı profili verileri sağlar; canlı gezinme ajanı da bu sayfalar üzerinde ajan-readiness testi yapar.'
+        },
+        {
+          title:'Demo Değeri',
+          body:'Jüri demosunda zayıf bir ürün sayfası analiz edilir; önce persona ajanların farklı itirazları ve gerçek gezinme ajanının bulduğu erişilebilirlik/anlaşılabilirlik problemleri gösterilir. Sistem düşük conversion, trust ve AI readiness skorlarını görünür kılar; ardından eksik bilgileri, iade risklerini ve ajanların ürünü neden önermeyebileceğini listeler. Hazır düzeltme paketiyle sayfa hem insan hem AI ajan için güçlendirilir.'
+        }
+      ],
+      stack:['Next.js','TypeScript','Gemini API','Claude API','10 Persona Agents','Live Browsing Agent','AI Agent Readiness','Score Dashboard']
+    },
     rag: {
       badge:'Production · Live System',
       title:'Secure RAG Portfolio Assistant',
@@ -142,8 +177,21 @@
     document.title=p.title+' — Canoz';
     document.getElementById('proj-badge').textContent=p.badge;
     document.getElementById('proj-title').textContent=p.title;
-    document.getElementById('proj-abstract').textContent='Bu proje detay sayfasını zamanla dolduracağım. Şimdilik başlık ve kategori yerinde duruyor; içerik alanları düzenli bir şablon olarak bırakıldı.';
+    document.getElementById('proj-abstract').textContent=p.abstract || 'Bu proje detay sayfasını zamanla dolduracağım. Şimdilik başlık ve kategori yerinde duruyor; içerik alanları düzenli bir şablon olarak bırakıldı.';
     document.getElementById('proj-bg').style.backgroundImage=`url('${p.bg}')`;
+    if(p.sections){
+      const metrics=(p.metrics||[]).map(m=>`<div class="metric"><span class="metric__val">${m.val}</span><span class="metric__label">${m.label}</span></div>`).join('');
+      const sections=p.sections.map(s=>`<div class="proj-section"><h2>${s.title}</h2><p>${s.body}</p></div>`).join('');
+      const stack=(p.stack||[]).map(s=>`<span class="stack-tag">${s}</span>`).join('');
+      document.getElementById('proj-body').innerHTML=`
+        <div class="metric-row">${metrics}</div>
+        ${sections}
+        <div class="proj-section">
+          <h2>Teknoloji Haritası</h2>
+          <div class="stack-grid">${stack}</div>
+        </div>`;
+      return;
+    }
     document.getElementById('proj-body').innerHTML=`
       <div class="metric-row">
         <div class="metric"><span class="metric__val">01</span><span class="metric__label">Problem</span></div>

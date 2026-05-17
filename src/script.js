@@ -161,42 +161,6 @@ let clock;
 const totalTiles = CONFIG.tilesPerRevolution * CONFIG.revolutions;
 const angleStep = (Math.PI * 2) / CONFIG.tilesPerRevolution;
 
-const textureLoader = new THREE.TextureLoader();
-
-function loadTexture(url) {
-  return new Promise((resolve) => {
-    textureLoader.load(
-      url,
-      (texture) => {
-        texture.colorSpace = THREE.SRGBColorSpace;
-        if (renderer) {
-          texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-        }
-        texture.minFilter = THREE.LinearMipmapLinearFilter;
-        texture.magFilter = THREE.LinearFilter;
-        resolve(texture);
-      },
-      undefined,
-      () => {
-        const fallback = new THREE.DataTexture(
-          new Uint8Array([22, 22, 24, 255]),
-          1,
-          1,
-          THREE.RGBAFormat
-        );
-        fallback.needsUpdate = true;
-        resolve(fallback);
-      }
-    );
-  });
-}
-
-// Hero spiral uses the pic/ images (atmospheric, low-key)
-const textureUrls = Array.from(
-  { length: CONFIG.totalImages },
-  (_, i) => `/images/pic/pic${i + 1}.jpeg`
-);
-
 // ---------------------------------------------------------------------------
 // Curved tile geometry — a strip of a cylinder wall, not a flat plane.
 // Each tile follows a sin/cos curve so the spiral reads as one continuous
@@ -247,7 +211,7 @@ function createCurvedTileGeometry(radius, arcAngle, tileHeight, segments) {
   return geometry;
 }
 
-function buildSpiral(textures) {
+function buildSpiral() {
   const arcAngle = angleStep + CONFIG.tileOverlap;
   // Anchor tile height to the chord length at the start radius so each
   // tile reads as proportional even as the radius tapers down the helix.
@@ -269,17 +233,22 @@ function buildSpiral(textures) {
       CONFIG.tileSegments
     );
 
-    const texture = textures[i % textures.length];
+    const cardColor = new THREE.Color().setHSL(
+      0.08 + progress * 0.08,
+      0.28,
+      0.42
+    );
 
     const material = new THREE.ShaderMaterial({
       vertexShader,
       fragmentShader,
       uniforms: {
-        uMap: { value: texture },
         uCameraPosition: { value: camera.position },
+        uCardColor: { value: cardColor },
       },
       side: THREE.DoubleSide,
       transparent: true,
+      depthWrite: false,
     });
 
     const tile = new THREE.Mesh(geometry, material);
@@ -367,10 +336,8 @@ function initThreeJs() {
 
   requestAnimationFrame(tick);
 
-  Promise.all(textureUrls.map(loadTexture)).then((textures) => {
-    buildSpiral(textures);
-    renderer.domElement.classList.add('is-ready');
-  });
+  buildSpiral();
+  renderer.domElement.classList.add('is-ready');
 }
 
 if ('requestIdleCallback' in window) {

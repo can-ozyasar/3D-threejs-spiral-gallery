@@ -50,8 +50,8 @@
 
     .hr-hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
-      gap: clamp(28px, 5vw, 70px);
+      grid-template-columns: minmax(0, 1fr) minmax(154px, 190px) minmax(320px, 0.82fr);
+      gap: clamp(20px, 3.2vw, 44px);
       align-items: center;
       min-height: 72vh;
     }
@@ -100,10 +100,10 @@
     }
 
     .hr-actions {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
       gap: 12px;
-      margin-top: 32px;
+      justify-self: stretch;
+      align-self: center;
     }
 
     .hr-btn {
@@ -111,7 +111,8 @@
       align-items: center;
       justify-content: center;
       min-height: 44px;
-      padding: 12px 18px;
+      width: 100%;
+      padding: 13px 16px;
       border: 1px solid var(--hr-line);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.04);
@@ -122,6 +123,41 @@
       text-decoration: none;
       text-transform: uppercase;
       transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .hr-actions .hr-btn {
+      justify-content: space-between;
+      min-height: 48px;
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+        rgba(255, 255, 255, 0.035);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .hr-actions .hr-btn::after {
+      content: '↗';
+      color: currentColor;
+      opacity: 0.78;
+      font-size: 12px;
+    }
+
+    .hr-actions .hr-btn:nth-child(2) {
+      border-color: rgba(125, 211, 252, 0.46);
+      color: #c7efff;
+      box-shadow: 0 12px 30px rgba(125, 211, 252, 0.1);
+    }
+
+    .hr-actions .hr-btn:nth-child(3) {
+      border-color: rgba(154, 230, 180, 0.45);
+      color: #d7ffe4;
+      box-shadow: 0 12px 30px rgba(154, 230, 180, 0.09);
+    }
+
+    .hr-actions .hr-btn:nth-child(4) {
+      border-color: rgba(251, 154, 141, 0.44);
+      color: #ffd8d2;
+      box-shadow: 0 12px 30px rgba(251, 154, 141, 0.09);
     }
 
     .hr-btn:hover {
@@ -244,6 +280,18 @@
       max-height: 46px;
       object-fit: contain;
       filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.24));
+    }
+
+    .logo-tile--brand {
+      background: #fff;
+      border-color: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo-tile--brand img {
+      max-width: 128px;
+      max-height: 52px;
+      filter: none;
     }
 
     .logo-tile span {
@@ -568,6 +616,12 @@
       .hr-cta {
         grid-template-columns: 1fr;
       }
+      .hr-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-self: stretch;
+        order: 2;
+      }
+      .snapshot { order: 3; }
       .proof-grid,
       .role-grid,
       .logo-strip {
@@ -594,6 +648,9 @@
       .project-signal b { display: none; }
       .stack-row,
       .timeline-item {
+        grid-template-columns: 1fr;
+      }
+      .hr-actions {
         grid-template-columns: 1fr;
       }
     }
@@ -631,12 +688,13 @@
         <p class="hr-lede" data-en="Computer Engineering student focused on applied AI/ML, RAG systems and ML-serving backends. My strongest signal is the combination of TÜBİTAK research, production-minded projects, Turkcell IT experience and continuous technical reading.">
           Uygulamalı YZ/ML, RAG sistemleri ve ML servis eden backend mimarilerine odaklanan Bilgisayar Mühendisliği öğrencisi. En güçlü sinyalim; TÜBİTAK araştırmaları, üretime yakın projeler, Turkcell BT deneyimi ve sürekli teknik okuma pratiğinin birleşimi.
         </p>
-        <div class="hr-actions" aria-label="Hızlı aksiyonlar">
-          <a class="hr-btn hr-btn--primary" href="mailto:can.ozyasarr@gmail.com" data-en="Email directly">E-posta gönder</a>
-          <a class="hr-btn" href="/Muhammed-Can-Ozyasar-CV.md" data-en="Open CV">CV aç</a>
-          <a class="hr-btn" href="/#projeler" data-en="View projects">Projeleri gör</a>
-          <a class="hr-btn" href="https://github.com/can-ozyasar" target="_blank" rel="noopener">GitHub</a>
-        </div>
+      </div>
+
+      <div class="hr-actions" aria-label="Hızlı aksiyonlar">
+        <a class="hr-btn hr-btn--primary" href="mailto:can.ozyasarr@gmail.com" data-en="Email directly">E-posta gönder</a>
+        <a class="hr-btn" href="/Muhammed-Can-Ozyasar-CV.md" data-en="Open CV">CV aç</a>
+        <a class="hr-btn" href="/#projeler" data-en="View projects">Projeleri gör</a>
+        <a class="hr-btn" href="https://github.com/can-ozyasar" target="_blank" rel="noopener">GitHub</a>
       </div>
 
       <aside class="hr-card snapshot" aria-label="Profil özeti">
@@ -657,9 +715,9 @@
     </section>
 
     <div class="logo-strip" aria-label="Kanıt logoları">
-      <div class="logo-tile"><img src="/images/logos/tubitakDarkTheme.png" alt="TÜBİTAK"/></div>
-      <div class="logo-tile"><img src="/images/logos/turkcellDarkTheme.png" alt="Turkcell Global Bilgi"/></div>
-      <div class="logo-tile"><img src="/images/logos/sauLogo.png" alt="Sakarya Üniversitesi"/></div>
+      <div class="logo-tile logo-tile--brand"><img src="/images/logos/tubitak.png" alt="TÜBİTAK"/></div>
+      <div class="logo-tile logo-tile--brand"><img src="/images/logos/turkcell.png" alt="Turkcell Global Bilgi"/></div>
+      <div class="logo-tile logo-tile--brand"><img src="/images/logos/sauLogo.png" alt="Sakarya Üniversitesi"/></div>
       <div class="logo-tile"><img src="/images/logos/synapse.png" alt="SAÜ Synapse"/></div>
       <div class="logo-tile"><span>YÖK AI Academy<br/>Milli Teknoloji</span></div>
     </div>

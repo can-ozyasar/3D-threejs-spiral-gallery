@@ -245,8 +245,10 @@ html.theme-light .nav__toggles {
 
 .hero__actions {
   position: absolute;
-  right: clamp(28px, 5vw, 86px);
-  bottom: clamp(94px, 14vh, 150px);
+  right: clamp(12px, 1.8vw, 28px);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-18%);
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -305,6 +307,7 @@ html.theme-light .nav__toggles {
   --action-bg-b: rgba(34, 197, 94, 0.05);
   --action-glow: rgba(34, 197, 94, 0.12);
   --action-arrow: #22c55e;
+  margin-left: 10px;
 }
 
 .hero__actions a:nth-child(4) {
@@ -313,6 +316,7 @@ html.theme-light .nav__toggles {
   --action-bg-b: rgba(236, 72, 153, 0.045);
   --action-glow: rgba(236, 72, 153, 0.12);
   --action-arrow: #ec4899;
+  margin-left: 22px;
 }
 
 .hero__actions a:hover,
@@ -369,6 +373,7 @@ html.theme-light .nav__toggles {
 .field__card:nth-child(6) { --card-border: rgba(236, 72, 153, 0.5); } /* Pink */
 .field__card:nth-child(7) { --card-border: rgba(59, 130, 246, 0.5); } /* Blue */
 .field__card:nth-child(8) { --card-border: rgba(234, 179, 8, 0.5); } /* Yellow */
+.field__card:nth-child(9) { --card-border: rgba(20, 184, 166, 0.5); } /* Teal */
 
 /* Apply soft border to project cards */
 .field__card {
@@ -696,6 +701,42 @@ html.theme-light .reference-card:hover {
 .approach__step:nth-child(4) { --exp-border: linear-gradient(135deg, #eab308 30%, #ffffff 80%); }
 /* 5. Sakarya (Blue and White - reverse diagonal) */
 .approach__step:nth-child(5) { --exp-border: linear-gradient(225deg, #3b82f6 30%, #ffffff 80%); }
+
+.approach__step h4 {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.exp-brand {
+  width: 86px;
+  height: 38px;
+  flex: 0 0 86px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+}
+
+.exp-brand img {
+  max-width: 68px;
+  max-height: 24px;
+  object-fit: contain;
+}
+
+.exp-brand--text {
+  color: #0f172a;
+  font-family: var(--serif);
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  text-transform: none;
+}
 
 /* ─── Contact Email Link ─────────────────────────────────────────────────────── */
 .conversation__email {
@@ -1276,19 +1317,46 @@ html.theme-light .reference-card:hover {
   }
 
   .hero__actions {
+    position: absolute;
+    right: clamp(10px, 1.6vw, 20px);
+    top: 52%;
+    bottom: auto;
+    transform: translateY(-12%);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    margin-top: 0;
+    max-width: 176px;
+  }
+
+  .hero__actions a {
+    min-width: 148px;
+    justify-content: space-between;
+    padding-inline: 12px;
+  }
+
+  .hero__actions a:hover,
+  .hero__actions a:focus-visible {
+    transform: translateX(-4px);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__actions {
     position: static;
     transform: none;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin-top: 0;
     max-width: min(760px, 92vw);
   }
 
   .hero__actions a {
     min-width: 142px;
     justify-content: center;
+    margin-left: 0 !important;
   }
 
   .hero__actions a:hover,

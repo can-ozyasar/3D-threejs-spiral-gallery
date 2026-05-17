@@ -169,8 +169,8 @@
         <p class="section-tag reveal-text" data-en="Projects · Chapter III">Projeler · Bölüm III</p>
         <div class="field__head">
           <h2 class="field__heading reveal-text"
-            data-en="Eight projects built &lt;em&gt;for production,&lt;/em&gt; not portfolios.">Portföy için değil,
-            <em>üretim için</em> sekiz proje.
+            data-en="Nine projects built &lt;em&gt;for production,&lt;/em&gt; not portfolios.">Portföy için değil,
+            <em>üretim için</em> dokuz proje.
           </h2>
           <p class="field__lede reveal-text"
             data-en="From TÜBİTAK-funded research to live systems processing real queries, these projects show how I move from problem definition to model design, backend architecture and deployable product output.">
@@ -180,76 +180,42 @@
           </p>
         </div>
         <div class="field__grid">
-          <a class="field__card field__card--lg" href="/projects.html?id=federated">
-            <img src="/images/projects/federated.png" alt="Federe Öğrenme — dağıtık sinir ağı düğümleri"
-              loading="lazy" />
-            <div class="field__caption">
-              <div class="field__caption-top">
-                <span data-en="TÜBİTAK 2209-A — Federated Learning">TÜBİTAK 2209-A — Federe Öğrenme</span>
-                <span>2025–</span>
-              </div>
-              <div class="field__desc">
-                <ul class="field__bullets">
-                  <li
-                    data-en="Privacy-preserving architecture keeping medical data local while training global models.">
-                    Hasta verilerini merkezi sunucuya göndermeden dağıtılmış düğümler üzerinde yerel eğitim.</li>
-                  <li data-en="Training ResNet-18 on HAM10000 dataset across multiple client nodes.">HAM10000 veri seti
-                    üzerinde ResNet-18 modelinin çoklu istemci ile eğitilmesi.</li>
-                  <li data-en="Supported by TÜBİTAK 2209-A University Students Research Projects Support Program.">
-                    TÜBİTAK 2209-A programı kapsamında desteklenmektedir.</li>
-                </ul>
-                <p class="field__tags">Python · PyTorch · Flower Framework</p>
-              </div>
-            </div>
-          </a>
-          <a class="field__card field__card--sm" href="/projects.html?id=bios">
+          <a class="field__card field__card--lg" href="/projects.html?id=bios">
             <img src="/images/projects/bios.png" alt="Endüstriyel İstihbarat — RSS + LLaMA3" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
-                <span data-en="Industrial Intelligence — RSS · LLaMA3 · Graph">Endüstriyel İstihbarat — RSS · LLaMA3 ·
-                  Graf</span>
+                <span data-en="Industrial Intelligence — RSS · LLaMA3 · Graph">Endüstriyel İstihbarat — RSS · LLaMA3 · Graf</span>
                 <span>2025</span>
               </div>
               <div class="field__desc">
                 <ul class="field__bullets">
-                  <li
-                    data-en="Automated intelligence pipeline extracting industrial events (relocations, closures) from RSS feeds.">
-                    RSS kaynaklarından fabrika taşınma ve kapanma olaylarını tespit eden otomatik istihbarat akışı.</li>
-                  <li data-en="Keyword filtering to minimize token usage before processing with LLaMA3.">LLaMA3'e
-                    gönderilecek token hacmini minimize eden anahtar kelime tabanlı filtreleme.</li>
-                  <li data-en="Interactive knowledge graph mapping relations between companies, locations, and events.">
-                    Şirket, konum ve olayları ilişkilendiren Obsidian tabanlı bilgi grafı.</li>
+                  <li data-en="Automated intelligence pipeline extracting industrial events from RSS feeds.">RSS kaynaklarından fabrika taşınma, kapanma ve genişleme olaylarını tespit eden otomatik istihbarat akışı.</li>
+                  <li data-en="Keyword filtering reduces LLM token usage before structured extraction with LLaMA3.">LLaMA3 öncesi anahtar kelime filtreleme ile token maliyetini azaltan pipeline.</li>
+                  <li data-en="Company, location and event relations are mapped in an Obsidian-style knowledge graph.">Şirket, konum ve olay ilişkilerini Obsidian mantığında bilgi grafına bağlar.</li>
                 </ul>
-                <p class="field__tags">Python · LLaMA3 (Ollama) · RSS Parser · Obsidian Graph</p>
+                <p class="field__tags">Python · LLaMA3 · RSS Parser · Obsidian Graph</p>
               </div>
             </div>
           </a>
-          <a class="field__card field__card--tall" href="/projects.html?id=rag">
-            <img src="/images/projects/rag.png" alt="RAG Portföy Asistanı — vektör embedding" loading="lazy" />
+
+          <a class="field__card field__card--sm" href="/projects.html?id=ajanpazar-fitai">
+            <img src="/images/projects/ajanpazar-fitai.svg" alt="AjanPazar × FitAI — AI agent commerce analiz platformu" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
-                <span data-en="RAG Portfolio Assistant — Live">RAG Portföy Asistanı — Canlı</span>
-                <span>2025–</span>
+                <span data-en="AjanPazar × FitAI — BTK 2026 Hackathon">AjanPazar × FitAI — BTK 2026 Hackathon</span>
+                <span>2026</span>
               </div>
               <div class="field__desc">
                 <ul class="field__bullets">
-                  <li
-                    data-en="Deployed a secure, production-ready RAG pipeline utilizing Gemini's text-embedding models and vector search functionality.">
-                    Gemini'nin metin yerleştirme modelleri ve vektör arama işlevselliğini kullanarak güvenli, üretime
-                    hazır bir RAG pipeline dağıttı.
-                  </li>
-                  <li
-                    data-en="Architected a 6-layer security backend in FastAPI, implementing strict rate-limiting, prompt injection defenses, and stateless session isolation.">
-                    Sıkı hız sınırlaması, prompt injection savunmaları ve durumsuz oturum izolasyonu uygulayarak
-                    FastAPI'de 6 katmanlı bir güvenlik backend mimarisi tasarladı.
-                  </li>
-                  <li data-en="Semantic search powered by Qdrant vector database and text-embedding-004.">Qdrant vektör
-                    veritabanı ve text-embedding-004 ile desteklenen anlamsal arama.</li>
+                  <li data-en="10 persona agents simulate different buyer mindsets, from budget-focused to return-risk sensitive users.">Bütçe odaklıdan iade riski hassas kullanıcıya kadar 10 farklı kişilikte alıcı ajan simülasyonu.</li>
+                  <li data-en="A real browsing agent navigates the product page live and tests whether the page is usable for future AI shopping agents.">Gerçek bir ajan siteyi ajan modunda gezerek ürün sayfasının AI alışveriş ajanlarına uygunluğunu canlı test eder.</li>
+                  <li data-en="Scores conversion, trust, return risk, AI Agent Readiness and produces a ready-to-use fix package.">Dönüşüm, güven, iade riski ve AI Agent Readiness skorlayıp hazır düzeltme paketi üretir.</li>
                 </ul>
-                <p class="field__tags">FastAPI · Qdrant · Google Gemini API · JavaScript</p>
+                <p class="field__tags">Next.js · Gemini API · Claude API · 10 Persona Agents · Live Agent Test</p>
               </div>
             </div>
           </a>
+
           <a class="field__card field__card--wide" href="/projects.html?id=teklifakis">
             <img src="/images/proj_teklifakis.jpg" alt="TeklifAkış — OCR + LLM belge pipeline" loading="lazy" />
             <div class="field__caption">
@@ -259,23 +225,33 @@
               </div>
               <div class="field__desc">
                 <ul class="field__bullets">
-                  <li
-                    data-en="Architected and successfully pitched an AI-driven decision support system to optimize manufacturing workflows, securing backing from the prestigious TÜBİTAK 1812 BIGG program.">
-                    Üretim iş akışlarını optimize eden YZ destekli bir karar destek sistemi tasarlayıp başarıyla sunarak
-                    prestijli TÜBİTAK 1812 BİGG programından destek aldı.</li>
-                  <li
-                    data-en="Led the end-to-end product lifecycle, directing cross-functional development from initial algorithmic conception to a fully deployed MVP.">
-                    İlk algoritmik konseptten tam olarak dağıtılmış bir MVP'ye kadar çapraz fonksiyonlu geliştirmeyi
-                    yöneterek uçtan uca ürün yaşam döngüsüne liderlik etti.</li>
-                  <li
-                    data-en="Engineered secure backend integrations connecting raw operational data with structured LLM outputs to automate complex quoting processes.">
-                    Karmaşık teklif süreçlerini otomatikleştirmek için ham operasyonel verileri yapılandırılmış LLM
-                    çıktılarıyla birleştiren güvenli backend entegrasyonları mühendisliği.</li>
+                  <li data-en="AI decision support system for SME bid and quotation workflows.">KOBİ teklif süreçleri için YZ destekli karar destek sistemi.</li>
+                  <li data-en="OCR and LLM pipeline extracts structured fields from scanned offer documents.">OCR ve LLM pipeline'ı taranmış teklif belgelerinden yapılandırılmış alanları çıkarır.</li>
+                  <li data-en="TÜBİTAK 1812 BIGG mentorship track; customer discovery and MVP iteration ongoing.">TÜBİTAK 1812 BİGG mentörlük sürecinde müşteri keşfi ve MVP iterasyonu sürüyor.</li>
                 </ul>
-                <p class="field__tags">Python · OCR (Tesseract / Azure) · LLM Structured Output · REST API</p>
+                <p class="field__tags">Python · OCR · LLM Structured Output · REST API</p>
               </div>
             </div>
           </a>
+
+          <a class="field__card field__card--tall" href="/projects.html?id=federated">
+            <img src="/images/projects/federated.png" alt="Federe Öğrenme — dağıtık sinir ağı düğümleri" loading="lazy" />
+            <div class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="TÜBİTAK 2209-A — Federated Learning">TÜBİTAK 2209-A — Federe Öğrenme</span>
+                <span>2025–</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li data-en="Privacy-preserving medical image classification without centralizing raw patient data.">Hasta verilerini merkezileştirmeden tıbbi görüntü sınıflandırma.</li>
+                  <li data-en="ResNet-18 and FedAvg training flow on HAM10000 across multiple client nodes.">HAM10000 üzerinde ResNet-18 ve FedAvg tabanlı çoklu istemci eğitim akışı.</li>
+                  <li data-en="Supported by TÜBİTAK 2209-A University Students Research Projects Support Program.">TÜBİTAK 2209-A programı kapsamında desteklenmektedir.</li>
+                </ul>
+                <p class="field__tags">Python · PyTorch · Flower Framework · FedAvg</p>
+              </div>
+            </div>
+          </a>
+
           <a class="field__card field__card--wide" href="/projects.html?id=vocab">
             <img src="/images/projects/vocab.png" alt="Vocabulary Cards — SM-2 aralıklı tekrar" loading="lazy" />
             <div class="field__caption">
@@ -285,18 +261,15 @@
               </div>
               <div class="field__desc">
                 <ul class="field__bullets">
-                  <li data-en=".NET 8 Web API utilizing the SM-2 algorithm for dynamic difficulty estimation.">SM-2
-                    algoritması ile kullanıcı bazlı dinamik zorluk tahmini yapan .NET 8 Web API platformu.</li>
-                  <li data-en="ML-Ready event logging subsystem capturing user interaction sequences.">Kullanıcı
-                    etkileşim dizilerini yapılandırılmış formatta kaydeden ML-Ready olay günlüğü alt sistemi.</li>
-                  <li data-en="Lays the groundwork for adaptive learning model training based on the Ebbinghaus curve.">
-                    Ebbinghaus Unutma Eğrisi parametrelerine dayalı uyarlanabilir öğrenme modellerine zemin hazırlar.
-                  </li>
+                  <li data-en=".NET 8 Web API implementing SM-2 spaced repetition for adaptive vocabulary learning.">SM-2 algoritması ile uyarlanabilir kelime öğrenimi sağlayan .NET 8 Web API.</li>
+                  <li data-en="ML-ready event log captures response time, accuracy and review interval sequences.">Yanıt süresi, doğruluk ve tekrar aralığı dizilerini kaydeden ML-ready olay günlüğü.</li>
+                  <li data-en="Built as a backend foundation for future personalization models.">Gelecekteki kişiselleştirme modelleri için backend veri zemini oluşturur.</li>
                 </ul>
-                <p class="field__tags">.NET 8 Web API · Entity Framework Core · React · TypeScript</p>
+                <p class="field__tags">.NET 8 · Entity Framework · React · TypeScript</p>
               </div>
             </div>
           </a>
+
           <a class="field__card field__card--tall" href="/projects.html?id=hayalperest">
             <img src="/images/projects/hayalperest.png" alt="Hayalperest Hikayeler — Üretken YZ" loading="lazy" />
             <div class="field__caption">
@@ -306,15 +279,32 @@
               </div>
               <div class="field__desc">
                 <ul class="field__bullets">
-                  <li data-en="Generative AI web application developed during the BTK Hackathon constraints.">BTK
-                    Hackathon kısıtlamaları içinde geliştirilen üretken YZ web uygulaması.</li>
-                  <li data-en="Features child-friendly content filtering and prompt optimization.">Çocuk dostu içerik
-                    filtreleme ve gelişmiş prompt optimizasyonu içerir.</li>
+                  <li data-en="Generative AI web application developed under BTK Hackathon constraints.">BTK Hackathon kısıtlamaları içinde geliştirilen üretken YZ web uygulaması.</li>
+                  <li data-en="Child-friendly content filtering and prompt optimization for safe story generation.">Güvenli hikaye üretimi için çocuk dostu filtreleme ve prompt optimizasyonu.</li>
                 </ul>
                 <p class="field__tags">Node.js · Google Gemini API · REST API</p>
               </div>
             </div>
           </a>
+
+          <a class="field__card field__card--med" href="/projects.html?id=rag">
+            <img src="/images/projects/rag.png" alt="RAG Portföy Asistanı — vektör embedding" loading="lazy" />
+            <div class="field__caption">
+              <div class="field__caption-top">
+                <span data-en="RAG Portfolio Assistant — Live">RAG Portföy Asistanı — Canlı</span>
+                <span>2025–</span>
+              </div>
+              <div class="field__desc">
+                <ul class="field__bullets">
+                  <li data-en="Secure RAG pipeline with semantic retrieval over CV and portfolio content.">CV ve portföy içeriği üzerinde anlamsal arama yapan güvenli RAG pipeline.</li>
+                  <li data-en="Qdrant vector database and Gemini embeddings connect questions to grounded answers.">Qdrant vektör veritabanı ve Gemini embedding'leriyle bağlama dayalı cevap üretimi.</li>
+                  <li data-en="FastAPI backend with rate limiting, prompt injection defenses and stateless isolation.">Hız sınırlama, prompt injection savunması ve stateless izolasyonlu FastAPI backend.</li>
+                </ul>
+                <p class="field__tags">FastAPI · Qdrant · Gemini API · JavaScript</p>
+              </div>
+            </div>
+          </a>
+
           <a class="field__card field__card--med" href="/projects.html?id=battery">
             <img src="/images/proj_battery.jpg" alt="BSM Batarya Yönetim — LSTM · Random Forest" loading="lazy" />
             <div class="field__caption">
@@ -324,35 +314,29 @@
               </div>
               <div class="field__desc">
                 <ul class="field__bullets">
-                  <li data-en="State of Health (SoH) and State of Charge (SoC) prediction for Li-ion batteries.">
-                    Lityum-iyon bataryalar için SoH ve SoC tahmini.</li>
-                  <li data-en="Leveraging LSTM networks and Random Forest models on large scale time-series data.">Büyük
-                    ölçekli zaman serilerinde eğitilmiş Random Forest ve LSTM modellerinin kullanımı.</li>
-                  <li data-en="Hyperparameter tuning via Bayesian Optimization.">Bayesian Optimizasyonu ile
-                    hiperparametre ayarı.</li>
+                  <li data-en="State of Health and State of Charge prediction for Li-ion batteries.">Lityum-iyon bataryalar için SoH ve SoC tahmini.</li>
+                  <li data-en="LSTM and Random Forest models trained on large-scale time-series data.">Büyük ölçekli zaman serilerinde eğitilmiş LSTM ve Random Forest modelleri.</li>
+                  <li data-en="Bayesian hyperparameter optimization for more reliable predictions.">Daha güvenilir tahmin için Bayesian hiperparametre optimizasyonu.</li>
                 </ul>
-                <p class="field__tags">Python · TensorFlow / Keras · Scikit-Learn · Pandas</p>
+                <p class="field__tags">Python · TensorFlow/Keras · Scikit-Learn · Pandas</p>
               </div>
             </div>
           </a>
+
           <a class="field__card field__card--med" href="/projects.html?id=gym">
             <img src="/images/projects/gym.png" alt="Spor Salonu Yönetim Sistemi — ASP.NET Core" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
-                <span data-en="Gym Management System — ASP.NET Core · PostgreSQL">Spor Salonu Yönetim — ASP.NET
-                  Core</span>
+                <span data-en="Gym Management System — ASP.NET Core · PostgreSQL">Spor Salonu Yönetim — ASP.NET Core</span>
                 <span>2024</span>
               </div>
               <div class="field__desc">
                 <ul class="field__bullets">
-                  <li data-en="Comprehensive full-stack management system for gym facilities.">Spor salonları için
-                    kapsamlı yönetim sistemi.</li>
-                  <li data-en="Handles active memberships, scheduling, billing, and reporting modules.">Üyelik
-                    işlemleri, takvim planlama, faturalandırma ve raporlama modüllerini yönetir.</li>
-                  <li data-en="Built with .NET 8 architecture and backed by a relational PostgreSQL database.">.NET 8
-                    mimarisi ve ilişkisel PostgreSQL veritabanı ile inşa edilmiştir.</li>
+                  <li data-en="Full-stack management system for gym memberships and operations.">Spor salonu üyelik ve operasyon süreçleri için full-stack yönetim sistemi.</li>
+                  <li data-en="Handles scheduling, billing and reporting modules.">Takvim planlama, faturalandırma ve raporlama modüllerini yönetir.</li>
+                  <li data-en="Built with .NET architecture and PostgreSQL-backed relational data model.">.NET mimarisi ve PostgreSQL destekli ilişkisel veri modeliyle geliştirildi.</li>
                 </ul>
-                <p class="field__tags">C# · .NET 8 MVC · PostgreSQL · Entity Framework</p>
+                <p class="field__tags">C# · .NET MVC · PostgreSQL · Entity Framework</p>
               </div>
             </div>
           </a>
@@ -368,8 +352,10 @@
           taşımak.</p>
         <ol class="approach__steps">
           <li class="approach__step reveal-text">
-            <h4 data-en="TÜBİTAK STAR"><img src="/images/logos/tubitakDarkTheme.png" alt=""
-                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">TÜBİTAK STAR</h4>
+            <h4
+              data-en='&lt;span class="exp-brand exp-brand--logo"&gt;&lt;img src="/images/logos/tubitak.png" alt="TÜBİTAK"&gt;&lt;/span&gt;TÜBİTAK STAR'>
+              <span class="exp-brand exp-brand--logo"><img src="/images/logos/tubitak.png"
+                  alt="TÜBİTAK"></span>TÜBİTAK STAR</h4>
             <p
               data-en="Applied AI Researcher (Feb 2026–). Developed and optimized predictive ML models (using LSTM and Random Forests) for state-of-health (SoH) and state-of-charge (SoC) estimation in Lithium-ion batteries. Processed and analyzed large-scale time-series datasets, applying Bayesian hyperparameter optimization to significantly enhance predictive reliability for industrial energy systems.">
               Uygulamalı YZ Araştırmacısı (Şubat 2026–). Lityum-iyon bataryalarda SoH ve SoC tahmini için tahmine dayalı
@@ -379,8 +365,10 @@
             <span class="approach__step-line" aria-hidden="true"></span>
           </li>
           <li class="approach__step reveal-text">
-            <h4 data-en="TÜBİTAK 2209-A"><img src="/images/logos/tubitakDarkTheme.png" alt=""
-                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">TÜBİTAK 2209-A</h4>
+            <h4
+              data-en='&lt;span class="exp-brand exp-brand--logo"&gt;&lt;img src="/images/logos/tubitak.png" alt="TÜBİTAK"&gt;&lt;/span&gt;TÜBİTAK 2209-A'>
+              <span class="exp-brand exp-brand--logo"><img src="/images/logos/tubitak.png"
+                  alt="TÜBİTAK"></span>TÜBİTAK 2209-A</h4>
             <p
               data-en="Lead AI Researcher (2025–). Engineered a privacy-preserving Federated Learning pipeline, enabling the decentralized training of deep neural networks (ResNet-18) without exposing sensitive raw data. Deployed secure node communication protocols, ensuring strict compliance with data privacy standards (KVKK/GDPR) while outperforming baseline model accuracy (84% vs 81%).">
               Lider YZ Araştırmacısı (2025–). Hassas ham verileri ifşa etmeden derin sinir ağlarının (ResNet-18) merkezi
@@ -390,10 +378,10 @@
             <span class="approach__step-line" aria-hidden="true"></span>
           </li>
           <li class="approach__step reveal-text">
-            <h4 data-en="SAÜ SYNAPSE | Teknofest"><img src="/images/logos/synapse.svg" alt=""
-                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;"><img
-                src="/images/logos/synapse.png" alt=""
-                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">SAÜ SYNAPSE | Teknofest</h4>
+            <h4
+              data-en='&lt;span class="exp-brand exp-brand--text"&gt;Synapse&lt;/span&gt;SAÜ SYNAPSE | Teknofest'>
+              <span class="exp-brand exp-brand--text">Synapse</span>SAÜ SYNAPSE |
+              Teknofest</h4>
             <p
               data-en="Team Captain & ML Architect. Directed a multidisciplinary engineering team to design, train, and deploy complex ensemble ML models for healthcare diagnostics. Designed robust MLOps pipelines ensuring seamless data preprocessing and deployment under strict competition constraints, optimizing model inference times for clinical accuracy.">
               Takım Kaptanı ve ML Mimarı. Sağlık teşhisi için karmaşık topluluk (ensemble) ML modelleri tasarlamak,
@@ -403,8 +391,8 @@
             <span class="approach__step-line" aria-hidden="true"></span>
           </li>
           <li class="approach__step reveal-text">
-            <h4><img src="/images/logos/turkcell.png" alt=""
-                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">Turkcell Global Bilgi</h4>
+            <h4><span class="exp-brand exp-brand--logo"><img src="/images/logos/turkcell.png"
+                  alt="Turkcell"></span>Turkcell Global Bilgi</h4>
             <p
               data-en="IT Intern (Summer 2025). Automated workflows with UiPath, built Power BI dashboards, managed 500+ accounts via Active Directory and VMware Horizon. L1/L2 support with root-cause analysis.">
               BT Stajyeri (Yaz 2025). UiPath ile iş akışlarını otomasyona aldı, Power BI panoları oluşturdu, Active
@@ -413,8 +401,10 @@
             <span class="approach__step-line" aria-hidden="true"></span>
           </li>
           <li class="approach__step reveal-text">
-            <h4 data-en="Education"><img src="/images/logos/sauLogo.png" alt=""
-                style="height: 1.2em; vertical-align: text-bottom; margin-right: 8px;">Eğitim</h4>
+            <h4
+              data-en='&lt;span class="exp-brand exp-brand--logo"&gt;&lt;img src="/images/logos/sauLogo.png" alt="Sakarya University"&gt;&lt;/span&gt;Education'>
+              <span class="exp-brand exp-brand--logo"><img src="/images/logos/sauLogo.png"
+                  alt="Sakarya Üniversitesi"></span>Eğitim</h4>
             <p
               data-en="Sakarya University · Computer Engineering B.Sc. (2023–). GPA 3.27/4.00. 1 High Honor + 4 Honor. YÖK AI Academy, Milli Teknoloji Akademisi.">
               Sakarya Üniversitesi · Bilgisayar Mühendisliği (2023–). GNO 3,27/4,00. 1 Yüksek Onur + 4 Onur Belgesi. YÖK

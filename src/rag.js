@@ -2,7 +2,7 @@
 // Connects to the FastAPI backend at /api/chat
 // Bilingual: respects the lang toggle from i18n.js
 
-const RAG_URL = import.meta.env.VITE_RAG_URL || "http://localhost:8000";
+const RAG_URL = import.meta.env.VITE_RAG_URL || "";
 const SESSION_ID = crypto.randomUUID();
 
 const UI = {

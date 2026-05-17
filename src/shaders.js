@@ -1,7 +1,7 @@
-// GLSL pair for the spiral's curved image tiles.
+// GLSL pair for the spiral's curved empty cards.
 // Vertex shader hands the fragment shader the tile UV and a world-space
-// position; the fragment paints the texture with a quiet edge falloff
-// and a soft depth wash so tiles far from the camera sink into the bg.
+// position; the fragment paints a quiet glass card with edge falloff and
+// a soft depth wash so tiles far from the camera sink into the bg.
 
 export const vertexShader = /* glsl */ `
   varying vec2 vUv;
@@ -20,15 +20,13 @@ export const vertexShader = /* glsl */ `
 export const fragmentShader = /* glsl */ `
   precision highp float;
 
-  uniform sampler2D uMap;
   uniform vec3 uCameraPosition;
+  uniform vec3 uCardColor;
 
   varying vec2 vUv;
   varying vec3 vWorldPosition;
 
   void main() {
-    vec4 tex = texture2D(uMap, vUv);
-
     // Soft vignette around each tile.
     vec2 centered = vUv - 0.5;
     float r = length(centered);
@@ -40,15 +38,18 @@ export const fragmentShader = /* glsl */ `
     float depth = 1.0 - smoothstep(8.0, 22.0, dist);
     depth = mix(0.48, 1.0, depth);
 
-    // Slight warm tint on near tiles, neutral on far ones — gives a
-    // cinematic depth without recolouring the photo.
-    vec3 color = tex.rgb;
-    float luma = dot(color, vec3(0.299, 0.587, 0.114));
-    vec3 cool = vec3(luma) * 0.9;
-    color = mix(cool, color, depth);
+    // Empty card surface: subtle fill, visible border, no photo texture.
+    float borderX = 1.0 - smoothstep(0.0, 0.035, min(vUv.x, 1.0 - vUv.x));
+    float borderY = 1.0 - smoothstep(0.0, 0.055, min(vUv.y, 1.0 - vUv.y));
+    float border = max(borderX, borderY);
+
+    float shine = smoothstep(0.18, 0.82, vUv.x) * (1.0 - smoothstep(0.52, 1.0, vUv.y));
+    vec3 base = mix(vec3(0.035, 0.033, 0.03), uCardColor, 0.34 + 0.22 * shine);
+    vec3 color = mix(base, vec3(1.0, 0.86, 0.58), border * 0.38);
 
     color *= edge * depth;
 
-    gl_FragColor = vec4(color, tex.a);
+    float alpha = mix(0.18, 0.46, depth) + border * 0.22;
+    gl_FragColor = vec4(color, alpha);
   }
 `;
