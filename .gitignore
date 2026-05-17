@@ -8,3 +8,8 @@ __pycache__/
 *.pyc
 .DS_Store
 .vercel
+.python-version
+pyproject.toml
+uv.lock
+
+.vercel_python_packages/

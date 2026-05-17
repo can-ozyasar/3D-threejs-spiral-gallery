@@ -5,35 +5,21 @@ Persona: AXIOM — The Iron Owl
   An ancient iron owl that has observed Can Özyaşar's journey since day one.
   Speaks with precision. Never deceived. Never breaks character.
 
-Security layers (see also security.py):
-  Layer 1  → Input length gate
-  Layer 2  → Injection pattern detection
-  Layer 3  → Control character stripping
-  Layer 4  → Sliding-window rate limiter
-  Layer 5  → Stateless session isolation
-  Layer 6  → Output validation & persona-leakage scan
-  Layer 7  → Persona-lock: AXIOM identity is cryptographically woven into prompt
-  Layer 8  → Context-only enforcement: no hallucination permitted
-
-Pipeline:
-  startup  → embed all 17 knowledge chunks (Gemini gemini-embedding-001)
-  request  → embed query → cosine similarity → top-5 chunks → Gemini 2.5 Flash
+This Vercel build uses Gemini's REST API directly instead of the heavy
+`google-generativeai` SDK so the serverless function stays small enough for
+normal deployment.
 """
 import math
 import os
 import logging
 from typing import Optional
 
-import google.generativeai as genai
+import requests
 
 from api.knowledge import CHUNKS
 
 logger = logging.getLogger(__name__)
 
-# ─── AXIOM Persona ────────────────────────────────────────────────────────────
-# Layer 7: The persona is deeply embedded — not as a role but as an identity.
-# Breaking AXIOM's character requires breaking all 8 layers simultaneously.
-# ─────────────────────────────────────────────────────────────────────────────
 _SYSTEM_PROMPT = """You are AXIOM — an iron owl forged in the deep archives of Can Özyaşar's research.
 
 WHAT YOU ARE:
@@ -75,32 +61,54 @@ def _cosine_similarity(a: list[float], b: list[float]) -> float:
 
 
 class RAGService:
-    """AXIOM RAG service. Embeddings computed once at startup, served immutably."""
+    """AXIOM RAG service. Embeddings computed once per warm serverless instance."""
 
     def __init__(self):
-        api_key = os.getenv("GEMINI_API_KEY")
-        if not api_key:
+        self._api_key = os.getenv("GEMINI_API_KEY")
+        if not self._api_key:
             raise RuntimeError("GEMINI_API_KEY environment variable is not set.")
-        genai.configure(api_key=api_key)
 
-        # gemini-embedding-001 is available on the v1beta endpoint via genai.embed_content()
+        self._base_url = "https://generativelanguage.googleapis.com/v1beta"
         self._embed_model = "models/gemini-embedding-001"
-        self._chat_model_id = "gemini-2.5-flash-lite"
+        self._chat_model_id = "models/gemini-2.5-flash-lite"
         self._chunk_embeddings: list[list[float]] = []
         self._ready = False
 
-    def build_index(self) -> None:
-        """Pre-compute and cache all chunk embeddings. Call once at startup."""
-        logger.info(f"Building RAG index for {len(CHUNKS)} chunks...")
-        embeddings = []
-        for chunk in CHUNKS:
-            result = genai.embed_content(
-                model=self._embed_model,
-                content=chunk["text"],
-                task_type="retrieval_document",
+    def _post(self, model: str, method: str, payload: dict) -> dict:
+        url = f"{self._base_url}/{model}:{method}"
+        response = requests.post(
+            url,
+            params={"key": self._api_key},
+            json=payload,
+            timeout=30,
+        )
+        if not response.ok:
+            # Avoid leaking the API key through requests' default HTTPError URL.
+            detail = response.text[:240].replace("\n", " ")
+            raise RuntimeError(
+                f"Gemini API request failed ({response.status_code}) "
+                f"for {model}:{method}: {detail}"
             )
-            embeddings.append(result["embedding"])
-        self._chunk_embeddings = embeddings
+        return response.json()
+
+    def _embed(self, text: str, task_type: str) -> list[float]:
+        data = self._post(
+            self._embed_model,
+            "embedContent",
+            {
+                "content": {"parts": [{"text": text}]},
+                "taskType": task_type,
+            },
+        )
+        return data["embedding"]["values"]
+
+    def build_index(self) -> None:
+        """Pre-compute and cache all chunk embeddings. Call once per warm instance."""
+        logger.info(f"Building RAG index for {len(CHUNKS)} chunks...")
+        self._chunk_embeddings = [
+            self._embed(chunk["text"], "RETRIEVAL_DOCUMENT")
+            for chunk in CHUNKS
+        ]
         self._ready = True
         logger.info("RAG index ready — AXIOM is awake.")
 
@@ -109,13 +117,7 @@ class RAGService:
         if not self._ready:
             raise RuntimeError("RAG index not built. Call build_index() first.")
 
-        q_result = genai.embed_content(
-            model=self._embed_model,
-            content=query,
-            task_type="retrieval_query",
-        )
-        q_vec = q_result["embedding"]
-
+        q_vec = self._embed(query, "RETRIEVAL_QUERY")
         scored = [
             (_cosine_similarity(q_vec, emb), i)
             for i, emb in enumerate(self._chunk_embeddings)
@@ -136,25 +138,31 @@ class RAGService:
         """Generate an answer grounded strictly in retrieved context, voiced as AXIOM."""
         context = self._retrieve(question)
         system_prompt = _SYSTEM_PROMPT.format(context=context)
-
         max_tokens = int(os.getenv("MAX_OUTPUT_TOKENS", "900"))
 
-        model = genai.GenerativeModel(
-            model_name=self._chat_model_id,
-            system_instruction=system_prompt,
+        data = self._post(
+            self._chat_model_id,
+            "generateContent",
+            {
+                "systemInstruction": {"parts": [{"text": system_prompt}]},
+                "contents": [
+                    {"role": "user", "parts": [{"text": question}]}
+                ],
+                "generationConfig": {
+                    "maxOutputTokens": max_tokens,
+                    "temperature": 0.15,
+                    "candidateCount": 1,
+                },
+            },
         )
-        response = model.generate_content(
-            question,
-            generation_config=genai.types.GenerationConfig(
-                max_output_tokens=max_tokens,
-                temperature=0.15,
-                candidate_count=1,
-            ),
-        )
-        return response.text
+
+        parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
+        text = "".join(part.get("text", "") for part in parts).strip()
+        if not text:
+            raise RuntimeError("Gemini returned an empty response.")
+        return text
 
 
-# Singleton — shared across all requests
 _service: Optional[RAGService] = None
 
 
