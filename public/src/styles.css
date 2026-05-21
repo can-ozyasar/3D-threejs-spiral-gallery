@@ -728,17 +728,24 @@ section {
 }
 
 .exp-card__logo {
-  height: 44px;
+  height: 60px;
   display: flex;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 .exp-card__logo img {
-  max-height: 38px;
-  max-width: 130px;
+  max-height: 52px;
+  max-width: 160px;
   object-fit: contain;
-  opacity: 0.9;
+  opacity: 0.95;
   transition: opacity 0.3s ease;
+}
+
+.exp-card__logo img.logo-highlight {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 .exp-card.exp-card--active .exp-card__logo img {
   opacity: 1;
