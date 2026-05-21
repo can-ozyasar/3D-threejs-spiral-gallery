@@ -588,82 +588,191 @@ section {
 .approach__intro {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(28px, 3.8vw, 52px);
+  font-size: clamp(24px, 3vw, 44px);
   line-height: 1.18;
   letter-spacing: -0.012em;
   max-width: 22ch;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   color: var(--fg);
 }
 
 .approach__intro em { color: var(--accent); }
 
-.approach__steps {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(20px, 2.6vw, 40px);
-  counter-reset: step;
+/* ─── Experience Carousel ─────────────────────────────────────── */
+
+.exp-carousel-scene {
+  position: relative;
+  overflow: visible;
+  padding: 40px 0 60px;
+  cursor: grab;
 }
 
-.approach__step {
+/* Clip container for fade effect */
+.exp-carousel-clip {
+  overflow: hidden;
   position: relative;
-  padding: 36px 28px 30px;
-  border: 1px solid var(--rule);
-  border-radius: 2px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent);
-  min-height: 240px;
+}
+
+.exp-carousel-scene:active {
+  cursor: grabbing;
+}
+
+.exp-carousel-track {
+  display: flex;
+  gap: 28px;
+  will-change: transform;
+  padding: 10px 0 20px;
+}
+
+/* Side fade overlays — glassmorphism feel */
+.exp-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 18%;
+  pointer-events: none;
+  z-index: 10;
+}
+.exp-fade--left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg, #0b0a08) 0%, transparent 100%);
+}
+.exp-fade--right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg, #0b0a08) 0%, transparent 100%);
+}
+
+/* ─── Card Base ──────────────────────────────────────────────── */
+
+.exp-card {
+  flex: 0 0 clamp(280px, 28vw, 360px);
+  position: relative;
+  padding: 36px 32px 32px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition: border-color 0.4s ease, transform 0.4s ease;
+  gap: 14px;
+  min-height: 300px;
+  /* Default: faded, shrunk */
+  opacity: 0.28;
+  transform: scale(0.88);
+  filter: blur(1.5px);
+  transition:
+    opacity  0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    filter   0.55s ease,
+    box-shadow 0.55s ease,
+    border-color 0.4s ease;
+  user-select: none;
 }
 
-.approach__step:hover {
-  border-color: var(--accent-dim);
-  transform: translateY(-2px);
+/* Adjacent cards: slightly more visible */
+.exp-card.exp-card--near {
+  opacity: 0.55;
+  transform: scale(0.94);
+  filter: blur(0.5px);
 }
 
-.approach__step::before {
-  counter-increment: step;
-  content: '0' counter(step);
+/* Active / center card: full spotlight */
+.exp-card.exp-card--active {
+  opacity: 1;
+  transform: scale(1.06);
+  filter: blur(0);
+  border-color: rgba(217, 167, 106, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(217, 167, 106, 0.12),
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 80px rgba(217, 167, 106, 0.12),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  z-index: 5;
+}
+
+/* Berlitz card gets a blue glow when active */
+.exp-card--berlitz.exp-card--active {
+  border-color: rgba(14, 165, 233, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(14, 165, 233, 0.15),
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 80px rgba(14, 165, 233, 0.15),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+/* Ambient glow blob behind active card */
+.exp-card.exp-card--active::before {
+  content: '';
   position: absolute;
-  top: 20px;
-  right: 24px;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(217, 167, 106, 0.12) 0%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.exp-card--berlitz.exp-card--active::before {
+  background: radial-gradient(ellipse at 50% 50%, rgba(14, 165, 233, 0.14) 0%, transparent 70%);
+}
+
+/* ─── Card Inner Elements ─────────────────────────────────────── */
+
+.exp-card__num {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--accent);
+  opacity: 0.7;
 }
 
-.approach__step h4 {
+.exp-card__logo {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.exp-card__logo img {
+  max-height: 38px;
+  max-width: 130px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+.exp-card.exp-card--active .exp-card__logo img {
+  opacity: 1;
+}
+.exp-card__title {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: 26px;
+  font-size: clamp(18px, 2vw, 24px);
   letter-spacing: -0.01em;
-}
-
-.approach__step p {
   color: var(--fg);
-  opacity: 0.74;
-  font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.25;
 }
 
-.approach__step-line {
-  display: block;
+.exp-card__body {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--fg);
+  opacity: 0.72;
+  flex: 1;
+}
+
+.exp-card__line {
   width: 32px;
   height: 1px;
   background: var(--accent);
   margin-top: auto;
+  opacity: 0.6;
 }
 
 @media (max-width: 900px) {
-  .approach__steps { grid-template-columns: repeat(2, 1fr); }
+  .exp-card { flex: 0 0 clamp(260px, 75vw, 320px); }
+  .exp-fade { width: 10%; }
 }
-
 @media (max-width: 520px) {
-  .approach__steps { grid-template-columns: 1fr; }
+  .exp-card { flex: 0 0 82vw; padding: 28px 22px 24px; }
 }
 
 /* ---------------------------------------------------------------------------
@@ -755,7 +864,7 @@ section {
 
 .footer__row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr auto;
   gap: 16px;
   align-items: center;
   font-family: var(--mono);
@@ -763,11 +872,6 @@ section {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--fg-dim);
-}
-
-.footer__row > :nth-child(2) {
-  text-align: center;
-  color: var(--accent);
 }
 
 .footer__row > :last-child {

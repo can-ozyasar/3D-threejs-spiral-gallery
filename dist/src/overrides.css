@@ -108,22 +108,38 @@ html.theme-light .nav__toggles {
 .field__caption        { font-size: 12px !important; }
 .conversation__col h5  { font-size: 13px !important; }
 .footer__row           { font-size: 12px !important; }
-.nav__links a          { font-size: 13px !important; letter-spacing: 0.14em !important; }
-.nav__links            { gap: 18px !important; }
+.nav__links a          { font-size: 13px !important; letter-spacing: 0.12em !important; }
+.nav__links            { gap: 14px !important; align-items: center !important; }
 .nav__status           { font-size: 12px !important; }
 
 /* ─── Spinning Blog badge ─────────────────────────────────────────── */
 .nav__links a[href="/blog.html"] {
   position: relative;
-  padding: 3px 11px;
-  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(rgba(14, 18, 18, 0.92), rgba(14, 18, 18, 0.92)) padding-box,
+    conic-gradient(from var(--angle, 0deg), #f59e0b, #ef4444, #8b5cf6, #06b6d4, #22c55e, #f59e0b) border-box;
+  color: #d7f4ff !important;
   font-weight: 500;
+  line-height: 1;
+  box-shadow: 0 0 18px rgba(6, 182, 212, 0.16);
+  animation: spin-badge 3s linear infinite;
   opacity: 1 !important;
 }
 
 .nav__links .nav__hr {
   position: relative;
-  padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 12px;
   border: 1px solid rgba(249, 199, 79, 0.42);
   border-radius: 999px;
   color: #ffe6a8 !important;
@@ -131,6 +147,7 @@ html.theme-light .nav__toggles {
     radial-gradient(circle at 20% 20%, rgba(255, 234, 168, 0.22), transparent 34%),
     linear-gradient(135deg, rgba(217, 167, 106, 0.18), rgba(37, 99, 235, 0.08));
   box-shadow: 0 0 16px rgba(249, 199, 79, 0.22), inset 0 0 14px rgba(255, 255, 255, 0.05);
+  line-height: 1;
   opacity: 1 !important;
 }
 
@@ -150,20 +167,7 @@ html.theme-light .nav__toggles {
   50% { opacity: 0.9; transform: scale(1.04); }
 }
 .nav__links a[href="/blog.html"]::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 20px;
-  background: conic-gradient(
-    from var(--angle, 0deg),
-    #f59e0b, #ef4444, #8b5cf6, #06b6d4, #22c55e, #f59e0b
-  );
-  animation: spin-badge 3s linear infinite;
-  z-index: -1;
-  padding: 2px;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  content: none;
 }
 @property --angle {
   syntax: '<angle>';
@@ -364,6 +368,44 @@ html.theme-light .nav__toggles {
 /* ─── Extra projects rows & Images ─────────────────────────────────────────────── */
 .field__card--med { grid-column: span 6; aspect-ratio: 4 / 5; }
 
+.project-tabs {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0 0 24px;
+  padding: 6px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(12px);
+}
+
+.project-tabs__button {
+  min-height: 38px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.project-tabs__button.is-active {
+  border-color: rgba(217, 167, 106, 0.42);
+  background: rgba(217, 167, 106, 0.13);
+  color: var(--fg);
+  box-shadow: 0 10px 26px rgba(217, 167, 106, 0.12);
+}
+
+.field__grid[data-project-view="featured"] .field__card[data-project-card="archive"] {
+  display: none;
+}
+
 /* Assign colors for each project card */
 .field__card:nth-child(1) { --card-border: rgba(245, 158, 11, 0.5); } /* Amber */
 .field__card:nth-child(2) { --card-border: rgba(239, 68, 68, 0.5); } /* Red */
@@ -383,6 +425,10 @@ html.theme-light .nav__toggles {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+}
+
+.field__card[data-project-disabled] {
+  cursor: default;
 }
 
 .field__card:focus-visible {
@@ -691,51 +737,124 @@ html.theme-light .reference-card:hover {
   pointer-events: none;
   z-index: -1;
 }
-/* 1. Red and White (horizontal) */
-.approach__step:nth-child(1) { --exp-border: linear-gradient(to right, #ef4444 30%, #ffffff 80%); }
-/* 2. Red and White (vertical) */
-.approach__step:nth-child(2) { --exp-border: linear-gradient(to bottom, #ef4444 30%, #ffffff 80%); }
-/* 3. Synapse (Green) */
-.approach__step:nth-child(3) { --exp-border: #22c55e; }
-/* 4. Turkcell (Yellow and White - diagonal) */
-.approach__step:nth-child(4) { --exp-border: linear-gradient(135deg, #eab308 30%, #ffffff 80%); }
-/* 5. Sakarya (Blue and White - reverse diagonal) */
-.approach__step:nth-child(5) { --exp-border: linear-gradient(225deg, #3b82f6 30%, #ffffff 80%); }
+/* 1. Turkcell */
+.approach__step:nth-child(1) { --exp-border: linear-gradient(135deg, #facc15 22%, #ffffff 48%, #1d4ed8 78%); }
+/* 2-3. TUBITAK research */
+.approach__step:nth-child(2) { --exp-border: linear-gradient(to right, #ef4444 30%, #ffffff 80%); }
+.approach__step:nth-child(3) { --exp-border: linear-gradient(to bottom, #ef4444 30%, #ffffff 80%); }
+/* 4-5. Entrepreneurship */
+.approach__step:nth-child(4) { --exp-border: linear-gradient(135deg, #ef4444 18%, #f59e0b 52%, #ffffff 84%); }
+.approach__step:nth-child(5) { --exp-border: linear-gradient(135deg, #22c55e 15%, #facc15 48%, #38bdf8 82%); }
+/* 6. Synapse */
+.approach__step:nth-child(6) { --exp-border: #22c55e; }
+/* 7. Sakarya */
+.approach__step:nth-child(7) { --exp-border: linear-gradient(225deg, #3b82f6 30%, #ffffff 80%); }
 
 .approach__step h4 {
   display: flex !important;
   align-items: center !important;
+  flex-wrap: wrap !important;
   gap: 12px !important;
 }
 
 .exp-brand {
-  width: 86px;
-  height: 38px;
-  flex: 0 0 86px;
+  width: 104px;
+  height: 44px;
+  flex: 0 0 104px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 10px;
+  padding: 7px 12px;
   border: 1px solid rgba(255, 255, 255, 0.78);
-  border-radius: 12px;
+  border-radius: 14px;
   background: #fff;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.30),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
 .exp-brand img {
-  max-width: 68px;
-  max-height: 24px;
+  width: 100%;
+  max-width: 88px;
+  max-height: 30px;
   object-fit: contain;
+}
+
+.exp-brand--turkcell img { max-width: 92px; max-height: 32px; }
+.exp-brand--synapse img { max-width: 86px; max-height: 32px; }
+.exp-brand--teknofest {
+  width: 100%;
+  height: 82px;
+  flex: 0 0 100%;
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 10px 16px 10px 10px;
+  border-color: rgba(255, 255, 255, 0.36);
+  background:
+    linear-gradient(135deg, #e33324 0%, #f26a2e 42%, #0b6fae 100%);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(255, 255, 255, 0.10) inset;
+}
+
+.exp-brand--teknofest img {
+  width: 86px;
+  height: 66px;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: 50% 56%;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+}
+
+.exp-brand--teknofest strong {
+  display: block;
+  color: #ffffff;
+  font-family: var(--mono);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.34);
+}
+
+.exp-brand--teknofest::before {
+  content: none;
+}
+
+.exp-brand--sau {
+  width: 100%;
+  height: 56px;
+  flex: 0 0 100%;
+  justify-content: flex-start;
+  padding: 8px 14px;
+}
+
+.exp-brand--sau img {
+  max-width: 176px;
+  max-height: 40px;
 }
 
 .exp-brand--text {
   color: #0f172a;
   font-family: var(--serif);
-  font-size: 19px;
+  font-size: 18px;
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.015em;
   text-transform: none;
+}
+
+.exp-brand--venture {
+  color: #0b0a08;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.08em;
 }
 
 /* ─── Contact Email Link ─────────────────────────────────────────────────────── */

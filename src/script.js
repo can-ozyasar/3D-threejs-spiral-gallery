@@ -104,6 +104,25 @@ if (window.location.hash) {
   }
 }
 
+const projectGrid = document.querySelector('.field__grid[data-project-view]');
+const projectTabs = document.querySelectorAll('[data-project-tab]');
+
+projectTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const nextView = tab.dataset.projectTab;
+    if (!projectGrid || !nextView) return;
+
+    projectGrid.dataset.projectView = nextView;
+    projectTabs.forEach((button) => {
+      const isActive = button === tab;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-selected', String(isActive));
+    });
+
+    ScrollTrigger.refresh();
+  });
+});
+
 
 // ---------------------------------------------------------------------------
 // Scroll reveals — slow, cinematic fade-up for every `.reveal-text` block

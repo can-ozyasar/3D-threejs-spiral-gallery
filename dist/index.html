@@ -15,7 +15,7 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="/src/styles.css" />
   <link rel="stylesheet" href="/src/overrides.css" />
-  <script type="module" crossorigin src="/assets/index-zelQ_bCh.js"></script>
+  <script type="module" crossorigin src="/assets/index-DcTfKPsO.js"></script>
 </head>
 
 <body>
@@ -97,10 +97,10 @@
               üzerine çalışıyor; TÜBİTAK destekli araştırma projelerinde teknik fikirleri kullanılabilir yazılım
               ürünlerine dönüştürüyorum.</p>
             <p
-              data-en="My work spans federated learning, RAG systems, battery health estimation, time-series analysis and ML-serving backends. I care about the full path: research clarity, model quality, secure architecture and real-world impact.">
-              Çalışma alanım federe öğrenme, RAG sistemleri, batarya sağlık tahmini, zaman serisi analizi ve ML servis
-              eden backend mimarilerini kapsıyor. Benim için değerli olan şey; araştırma netliği, model kalitesi, güvenli
-              mimari ve gerçek dünyada karşılığı olan çıktıyı aynı çizgide buluşturmak.</p>
+              data-en="I position myself around applied AI systems: turning research questions into measurable experiments, connecting model outputs to backend workflows, and designing AI features that can survive real users, real documents and real operational constraints.">
+              Kendimi uygulamalı AI sistemleri tarafında konumlandırıyorum: araştırma sorularını ölçülebilir deneylere
+              çevirmek, model çıktılarını backend iş akışlarına bağlamak ve gerçek kullanıcı, gerçek doküman, gerçek
+              operasyon kısıtları altında çalışabilen AI özellikleri tasarlamak.</p>
           </div>
           <div class="manifesto__col reveal-text">
             <h3 data-en="How I work">Nasıl Çalışırım</h3>
@@ -180,8 +180,14 @@
             gösteriyor.
           </p>
         </div>
-        <div class="field__grid">
-          <a class="field__card field__card--lg" href="/projects.html?id=bios">
+        <div class="project-tabs reveal-text" role="tablist" aria-label="Proje görünümü">
+          <button class="project-tabs__button is-active" type="button" role="tab" aria-selected="true"
+            data-project-tab="featured" data-en="Featured">Öne çıkanlar</button>
+          <button class="project-tabs__button" type="button" role="tab" aria-selected="false"
+            data-project-tab="all" data-en="All projects">Tüm projeler</button>
+        </div>
+        <div class="field__grid" data-project-view="featured">
+          <a class="field__card field__card--lg" data-project-card="featured" data-project-disabled aria-disabled="true">
             <img src="/images/projects/bios.png" alt="Endüstriyel İstihbarat — RSS + LLaMA3" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -199,7 +205,7 @@
             </div>
           </a>
 
-          <a class="field__card field__card--sm" href="/projects.html?id=ajanpazar-fitai">
+          <a class="field__card field__card--sm" data-project-card="featured" data-project-disabled aria-disabled="true">
             <img src="/images/projects/ajanpazar-fitai.svg" alt="AjanPazar × FitAI — AI agent commerce analiz platformu" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -217,7 +223,7 @@
             </div>
           </a>
 
-          <a class="field__card field__card--wide" href="/projects.html?id=teklifakis">
+          <a class="field__card field__card--wide" data-project-card="featured" data-project-disabled aria-disabled="true">
             <img src="/images/proj_teklifakis.jpg" alt="TeklifAkış — OCR + LLM belge pipeline" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -235,7 +241,7 @@
             </div>
           </a>
 
-          <a class="field__card field__card--tall" href="/projects.html?id=federated">
+          <a class="field__card field__card--tall" data-project-card="featured" data-project-disabled aria-disabled="true">
             <img src="/images/projects/federated.png" alt="Federe Öğrenme — dağıtık sinir ağı düğümleri" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -253,7 +259,7 @@
             </div>
           </a>
 
-          <a class="field__card field__card--wide" href="/projects.html?id=vocab">
+          <a class="field__card field__card--wide" data-project-card="archive" data-project-disabled aria-disabled="true">
             <img src="/images/projects/vocab.png" alt="Vocabulary Cards — SM-2 aralıklı tekrar" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -271,7 +277,7 @@
             </div>
           </a>
 
-          <a class="field__card field__card--tall" href="/projects.html?id=hayalperest">
+          <a class="field__card field__card--tall" data-project-card="archive" data-project-disabled aria-disabled="true">
             <img src="/images/projects/hayalperest.png" alt="Hayalperest Hikayeler — Üretken YZ" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -288,7 +294,7 @@
             </div>
           </a>
 
-          <a class="field__card field__card--med" href="/projects.html?id=rag">
+          <a class="field__card field__card--med" data-project-card="archive" data-project-disabled aria-disabled="true">
             <img src="/images/projects/rag.png" alt="RAG Portföy Asistanı — vektör embedding" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -306,7 +312,7 @@
             </div>
           </a>
 
-          <a class="field__card field__card--med" href="/projects.html?id=battery">
+          <a class="field__card field__card--med" data-project-card="archive" data-project-disabled aria-disabled="true">
             <img src="/images/proj_battery.jpg" alt="BSM Batarya Yönetim — LSTM · Random Forest" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -324,7 +330,7 @@
             </div>
           </a>
 
-          <a class="field__card field__card--med" href="/projects.html?id=gym">
+          <a class="field__card field__card--med" data-project-card="archive" data-project-disabled aria-disabled="true">
             <img src="/images/projects/gym.png" alt="Spor Salonu Yönetim Sistemi — ASP.NET Core" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -349,70 +355,177 @@
         <p class="section-tag reveal-text" data-en="Experience · Chapter IV">Deneyim · Bölüm IV</p>
         <p class="approach__intro reveal-text"
           data-en="Different roles, one singular focus: &lt;em&gt;applied AI engineering&lt;/em&gt; from research to scalable production.">
-          Farklı roller, tek bir ortak hedef: <em>uygulamalı YZ araştırmalarını</em> Ölçeklenebilir gerçek dünyaya
+          Farklı roller, tek bir ortak hedef: <em>uygulamalı YZ araştırmalarını</em> ölçeklenebilir gerçek dünyaya
           taşımak.</p>
-        <ol class="approach__steps">
-          <li class="approach__step reveal-text">
-            <h4
-              data-en='&lt;span class="exp-brand exp-brand--logo"&gt;&lt;img src="/images/logos/tubitak.png" alt="TÜBİTAK"&gt;&lt;/span&gt;TÜBİTAK STAR'>
-              <span class="exp-brand exp-brand--logo"><img src="/images/logos/tubitak.png"
-                  alt="TÜBİTAK"></span>TÜBİTAK STAR</h4>
-            <p
-              data-en="Applied AI Researcher (Feb 2026–). Developed and optimized predictive ML models (using LSTM and Random Forests) for state-of-health (SoH) and state-of-charge (SoC) estimation in Lithium-ion batteries. Processed and analyzed large-scale time-series datasets, applying Bayesian hyperparameter optimization to significantly enhance predictive reliability for industrial energy systems.">
-              Uygulamalı YZ Araştırmacısı (Şubat 2026–). Lityum-iyon bataryalarda SoH ve SoC tahmini için tahmine dayalı
-              ML modelleri (LSTM ve Random Forest kullanarak) geliştirdi ve optimize etti. Endüstriyel enerji sistemleri
-              için tahmine dayalı güvenilirliği önemli ölçüde artırmak üzere Bayesian hiperparametre optimizasyonu
-              uygulayarak büyük ölçekli zaman serisi veri setlerini işledi ve analiz etti.</p>
-            <span class="approach__step-line" aria-hidden="true"></span>
-          </li>
-          <li class="approach__step reveal-text">
-            <h4
-              data-en='&lt;span class="exp-brand exp-brand--logo"&gt;&lt;img src="/images/logos/tubitak.png" alt="TÜBİTAK"&gt;&lt;/span&gt;TÜBİTAK 2209-A'>
-              <span class="exp-brand exp-brand--logo"><img src="/images/logos/tubitak.png"
-                  alt="TÜBİTAK"></span>TÜBİTAK 2209-A</h4>
-            <p
-              data-en="Lead AI Researcher (2025–). Engineered a privacy-preserving Federated Learning pipeline, enabling the decentralized training of deep neural networks (ResNet-18) without exposing sensitive raw data. Deployed secure node communication protocols, ensuring strict compliance with data privacy standards (KVKK/GDPR) while outperforming baseline model accuracy (84% vs 81%).">
-              Lider YZ Araştırmacısı (2025–). Hassas ham verileri ifşa etmeden derin sinir ağlarının (ResNet-18) merkezi
-              olmayan eğitimini sağlayan gizlilik korumalı bir Federe Öğrenme pipeline'ı tasarladı. Temel model
-              doğruluğunu (%81'e karşı %84) aşarken, veri gizliliği standartlarına (KVKK/GDPR) tam uyum sağlayan güvenli
-              düğüm iletişim protokollerini devreye aldı.</p>
-            <span class="approach__step-line" aria-hidden="true"></span>
-          </li>
-          <li class="approach__step reveal-text">
-            <h4
-              data-en='&lt;span class="exp-brand exp-brand--text"&gt;Synapse&lt;/span&gt;SAÜ SYNAPSE | Teknofest'>
-              <span class="exp-brand exp-brand--text">Synapse</span>SAÜ SYNAPSE |
-              Teknofest</h4>
-            <p
-              data-en="Team Captain & ML Architect. Directed a multidisciplinary engineering team to design, train, and deploy complex ensemble ML models for healthcare diagnostics. Designed robust MLOps pipelines ensuring seamless data preprocessing and deployment under strict competition constraints, optimizing model inference times for clinical accuracy.">
-              Takım Kaptanı ve ML Mimarı. Sağlık teşhisi için karmaşık topluluk (ensemble) ML modelleri tasarlamak,
-              eğitmek ve devreye almak üzere çok disiplinli bir mühendislik ekibini yönetti. Sıkı yarışma kısıtlamaları
-              altında sorunsuz veri ön işleme ve dağıtım sağlayan sağlam MLOps pipeline'ları tasarladı ve klinik
-              doğruluk için model çıkarım sürelerini optimize etti.</p>
-            <span class="approach__step-line" aria-hidden="true"></span>
-          </li>
-          <li class="approach__step reveal-text">
-            <h4><span class="exp-brand exp-brand--logo"><img src="/images/logos/turkcell.png"
-                  alt="Turkcell"></span>Turkcell Global Bilgi</h4>
-            <p
-              data-en="IT Intern (Summer 2025). Automated workflows with UiPath, built Power BI dashboards, managed 500+ accounts via Active Directory and VMware Horizon. L1/L2 support with root-cause analysis.">
-              BT Stajyeri (Yaz 2025). UiPath ile iş akışlarını otomasyona aldı, Power BI panoları oluşturdu, Active
-              Directory ve VMware Horizon üzerinden 500+ kullanıcı hesabı yönetti. Kök neden analizi yöntemiyle L1/L2 BT
-              destek süreçleri.</p>
-            <span class="approach__step-line" aria-hidden="true"></span>
-          </li>
-          <li class="approach__step reveal-text">
-            <h4
-              data-en='&lt;span class="exp-brand exp-brand--logo"&gt;&lt;img src="/images/logos/sauLogo.png" alt="Sakarya University"&gt;&lt;/span&gt;Education'>
-              <span class="exp-brand exp-brand--logo"><img src="/images/logos/sauLogo.png"
-                  alt="Sakarya Üniversitesi"></span>Eğitim</h4>
-            <p
-              data-en="Sakarya University · Computer Engineering B.Sc. (2023–). GPA 3.27/4.00. 1 High Honor + 4 Honor. YÖK AI Academy, Milli Teknoloji Akademisi.">
-              Sakarya Üniversitesi · Bilgisayar Mühendisliği (2023–). GNO 3,27/4,00. 1 Yüksek Onur + 4 Onur Belgesi. YÖK
-              Yapay Zeka Akademisi, Milli Teknoloji Akademisi.</p>
-            <span class="approach__step-line" aria-hidden="true"></span>
-          </li>
-        </ol>
+
+        <!-- CAROUSEL WRAPPER -->
+        <div class="exp-carousel-scene" id="exp-scene">
+          <div class="exp-carousel-clip">
+            <div class="exp-carousel-track" id="exp-track">
+            <!-- CARDS -->
+            <div class="exp-card" data-index="0">
+              <div class="exp-card__num">01</div>
+              <div class="exp-card__logo"><img src="/images/logos/turkcell.png" alt="Turkcell" onerror="this.style.display='none'"></div>
+              <h4 class="exp-card__title">Turkcell Global Bilgi</h4>
+              <p class="exp-card__body" data-en="IT Intern (Summer 2025). Automated internal workflows with UiPath, built Power BI dashboards, managed 500+ user account operations via Active Directory and VMware Horizon.">BT Stajyeri (Yaz 2025). UiPath ile iş akışları otomasyonu, Power BI panoları, Active Directory &amp; VMware Horizon üzerinden 500+ kullanıcı yönetimi ve L1/L2 BT destek süreçleri.</p>
+              <div class="exp-card__line"></div>
+            </div>
+            <div class="exp-card" data-index="1">
+              <div class="exp-card__num">02</div>
+              <div class="exp-card__logo"><img src="/images/logos/tubitak.png" alt="TÜBİTAK" onerror="this.style.display='none'"></div>
+              <h4 class="exp-card__title">TÜBİTAK STAR</h4>
+              <p class="exp-card__body" data-en="Applied AI Researcher (Feb 2026–). LSTM &amp; Random Forest models for Li-ion battery SoH/SoC estimation. Bayesian hyperparameter optimization on large-scale time-series datasets.">Uygulamalı YZ Araştırmacısı (Şubat 2026–). Lityum-iyon batarya SoH/SoC tahmini için LSTM &amp; Random Forest. Bayesian optimizasyon ile büyük ölçekli zaman serisi analizi.</p>
+              <div class="exp-card__line"></div>
+            </div>
+            <div class="exp-card" data-index="2">
+              <div class="exp-card__logo"><img src="/images/logos/tubitak.png" alt="TÜBİTAK" onerror="this.style.display='none'"></div>
+              <div class="exp-card__num">03</div>
+              <h4 class="exp-card__title">TÜBİTAK 2209-A</h4>
+              <p class="exp-card__body" data-en="Lead AI Researcher (2025–). Privacy-preserving Federated Learning pipeline with ResNet-18. Achieved 84% accuracy vs 81% baseline. KVKK/GDPR compliant.">Lider YZ Araştırmacısı (2025–). Gizlilik korumalı Federe Öğrenme (ResNet-18). Temel modeli (%81) geçen %84 doğruluk. KVKK/GDPR uyumlu güvenli düğüm iletişimi.</p>
+              <div class="exp-card__line"></div>
+            </div>
+            <div class="exp-card" data-index="3">
+              <div class="exp-card__logo"><img src="/images/logos/tubitak.png" alt="TÜBİTAK" onerror="this.style.display='none'"></div>
+              <div class="exp-card__num">04</div>
+              <h4 class="exp-card__title">TÜBİTAK 1812 · TeklifAkış</h4>
+              <p class="exp-card__body" data-en="Entrepreneurship track. Building TeklifAkış: OCR + LLM workflow for SME proposal management. Customer discovery, MVP scoping, investor-ready storytelling.">Girişimcilik süreci. TeklifAkış: OCR + LLM tabanlı KOBİ teklif yönetimi. Müşteri keşfi, MVP kapsam belirleme ve yatırımcıya yönelik teknik hikaye anlatımı.</p>
+              <div class="exp-card__line"></div>
+            </div>
+            <div class="exp-card" data-index="4">
+              <div class="exp-card__num">05</div>
+              <div class="exp-card__logo" style="font-weight:800;font-size:22px;color:var(--accent);letter-spacing:0.05em;">GFAST</div>
+              <h4 class="exp-card__title">GFAST · EnerjiZeka</h4>
+              <p class="exp-card__body" data-en="Entrepreneurship finalist. EnerjiZeka concept at GFAST program (SAÜ Teknokent, SATSO, FikirSepeti). Pitch prep, market framing, product positioning, early-stage validation.">Girişimcilik finalisti. EnerjiZeka konsepti, GFAST programı (SAÜ Teknokent, SATSO, FikirSepeti). Pitch, pazar çerçevesi, ürün konumlandırma ve erken aşama doğrulama.</p>
+              <div class="exp-card__line"></div>
+            </div>
+            <div class="exp-card" data-index="5">
+              <div class="exp-card__logo"><img src="/images/logos/teknofest.png" alt="Teknofest" onerror="this.style.display='none'"></div>
+              <div class="exp-card__num">06</div>
+              <h4 class="exp-card__title">SAÜ SYNAPSE · Teknofest</h4>
+              <p class="exp-card__body" data-en="Team Captain &amp; ML Architect. Ensemble ML models for healthcare diagnostics. Led multidisciplinary team under strict competition constraints.">Takım Kaptanı &amp; ML Mimarı. Sağlık teşhisi için ensemble ML modelleri. Sıkı yarışma kısıtları altında çok disiplinli mühendislik ekibini yönetti.</p>
+              <div class="exp-card__line"></div>
+            </div>
+            <div class="exp-card exp-card--berlitz" data-index="6">
+              <div class="exp-card__num">07</div>
+              <div class="exp-card__logo" style="font-weight:800;font-size:20px;color:#0ea5e9;letter-spacing:0.12em;">BERLITZ</div>
+              <h4 class="exp-card__title">Hayırlı Sabancı &amp; Berlitz</h4>
+              <p class="exp-card__body" data-en="English Ecosystem (12 Months). Selected among 5000+ candidates. Berlitz — a globally established institution. Bridging AI engineering with international communication.">İngilizce Ekosistemi (12 Ay). 5000 aday arasından seçildi. Berlitz — köklü global kurum. Teknik YZ mühendisliğini uluslararası iletişim vizyonuyla birleştiriyor.</p>
+              <div class="exp-card__line"></div>
+            </div>
+            <div class="exp-card" data-index="7">
+              <div class="exp-card__logo"><img src="/images/logos/sauLogo.png" alt="SAÜ" onerror="this.style.display='none'"></div>
+              <div class="exp-card__num">08</div>
+              <h4 class="exp-card__title">Sakarya Üniversitesi</h4>
+              <p class="exp-card__body" data-en="Computer Engineering B.Sc. (2023–). GPA 3.27/4.00. 1 High Honor + 4 Honor. YÖK AI Academy, Milli Teknoloji Akademisi.">Bilgisayar Mühendisliği (2023–). GNO 3,27/4,00. 1 Yüksek Onur + 4 Onur Belgesi. YÖK Yapay Zeka Akademisi, Milli Teknoloji Akademisi.</p>
+              <div class="exp-card__line"></div>
+            </div>
+          </div>
+          <!-- Kenarlarda solma efekti -->
+          <div class="exp-fade exp-fade--left"></div>
+          <div class="exp-fade exp-fade--right"></div>
+          </div>
+        </div>
+
+        <script>
+        (function() {
+          const scene = document.getElementById('exp-scene');
+          const track = document.getElementById('exp-track');
+          if (!scene || !track) return;
+
+          const origCards = Array.from(track.children);
+          const N = origCards.length;
+
+          // Build infinite set: [clone-set][original-set][clone-set]
+          origCards.forEach(c => track.appendChild(c.cloneNode(true)));
+          origCards.forEach(c => track.insertBefore(c.cloneNode(true), track.firstChild));
+
+          let current = N; // Start at middle set
+          let isAnimating = false;
+          let isDragging = false;
+          let dragStartX = 0;
+          let dragDelta = 0;
+          let autoTimer = null;
+
+          function step() {
+            const card = track.children[0];
+            return card ? card.offsetWidth + 28 : 0; // 28 = gap
+          }
+
+          function goTo(idx, animate) {
+            const s = step();
+            if (!s) return;
+            const offset = idx * s - (scene.offsetWidth / 2 - s / 2 + 28);
+            track.style.transition = animate ? 'transform 0.65s cubic-bezier(0.4,0,0.2,1)' : 'none';
+            track.style.transform = `translateX(${-offset}px)`;
+            updateClasses(idx);
+          }
+
+          function updateClasses(idx) {
+            Array.from(track.children).forEach((c, i) => {
+              c.classList.toggle('exp-card--active', i === idx);
+              c.classList.toggle('exp-card--near', i === idx - 1 || i === idx + 1);
+            });
+          }
+
+          function advance(dir) {
+            if (isAnimating) return;
+            isAnimating = true;
+            current += dir;
+            goTo(current, true);
+            setTimeout(() => {
+              if (current <= N - 1)  { current += N; goTo(current, false); }
+              if (current >= N * 2)  { current -= N; goTo(current, false); }
+              isAnimating = false;
+            }, 680);
+          }
+
+          function startAuto() {
+            stopAuto();
+            autoTimer = setInterval(() => advance(1), 4500);
+          }
+          function stopAuto() { clearInterval(autoTimer); }
+
+          // Init when element has layout
+          function tryInit(tries) {
+            if (tries > 40) return;
+            const s = step();
+            if (s > 0) {
+              goTo(current, false);
+              startAuto();
+            } else {
+              requestAnimationFrame(() => tryInit(tries + 1));
+            }
+          }
+          requestAnimationFrame(() => tryInit(0));
+
+          // Drag to navigate
+          scene.addEventListener('mousedown', e => {
+            isDragging = true; dragStartX = e.clientX; dragDelta = 0;
+            stopAuto(); scene.style.cursor = 'grabbing';
+          });
+          window.addEventListener('mousemove', e => {
+            if (isDragging) dragDelta = e.clientX - dragStartX;
+          });
+          window.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false; scene.style.cursor = 'grab';
+            if (Math.abs(dragDelta) > 60) advance(dragDelta < 0 ? 1 : -1);
+            startAuto();
+          });
+
+          // Touch
+          let touchX = 0;
+          scene.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; stopAuto(); }, {passive:true});
+          scene.addEventListener('touchend', e => {
+            const d = e.changedTouches[0].clientX - touchX;
+            if (Math.abs(d) > 50) advance(d < 0 ? 1 : -1);
+            startAuto();
+          }, {passive:true});
+
+          // Reinit on resize
+          window.addEventListener('resize', () => goTo(current, false));
+        })();
+        </script>
       </section>
 
       <!-- MAKALELER -->
@@ -543,7 +656,6 @@
       <footer class="footer">
         <div class="footer__row">
           <span data-en="2026 © Muhammed Can Özyaşar">2026 © Muhammed Can Özyaşar</span>
-          <span data-en="Built with Three.js &amp; GSAP">Three.js &amp; GSAP ile yapıldı</span>
           <span><a href="#" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});"
               data-en="Back to top ↑">Yukarı çık ↑</a></span>
         </div>

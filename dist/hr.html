@@ -77,17 +77,23 @@
     }
 
     .hr-title {
-      max-width: 11ch;
+      max-width: 12ch;
       margin: 0;
       font-family: var(--serif);
       font-size: clamp(58px, 9vw, 124px);
       font-weight: 400;
       line-height: 0.88;
       letter-spacing: -0.045em;
+      background: linear-gradient(135deg, #ffffff 20%, #f8f1e4 60%, var(--hr-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 8px 16px rgba(245, 199, 107, 0.12));
     }
 
     .hr-title em {
-      color: var(--hr-gold);
+      background: linear-gradient(135deg, var(--hr-gold), #d89d32);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-style: italic;
     }
 
@@ -130,9 +136,11 @@
       min-height: 48px;
       border-radius: 14px;
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
-        rgba(255, 255, 255, 0.035);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.075)),
+        rgba(20, 20, 17, 0.86);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
     }
 
     .hr-actions .hr-btn::after {
@@ -168,9 +176,17 @@
 
     .hr-btn--primary {
       border-color: rgba(245, 199, 107, 0.68);
-      color: #10100d;
-      background: linear-gradient(135deg, #ffe7a6, #f5c76b);
-      box-shadow: 0 14px 36px rgba(245, 199, 107, 0.2);
+      color: #17130b;
+      background: linear-gradient(135deg, #fff2bd, #f5c76b 62%, #d89d32);
+      box-shadow: 0 16px 42px rgba(245, 199, 107, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    }
+
+    .hr-actions .hr-btn--primary,
+    .hr-cta__actions .hr-btn--primary {
+      border-color: rgba(245, 199, 107, 0.82);
+      color: #17130b;
+      background: linear-gradient(135deg, #fff3bd, #f5c76b 60%, #d89d32);
+      box-shadow: 0 18px 46px rgba(245, 199, 107, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.46);
     }
 
     .hr-card {
@@ -232,30 +248,34 @@
     .fit-grid {
       position: relative;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
     .fit {
-      min-height: 108px;
-      padding: 16px;
-      border: 1px solid var(--hr-line);
+      min-height: auto;
+      padding: 16px 16px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.035);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025)),
+        rgba(255, 255, 255, 0.035);
     }
 
     .fit strong {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: var(--hr-gold);
       font-family: var(--mono);
-      font-size: 22px;
+      font-size: 12px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
     }
 
     .fit span {
-      color: var(--hr-muted);
-      font-size: 13px;
-      line-height: 1.45;
+      color: rgba(248, 241, 228, 0.82);
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .logo-strip {
@@ -270,14 +290,17 @@
       display: grid;
       place-items: center;
       padding: 16px;
-      border: 1px solid var(--hr-line);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 22px;
-      background: rgba(255, 255, 255, 0.035);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.055)),
+        rgba(13, 14, 12, 0.88);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
 
     .logo-tile img {
-      max-width: 116px;
-      max-height: 46px;
+      max-width: 138px;
+      max-height: 58px;
       object-fit: contain;
       filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.24));
     }
@@ -289,16 +312,64 @@
     }
 
     .logo-tile--brand img {
-      max-width: 128px;
-      max-height: 52px;
+      max-width: 148px;
+      max-height: 60px;
       filter: none;
     }
 
+    .logo-tile--synapse {
+      background: #fff;
+      border-color: rgba(255, 255, 255, 0.74);
+    }
+
+    .logo-tile--synapse img {
+      max-width: 142px;
+      max-height: 56px;
+      filter: none;
+    }
+
+    .logo-tile--teknofest {
+      background: linear-gradient(135deg, #ffffff 0%, #f7fbff 100%);
+      border-color: rgba(255, 255, 255, 0.74);
+    }
+
+    .logo-tile--teknofest img {
+      width: 168px;
+      height: 68px;
+      max-width: none;
+      max-height: none;
+      object-fit: cover;
+      object-position: 50% 58%;
+      filter: none;
+    }
+
+    .logo-tile--movement {
+      background:
+        linear-gradient(145deg, #ffffff, #f3f8fb);
+      border-color: rgba(255, 255, 255, 0.74);
+      gap: 8px;
+    }
+
+    .logo-tile--movement img {
+      width: 164px;
+      max-width: 164px;
+      max-height: 44px;
+      filter: none;
+    }
+
+    .logo-tile--movement span {
+      color: #0f172a;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+    }
+
     .logo-tile span {
-      color: var(--hr-muted);
+      color: var(--hr-text);
       font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.11em;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      line-height: 1.65;
       text-align: center;
       text-transform: uppercase;
     }
@@ -342,12 +413,31 @@
     }
 
     .proof {
-      padding: 22px;
-      border: 1px solid var(--hr-line);
+      position: relative;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 24px;
-      background: var(--hr-panel);
-      min-height: 220px;
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.092), rgba(255, 255, 255, 0.03)),
+        rgba(255, 255, 255, 0.045);
+      min-height: 236px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      overflow: hidden;
     }
+
+    .proof::after {
+      content: '';
+      position: absolute;
+      inset: auto 20px 0 20px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--proof-accent, var(--hr-gold)), transparent);
+      opacity: 0.72;
+    }
+
+    .proof:nth-child(1) { --proof-accent: var(--hr-blue); }
+    .proof:nth-child(2) { --proof-accent: var(--hr-green); }
+    .proof:nth-child(3) { --proof-accent: var(--hr-coral); }
+    .proof:nth-child(4) { --proof-accent: var(--hr-gold); }
 
     .proof__icon {
       width: 42px;
@@ -356,9 +446,10 @@
       place-items: center;
       margin-bottom: 24px;
       border-radius: 14px;
-      background: rgba(245, 199, 107, 0.12);
-      color: var(--hr-gold);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--proof-accent, var(--hr-gold));
       font-family: var(--mono);
+      border: 1px solid color-mix(in srgb, var(--proof-accent, var(--hr-gold)) 42%, transparent);
     }
 
     .proof h3,
@@ -386,11 +477,14 @@
 
     .role-card {
       position: relative;
-      padding: 24px;
-      border: 1px solid var(--hr-line);
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 26px;
-      background: var(--hr-panel);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025)),
+        var(--hr-panel);
       overflow: hidden;
+      min-height: 278px;
     }
 
     .role-card::before {
@@ -406,7 +500,7 @@
 
     .role-card__match {
       display: inline-flex;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
       padding: 6px 10px;
       border: 1px solid rgba(245, 199, 107, 0.28);
       border-radius: 999px;
@@ -415,6 +509,32 @@
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+    }
+
+    .role-card__list {
+      display: grid;
+      gap: 9px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .role-card__list li {
+      position: relative;
+      padding-left: 18px;
+      color: rgba(248, 241, 228, 0.76);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .role-card__list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 7px;
+      height: 1px;
+      background: var(--hr-gold);
     }
 
     .signal-board {
@@ -436,9 +556,15 @@
       padding: 16px;
       border: 1px solid var(--hr-line);
       border-radius: 22px;
-      background: var(--hr-panel);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+        var(--hr-panel);
       text-decoration: none;
       transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .project-signal[data-project-disabled] {
+      cursor: default;
     }
 
     .project-signal:hover {
@@ -509,21 +635,25 @@
 
     .vision {
       display: grid;
-      grid-template-columns: 0.82fr 1.18fr;
+      grid-template-columns: 1fr 1fr;
       gap: 16px;
       align-items: stretch;
     }
 
     .vision-card {
-      padding: 28px;
-      border: 1px solid var(--hr-line);
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 28px;
-      background: var(--hr-panel);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.078), rgba(255, 255, 255, 0.025)),
+        var(--hr-panel);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.2);
     }
 
     .vision-card--gold {
       background:
-        radial-gradient(circle at 80% 12%, rgba(245, 199, 107, 0.22), transparent 34%),
+        radial-gradient(circle at 82% 8%, rgba(245, 199, 107, 0.24), transparent 34%),
+        linear-gradient(145deg, rgba(245, 199, 107, 0.13), rgba(125, 211, 252, 0.045)),
         var(--hr-panel-strong);
     }
 
@@ -538,6 +668,37 @@
       margin: 0;
       color: var(--hr-muted);
       line-height: 1.75;
+    }
+
+    .vision-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .vision-pillar {
+      min-height: 112px;
+      padding: 14px;
+      border: 1px solid rgba(245, 199, 107, 0.18);
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .vision-pillar strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--hr-gold);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .vision-pillar span {
+      color: rgba(248, 241, 228, 0.76);
+      font-size: 13px;
+      line-height: 1.5;
     }
 
     .timeline {
@@ -635,7 +796,8 @@
       .fit-grid,
       .proof-grid,
       .role-grid,
-      .logo-strip {
+      .logo-strip,
+      .vision-pillars {
         grid-template-columns: 1fr;
       }
       .project-signal {
@@ -683,10 +845,12 @@
   <main class="hr-shell">
     <section class="hr-hero" aria-label="HR hızlı profil">
       <div>
-        <p class="hr-kicker" data-en="Recruiter view · 60-second profile">İşe alımcı görünümü · 60 saniyelik profil</p>
-        <h1 class="hr-title" data-en="AI/ML engineer with <em>real signals</em>">Gerçek kanıtlı <em>YZ/ML</em> profili</h1>
-        <p class="hr-lede" data-en="Computer Engineering student focused on applied AI/ML, RAG systems and ML-serving backends. My strongest signal is the combination of TÜBİTAK research, production-minded projects, Turkcell IT experience and continuous technical reading.">
-          Uygulamalı YZ/ML, RAG sistemleri ve ML servis eden backend mimarilerine odaklanan Bilgisayar Mühendisliği öğrencisi. En güçlü sinyalim; TÜBİTAK araştırmaları, üretime yakın projeler, Turkcell BT deneyimi ve sürekli teknik okuma pratiğinin birleşimi.
+        <p class="hr-kicker" data-en="Recruiter view · verified signals">İşe alımcı görünümü · kanıt odaklı profil</p>
+        <h1 class="hr-title" data-en="AI work that moves from <em>research</em> to product">Araştırmadan <em>ürüne</em> giden YZ profili</h1>
+        <p class="hr-lede" data-en="Computer Engineering student focused on applied AI/ML, LLM workflows and ML-serving backends. The short version: TÜBİTAK research discipline, Turkcell enterprise IT exposure, and entrepreneurship practice through TeklifAkış and GFAST.">
+          Uygulamalı YZ/ML, LLM iş akışları ve ML servis eden backend mimarilerine odaklanan Bilgisayar Mühendisliği
+          öğrencisi. Kısa özet: TÜBİTAK araştırma disiplini, Turkcell kurumsal BT deneyimi, TeklifAkış ve GFAST ile
+          girişimcilik pratiği.
         </p>
       </div>
 
@@ -697,19 +861,33 @@
         <a class="hr-btn" href="https://github.com/can-ozyasar" target="_blank" rel="noopener">GitHub</a>
       </div>
 
-      <aside class="hr-card snapshot" aria-label="Profil özeti">
-        <div class="snapshot__top">
-          <img class="snapshot__photo" src="/images/pic/pic4.jpeg" alt="Muhammed Can Özyaşar" loading="lazy"/>
+      <aside class="hr-card snapshot" aria-label="Profil özeti" style="padding: 24px; display: flex; flex-direction: column; justify-content: center;">
+        <div class="snapshot__top" style="margin-bottom: 24px;">
+          <img class="snapshot__photo" src="/images/pic/pic4.jpeg" alt="Muhammed Can Özyaşar" loading="lazy" style="width: 76px; height: 76px; border-radius: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.3);"/>
           <div>
-            <h2>Muhammed Can Özyaşar</h2>
-            <p data-en="Sakarya · İzmir · İstanbul<br/>AI/ML Research · Backend Engineering">Sakarya · İzmir · İstanbul<br/>YZ/ML Araştırma · Backend Mühendisliği</p>
+            <h2 style="font-size: 26px; margin-bottom: 4px; letter-spacing: -0.02em;">Muhammed Can Özyaşar</h2>
+            <p data-en="Applied ML · LLM Systems" style="font-size: 13.5px; opacity: 0.9;">YZ/ML Araştırmacısı · Ürün Düşüncesi</p>
           </div>
         </div>
-        <div class="fit-grid">
-          <div class="fit"><strong>3.27</strong><span data-en="GPA · Sakarya University Computer Engineering">GNO · Sakarya Üniversitesi Bilgisayar Müh.</span></div>
-          <div class="fit"><strong>3x</strong><span data-en="TÜBİTAK-linked research and venture programs">TÜBİTAK bağlantılı araştırma ve girişim programı</span></div>
-          <div class="fit"><strong>500+</strong><span data-en="User account operations in Turkcell Global Bilgi IT">Turkcell Global Bilgi BT'de kullanıcı operasyonu</span></div>
-          <div class="fit"><strong>RAG</strong><span data-en="Live AI assistant, vector search and LLM integration">Canlı YZ asistan, vektör arama ve LLM entegrasyonu</span></div>
+
+        <!-- HAYIRLI SABANCI & BERLITZ (Görsel ve Kısa) -->
+        <div style="position: relative; margin-bottom: 24px; padding: 18px 20px; border-radius: 22px; background: linear-gradient(135deg, rgba(125, 211, 252, 0.12) 0%, rgba(125, 211, 252, 0.03) 100%); border: 1px solid rgba(125, 211, 252, 0.3); overflow: hidden; box-shadow: 0 12px 32px rgba(125, 211, 252, 0.08); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 16px 40px rgba(125, 211, 252, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 12px 32px rgba(125, 211, 252, 0.08)';">
+          <div style="position: absolute; top: -50%; right: -20%; width: 160px; height: 160px; background: radial-gradient(circle, rgba(125, 211, 252, 0.25) 0%, transparent 70%); filter: blur(20px); pointer-events: none;"></div>
+          <div style="display: flex; gap: 16px; align-items: center; position: relative; z-index: 1;">
+            <div style="width: 48px; height: 48px; border-radius: 16px; background: linear-gradient(135deg, #7dd3fc, #0ea5e9); display: grid; place-items: center; color: #0b0a08; font-weight: 700; font-family: var(--mono); font-size: 13px; flex-shrink: 0; box-shadow: 0 8px 16px rgba(14, 165, 233, 0.3);">ENG</div>
+            <div>
+              <b style="display: block; color: #f8f1e4; font-family: var(--sans); font-size: 15px; margin-bottom: 3px; letter-spacing: -0.01em;">Hayırlı Sabancı & Berlitz</b>
+              <span style="font-size: 13px; color: #c7efff; line-height: 1.4; display: block;" data-en="Selected among 5000+ candidates for advanced global English ecosystem.">5000 aday arasından seçilen global İngilizce ekosistemi.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KISA YETKİNLİK ETİKETLERİ -->
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span style="padding: 8px 14px; border-radius: 14px; background: rgba(245, 199, 107, 0.08); border: 1px solid rgba(245, 199, 107, 0.2); font-size: 12.5px; color: var(--hr-text); font-family: var(--mono); transition: background 0.2s;" onmouseover="this.style.background='rgba(245,199,107,0.15)';" onmouseout="this.style.background='rgba(245,199,107,0.08)';"><b style="color: var(--hr-gold); margin-right: 4px;">/</b>Uygulamalı ML</span>
+          <span style="padding: 8px 14px; border-radius: 14px; background: rgba(245, 199, 107, 0.08); border: 1px solid rgba(245, 199, 107, 0.2); font-size: 12.5px; color: var(--hr-text); font-family: var(--mono); transition: background 0.2s;" onmouseover="this.style.background='rgba(245,199,107,0.15)';" onmouseout="this.style.background='rgba(245,199,107,0.08)';"><b style="color: var(--hr-gold); margin-right: 4px;">/</b>LLM & RAG</span>
+          <span style="padding: 8px 14px; border-radius: 14px; background: rgba(245, 199, 107, 0.08); border: 1px solid rgba(245, 199, 107, 0.2); font-size: 12.5px; color: var(--hr-text); font-family: var(--mono); transition: background 0.2s;" onmouseover="this.style.background='rgba(245,199,107,0.15)';" onmouseout="this.style.background='rgba(245,199,107,0.08)';"><b style="color: var(--hr-gold); margin-right: 4px;">/</b>AI Arka Uç</span>
+          <span style="padding: 8px 14px; border-radius: 14px; background: rgba(245, 199, 107, 0.08); border: 1px solid rgba(245, 199, 107, 0.2); font-size: 12.5px; color: var(--hr-text); font-family: var(--mono); transition: background 0.2s;" onmouseover="this.style.background='rgba(245,199,107,0.15)';" onmouseout="this.style.background='rgba(245,199,107,0.08)';"><b style="color: var(--hr-gold); margin-right: 4px;">/</b>Araştırma Sezgisi</span>
         </div>
       </aside>
     </section>
@@ -718,47 +896,56 @@
       <div class="logo-tile logo-tile--brand"><img src="/images/logos/tubitak.png" alt="TÜBİTAK"/></div>
       <div class="logo-tile logo-tile--brand"><img src="/images/logos/turkcell.png" alt="Turkcell Global Bilgi"/></div>
       <div class="logo-tile logo-tile--brand"><img src="/images/logos/sauLogo.png" alt="Sakarya Üniversitesi"/></div>
-      <div class="logo-tile"><img src="/images/logos/synapse.png" alt="SAÜ Synapse"/></div>
-      <div class="logo-tile"><span>YÖK AI Academy<br/>Milli Teknoloji</span></div>
+      <div class="logo-tile logo-tile--teknofest"><img src="/images/logos/teknofest.png" alt="Teknofest"/></div>
+      <div class="logo-tile logo-tile--movement">
+        <img src="/images/logos/milli-teknoloji-akademisi.webp" alt="Milli Teknoloji Akademisi"/>
+        <span>Yapay Zeka<br/>Uzmanlık Programı</span>
+      </div>
     </div>
 
     <section aria-label="Neden dikkat çekmeli">
       <div class="section-head">
         <div>
           <p class="section-label" data-en="Why shortlist">Neden kısa listeye alınmalı</p>
-          <h2 data-en="Signals that reduce hiring risk">İşe alım riskini azaltan sinyaller</h2>
+          <h2 data-en="A profile with proof, not only claims">Sadece iddia değil, kanıt üreten profil</h2>
         </div>
-        <p data-en="This page is intentionally built for fast evaluation: fewer paragraphs, stronger proof. Each card points to a capability that can be verified through projects, research programs or real operational experience.">
-          Bu sayfa hızlı değerlendirme için tasarlandı: daha az paragraf, daha güçlü kanıt. Her kart; proje, araştırma programı veya gerçek operasyon deneyimiyle doğrulanabilir bir yetkinliğe işaret ediyor.
+        <p data-en="The point is simple: my AI positioning is backed by research programs, shipped prototypes, enterprise IT exposure and venture work. Each block below shows a different kind of evidence.">
+          AI alanındaki konumlanmam yalnızca ilgi düzeyinde değil; araştırma programları, çalışan prototipler, kurumsal
+          BT deneyimi ve girişimcilik süreçleriyle destekleniyor. Aşağıdaki her blok bu profilin farklı bir kanıtını
+          gösteriyor.
         </p>
       </div>
       <div class="proof-grid">
         <article class="proof">
           <div class="proof__icon">01</div>
           <h3 data-en="Research discipline">Araştırma disiplini</h3>
-          <p data-en="Federated learning, battery SoH/SoC estimation and radar signal analysis with TÜBİTAK-linked workflows, reports and literature synthesis.">
-            Federe öğrenme, batarya SoH/SoC tahmini ve radar sinyal analizi: TÜBİTAK bağlantılı iş akışı, raporlama ve literatür sentezi.
+          <p data-en="TÜBİTAK STAR and 2209-A gave me a research rhythm: read, define the experiment, measure the model and report progress clearly.">
+            TÜBİTAK STAR ve 2209-A bana araştırma ritmi kazandırdı: okumak, deneyi tanımlamak, modeli ölçmek ve ilerlemeyi
+            net şekilde raporlamak.
           </p>
         </article>
         <article class="proof">
           <div class="proof__icon">02</div>
-          <h3 data-en="Production mindset">Üretim zihniyeti</h3>
-          <p data-en="RAG assistant, .NET 8 APIs, REST design, Qdrant vector search and secure LLM integration focused on usable systems.">
-            RAG asistan, .NET 8 API'ler, REST tasarımı, Qdrant vektör arama ve kullanılabilir sistem odaklı güvenli LLM entegrasyonu.
+          <h3 data-en="AI product building">AI ürün geliştirme</h3>
+          <p data-en="I care about the layer after the model: retrieval quality, API boundaries, structured output, latency and whether the workflow is usable.">
+            Modelden sonraki katmanı önemsiyorum: retrieval kalitesi, API sınırları, yapılandırılmış çıktı, gecikme ve
+            akışın gerçekten kullanılabilir olması.
           </p>
         </article>
         <article class="proof">
           <div class="proof__icon">03</div>
-          <h3 data-en="Operational exposure">Operasyon deneyimi</h3>
-          <p data-en="Turkcell Global Bilgi IT internship: UiPath automation, Power BI dashboards, Active Directory, VMware Horizon and L1/L2 support.">
-            Turkcell Global Bilgi BT stajı: UiPath otomasyon, Power BI panoları, Active Directory, VMware Horizon ve L1/L2 destek.
+          <h3 data-en="Enterprise exposure">Kurumsal disiplin</h3>
+          <p data-en="At Turkcell Global Bilgi, I saw IT operations at scale: automation, dashboards, account processes, support discipline and root-cause thinking.">
+            Turkcell Global Bilgi'de ölçekli BT operasyonunu gördüm: otomasyon, dashboard, kullanıcı süreçleri, destek
+            disiplini ve kök neden bakışı.
           </p>
         </article>
         <article class="proof">
           <div class="proof__icon">04</div>
-          <h3 data-en="Learning velocity">Öğrenme hızı</h3>
-          <p data-en="Current AI/ML papers are converted into Obsidian graph notes and practical GitHub experiments instead of staying as passive reading.">
-            Güncel YZ/ML makaleleri pasif okumada kalmıyor; Obsidian graph notlarına ve GitHub'da uygulanabilir deneylere dönüşüyor.
+          <h3 data-en="Venture thinking">Girişim bakışı</h3>
+          <p data-en="TeklifAkış and EnerjiZeka trained a different muscle: problem framing, customer discovery, pitch clarity and building AI around an actual buyer pain.">
+            TeklifAkış ve EnerjiZeka farklı bir kası geliştirdi: problem çerçevesi, müşteri keşfi, pitch netliği ve AI'ı
+            gerçek bir alıcı problemi etrafında kurmak.
           </p>
         </article>
       </div>
@@ -768,33 +955,52 @@
       <div class="section-head">
         <div>
           <p class="section-label" data-en="Best-fit roles">En uygun roller</p>
-          <h2 data-en="Where I create value fastest">En hızlı değer üreteceğim alanlar</h2>
+          <h2 data-en="Roles where my AI positioning makes sense">AI konumlanmamın en anlamlı olduğu roller</h2>
         </div>
-        <p data-en="The target is not a generic software role. The best fit is where AI research, backend engineering and product awareness meet.">
-          Hedef genel bir yazılım rolü değil. En iyi uyum; YZ araştırması, backend mühendisliği ve ürün farkındalığının kesiştiği yer.
+        <p data-en="I am strongest where the role expects curiosity about models, enough engineering discipline to ship, and product sense to ask whether the AI output solves a real workflow.">
+          En güçlü olduğum yer; model merakı, ürüne çıkaracak mühendislik disiplini ve AI çıktısının gerçek bir iş akışını
+          çözüp çözmediğini sorgulayan ürün sezgisinin birleştiği roller.
         </p>
       </div>
       <div class="role-grid">
         <article class="role-card">
           <span class="role-card__match" data-en="Strong fit">Güçlü uyum</span>
-          <h3>AI/ML Engineer Intern</h3>
-          <p data-en="PyTorch, scikit-learn, CNN/ResNet-18, LSTM, Random Forest, time-series feature extraction and model evaluation.">
-            PyTorch, scikit-learn, CNN/ResNet-18, LSTM, Random Forest, zaman serisi özellik çıkarımı ve model değerlendirme.
+          <h3>Uygulamalı AI / ML Stajyeri</h3>
+          <p data-en="For teams that need a researcher-minded intern who can run experiments and explain what the numbers mean.">
+            Deney koşabilen, sonuçları yorumlayabilen ve model kararlarını anlaşılır şekilde aktarabilen araştırma odaklı
+            bir stajyer profili.
           </p>
+          <ul class="role-card__list">
+            <li>PyTorch, scikit-learn, ResNet-18, LSTM, Random Forest</li>
+            <li>Veri hazırlama, metrik takibi, deney karşılaştırması</li>
+            <li>TÜBİTAK araştırma süreçleriyle teknik raporlama disiplini</li>
+          </ul>
         </article>
         <article class="role-card">
           <span class="role-card__match" data-en="Strong fit">Güçlü uyum</span>
-          <h3>LLM / RAG Developer</h3>
-          <p data-en="Document ingestion, embeddings, Qdrant, Gemini/OpenAI APIs, prompt engineering and secure answer generation.">
-            Doküman işleme, embedding, Qdrant, Gemini/OpenAI API, prompt mühendisliği ve güvenli cevap üretimi.
+          <h3>LLM / RAG Geliştiricisi</h3>
+          <p data-en="For document-heavy products where answers must be grounded, structured and connected to backend workflows.">
+            Cevapların dokümana dayanması, yapılandırılmış çıkması ve backend akışına bağlanması gereken ürünler için
+            uygun alan.
           </p>
+          <ul class="role-card__list">
+            <li>RAG, embedding, Qdrant, Gemini/OpenAI API</li>
+            <li>OCR + LLM ile belge anlama ve alan çıkarımı</li>
+            <li>Prompt tasarımı, güvenli cevap üretimi, structured output</li>
+          </ul>
         </article>
         <article class="role-card">
           <span class="role-card__match" data-en="Growing fit">Gelişen uyum</span>
-          <h3>ML Backend Developer</h3>
-          <p data-en=".NET 8, REST APIs, Spring Boot, Node.js, SQL and service design for AI-powered products.">
-            .NET 8, REST API, Spring Boot, Node.js, SQL ve YZ destekli ürünler için servis tasarımı.
+          <h3>AI Ürün Arka Ucu</h3>
+          <p data-en="For teams turning AI features into reliable services rather than isolated demos.">
+            AI özelliklerini izole demo olarak değil, güvenilir servis olarak ürünleştirmek isteyen ekipler için gelişen
+            güçlü uyum.
           </p>
+          <ul class="role-card__list">
+            <li>.NET 8, Spring Boot, Node.js, REST API, SQL</li>
+            <li>Model çıktısını servis, veri ve kullanıcı akışına bağlama</li>
+            <li>TeklifAkış gibi AI tabanlı ürünlerde MVP ve iş akışı tasarımı</li>
+          </ul>
         </article>
       </div>
     </section>
@@ -803,33 +1009,34 @@
       <div class="section-head">
         <div>
           <p class="section-label" data-en="Project proof">Proje kanıtları</p>
-          <h2 data-en="Work that maps to real business problems">Gerçek iş problemlerine dokunan çalışmalar</h2>
+          <h2 data-en="Projects that show how I solve AI problems">AI problemlerini nasıl çözdüğümü gösteren işler</h2>
         </div>
-        <p data-en="The projects below are selected for recruiter relevance: privacy, automation, intelligence, learning systems and operational efficiency.">
-          Aşağıdaki projeler işe alımcı ilgisi için seçildi: gizlilik, otomasyon, istihbarat, öğrenme sistemleri ve operasyonel verimlilik.
+        <p data-en="This section is not a gallery; it is a compact evidence map. Each item shows a different AI problem type: privacy, prediction, document automation and venture validation.">
+          Bu bölüm galeri değil, kısa bir kanıt haritası. Her iş farklı bir AI problem tipini gösteriyor: gizlilik,
+          tahminleme, belge otomasyonu ve girişim doğrulaması.
         </p>
       </div>
       <div class="signal-board">
         <div class="project-list">
-          <a class="project-signal" href="/projects.html?id=federated">
+          <a class="project-signal" data-project-disabled aria-disabled="true">
             <img src="/images/proj_federated.jpg" alt="Federated learning project" loading="lazy"/>
-            <span><small>TÜBİTAK 2209-A</small><h3>Federe Öğrenme</h3><p data-en="Privacy-preserving medical image classification with ResNet-18 and FedAvg.">ResNet-18 ve FedAvg ile gizlilik koruyan tıbbi görüntü sınıflandırma.</p></span>
+            <span><small>TÜBİTAK 2209-A</small><h3>Federe Öğrenme</h3><p data-en="Privacy-preserving medical image classification with ResNet-18 and FedAvg; a clear research-to-engineering signal.">ResNet-18 ve FedAvg ile gizlilik koruyan tıbbi görüntü sınıflandırma; araştırmadan mühendisliğe net bir sinyal.</p></span>
             <b>84%</b>
           </a>
-          <a class="project-signal" href="/projects.html?id=battery">
+          <a class="project-signal" data-project-disabled aria-disabled="true">
             <img src="/images/proj_battery.jpg" alt="Battery ML project" loading="lazy"/>
-            <span><small>TÜBİTAK STAR</small><h3>Batarya SoH/SoC</h3><p data-en="LSTM and Random Forest models for lithium-ion battery health and charge estimation.">Lityum-iyon batarya sağlık/şarj tahmini için LSTM ve Random Forest modelleri.</p></span>
+            <span><small>TÜBİTAK STAR</small><h3>Batarya SoH/SoC</h3><p data-en="Time-series ML for lithium-ion battery health and charge estimation with LSTM, Random Forest and optimization work.">Lityum-iyon batarya sağlık/şarj tahmini için zaman serisi ML, LSTM, Random Forest ve optimizasyon çalışması.</p></span>
             <b>ML</b>
           </a>
-          <a class="project-signal" href="/projects.html?id=rag">
-            <img src="/images/proj_rag.jpg" alt="RAG assistant project" loading="lazy"/>
-            <span><small>Live System</small><h3>RAG Portföy Asistanı</h3><p data-en="Vector search and LLM integration for a live portfolio assistant.">Canlı portföy asistanı için vektör arama ve LLM entegrasyonu.</p></span>
-            <b>RAG</b>
-          </a>
-          <a class="project-signal" href="/projects.html?id=teklifakis">
+          <a class="project-signal" data-project-disabled aria-disabled="true">
             <img src="/images/proj_teklifakis.jpg" alt="TeklifAkış project" loading="lazy"/>
-            <span><small>TÜBİTAK 1812</small><h3>TeklifAkış</h3><p data-en="OCR and LLM pipeline for SME bid process automation.">KOBİ teklif süreçleri için OCR ve LLM pipeline otomasyonu.</p></span>
+            <span><small>TÜBİTAK 1812</small><h3>TeklifAkış</h3><p data-en="OCR and LLM pipeline for SME bid/proposal workflows; active venture learning through customer discovery and MVP scoping.">KOBİ teklif akışları için OCR ve LLM pipeline; müşteri keşfi ve MVP kapsamıyla aktif girişim öğrenimi.</p></span>
             <b>OCR</b>
+          </a>
+          <a class="project-signal" href="/#deneyim">
+            <img src="/images/projects/bios.png" alt="EnerjiZeka venture signal" loading="lazy"/>
+            <span><small>GFAST Finalisti</small><h3>EnerjiZeka</h3><p data-en="Venture validation experience with SAÜ Teknokent, SATSO and FikirSepeti stakeholders around an energy-focused idea.">Enerji odaklı fikir için SAÜ Teknokent, SATSO ve FikirSepeti paydaşlarıyla girişim doğrulama deneyimi.</p></span>
+            <b>Sunum</b>
           </a>
         </div>
 
@@ -837,9 +1044,9 @@
           <h3 data-en="Technical map">Teknik harita</h3>
           <div class="stack-row"><strong>AI/ML</strong><span>PyTorch · scikit-learn · CNN/ResNet-18 · LSTM · Random Forest · FedAvg</span></div>
           <div class="stack-row"><strong>LLM/RAG</strong><span>Qdrant · Gemini API · OpenAI API · Embeddings · Prompt Engineering · Structured Output</span></div>
-          <div class="stack-row"><strong>Backend</strong><span>.NET 8 · Spring Boot · Node.js · REST API · SQL · Postman</span></div>
+          <div class="stack-row"><strong>Arka Uç</strong><span>.NET 8 · Spring Boot · Node.js · REST API · SQL · Postman</span></div>
           <div class="stack-row"><strong>Data</strong><span>NumPy · Pandas · Matplotlib · Sliding Window · Bayesian HPO · Power BI</span></div>
-          <div class="stack-row"><strong>Workflow</strong><span>GitHub · Obsidian Graph · Fabric · AI Agent Tooling · Literature Notes</span></div>
+          <div class="stack-row"><strong>İş Akışı</strong><span>GitHub · Obsidian Graph · Fabric · AI Agent Tooling · Literature Notes</span></div>
         </aside>
       </div>
     </section>
@@ -848,26 +1055,35 @@
       <div class="section-head">
         <div>
           <p class="section-label" data-en="Vision and trajectory">Vizyon ve gidişat</p>
-          <h2 data-en="Not only building, also reading the field">Sadece geliştirmiyor, alanı da okuyorum</h2>
+          <h2 data-en="My edge is the way I build technical direction">Beni ayıran şey teknik yön kurma biçimim</h2>
         </div>
-        <p data-en="A recruiter should be able to see the technical direction: I follow current AI/ML articles to gain vision for my own projects, connect notes in Obsidian, and share useful learning openly.">
-          Bir işe alımcı teknik yönü görebilmeli: Güncel YZ/ML makalelerini kendi projelerime vizyon kazandırmak için takip ediyor, Obsidian'da ilişkilendiriyor ve faydalı öğrendiklerimi açık şekilde paylaşıyorum.
+        <p data-en="This is a core part of how I work: I do not treat AI as a stack of tools. I track the field, connect ideas, and use that map to decide what is worth building.">
+          Bu benim çalışma biçimimin merkezinde: AI'ı yalnızca araç listesi gibi ele almıyorum. Alanı takip ediyor,
+          fikirleri birbirine bağlıyor ve neyin geliştirilmeye değer olduğuna bu haritayla karar veriyorum.
         </p>
       </div>
       <div class="vision">
         <article class="vision-card vision-card--gold">
-          <h3 data-en="Reading becomes product judgment">Okuma ürün sezgisine dönüşüyor</h3>
-          <p data-en="I follow current articles and research notes, read them to gain vision for my own projects, and turn useful ideas into experiments. The goal is not to collect links, but to make better technical decisions.">
-            Güncel makaleleri ve araştırma notlarını takip ediyor, kendi projelerime vizyon kazandırmak için okuyorum ve faydalı fikirleri deneylere dönüştürüyorum. Amaç link biriktirmek değil; daha iyi teknik kararlar almak.
+          <h3 data-en="I build a personal AI research operating system">Kişisel bir AI araştırma işletim sistemi kuruyorum</h3>
+          <p data-en="I read current AI/ML papers and engineering notes to create technical direction, not to collect links. The output is a connected knowledge graph, experiment ideas and better product decisions.">
+            Güncel YZ/ML makalelerini ve mühendislik notlarını link biriktirmek için değil, teknik yön oluşturmak için
+            okuyorum. Çıktısı; bağlantılı bilgi grafı, deney fikirleri ve daha kaliteli ürün kararları oluyor.
           </p>
+          <div class="vision-pillars">
+            <div class="vision-pillar"><strong>Tarama</strong><span>Yeni model, yöntem ve ürün desenlerini düzenli tarama.</span></div>
+            <div class="vision-pillar"><strong>Bilgi Grafı</strong><span>Obsidian notlarıyla kavramları projelerle ilişkilendirme.</span></div>
+            <div class="vision-pillar"><strong>Deney Döngüsü</strong><span>Okunan fikri küçük deney, MVP veya teknik karara dönüştürme.</span></div>
+          </div>
         </article>
         <article class="vision-card">
-          <h3 data-en="Trajectory">Gelişim çizgisi</h3>
+          <h3 data-en="Trajectory">AI odağında gelişim çizgisi</h3>
           <div class="timeline">
+            <div class="timeline-item" style="background: linear-gradient(90deg, rgba(125, 211, 252, 0.08), transparent); padding-left: 16px; border-left: 2px solid rgba(125, 211, 252, 0.4); margin-left: -18px; border-top: none; margin-bottom: 8px; border-radius: 4px;"><time style="color: #7dd3fc;">2026</time><span><strong style="color: #c7efff;">Hayırlı Sabancı & Berlitz Ekosistemi</strong> <span data-en="Selected among 5000 candidates for intensive English education program.">5000 aday arasından seçilerek köklü Berlitz İngilizce eğitim programına dahiliyet ve küresel vizyon gelişimi.</span></span></div>
             <div class="timeline-item"><time>2026</time><span><strong>TÜBİTAK 2247-C STAR</strong> <span data-en="Battery SoH/SoC ML research, radar signal analysis and academic output target.">Batarya SoH/SoC ML araştırması, radar sinyal analizi ve akademik çıktı hedefi.</span></span></div>
             <div class="timeline-item"><time>2026</time><span><strong>TÜBİTAK 1812</strong> <span data-en="TeklifAkış venture track: customer discovery, MVP iteration and AI workflow design.">TeklifAkış girişim süreci: müşteri keşfi, MVP iterasyonu ve YZ iş akışı tasarımı.</span></span></div>
             <div class="timeline-item"><time>2025</time><span><strong>Turkcell Global Bilgi</strong> <span data-en="IT internship with automation, analytics dashboards and enterprise support experience.">Otomasyon, analitik dashboard ve kurumsal destek deneyimi içeren BT stajı.</span></span></div>
             <div class="timeline-item"><time>2025</time><span><strong>TÜBİTAK 2209-A</strong> <span data-en="Project lead for privacy-preserving federated learning in medical imaging.">Tıbbi görüntülemede gizlilik koruyan federe öğrenme projesi yürütücülüğü.</span></span></div>
+            <div class="timeline-item"><time>2025</time><span><strong>GFAST · EnerjiZeka</strong> <span data-en="Finalist venture experience with SAÜ Teknokent, SATSO and FikirSepeti stakeholders.">SAÜ Teknokent, SATSO ve FikirSepeti paydaşlarıyla finalist girişim deneyimi.</span></span></div>
           </div>
         </article>
       </div>
