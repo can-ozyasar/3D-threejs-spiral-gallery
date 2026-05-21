@@ -14,7 +14,7 @@ from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 load_dotenv()
 
@@ -66,8 +66,11 @@ _limiter = RateLimiter()
 
 # ─── Schema ──────────────────────────────────────────────────────────────────
 class ChatRequest(BaseModel):
-    question: str = Field(..., min_length=1, max_length=600)
-    session_id: str = Field(default="anonymous", max_length=64)
+    question: str
+    session_id: str = "anonymous"
+
+    class Config:
+        max_anystr_length = 600
 
 
 class ChatResponse(BaseModel):
