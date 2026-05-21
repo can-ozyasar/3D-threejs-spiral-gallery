@@ -747,6 +747,15 @@ section {
   border-radius: 8px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
+
+.exp-card__logo.logo-container-xl {
+  height: 95px;
+}
+.exp-card__logo img.logo-xl {
+  max-height: 85px;
+  max-width: 220px;
+  padding: 10px 18px;
+}
 .exp-card.exp-card--active .exp-card__logo img {
   opacity: 1;
 }
