@@ -19,8 +19,8 @@ let isDeleting = false;
 let typeElement;
 
 function typeLoop() {
-  const currentLang = document.documentElement.lang || 'tr';
-  const currentPhrases = phrases[currentLang];
+  const currentLang = localStorage.getItem('portfolio-lang') || 'tr';
+  const currentPhrases = phrases[currentLang] || phrases['tr'];
   
   if (phraseIndex >= currentPhrases.length) {
     phraseIndex = 0;

@@ -491,6 +491,15 @@ html.theme-light .field__card::after {
   gap: 6px !important;
   text-transform: none !important;
   background: none !important;
+  padding: 32px 28px !important;
+  width: 100%;
+}
+.field__caption-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px;
 }
 .field__caption span:first-child {
   font-family: var(--serif);
