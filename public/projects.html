@@ -4,6 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Projects — Muhammed Can Özyaşar</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.classList.add('theme-light')}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/src/styles.css"/>
@@ -69,6 +71,7 @@
     </nav>
     <div class="nav__toggles">
       <button id="lang-toggle" aria-label="Dili değiştir">EN</button>
+      <button id="theme-toggle" type="button" aria-label="Açık temaya geç"></button>
     </div>
   </header>
 
@@ -225,5 +228,6 @@
   render();
   </script>
   <script type="module" src="/src/i18n.js"></script>
+  <script type="module" src="/src/theme.js"></script>
 </body>
 </html>

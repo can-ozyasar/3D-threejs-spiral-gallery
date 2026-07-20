@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
   <title>Blog — Muhammed Can Özyaşar</title>
   <meta name="description" content="Applied AI, Federated Learning, RAG ve Backend Mühendisliği üzerine teknik yazılar."/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.classList.add('theme-light')}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/src/styles.css"/>
@@ -94,6 +96,7 @@
   </nav>
   <div class="nav__toggles">
     <button id="lang-toggle" aria-label="Dili değiştir">EN</button>
+    <button id="theme-toggle" type="button" aria-label="Açık temaya geç"></button>
   </div>
 </header>
 
@@ -263,7 +266,8 @@ document.getElementById('lang-toggle').addEventListener('click',()=>{
   localStorage.setItem('lang',next);applyLang(next);
 });
 </script>
-<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="/vendor/d3.v7.min.js" defer></script>
 <script type="module" src="/src/obsidian_graph.js"></script>
+<script type="module" src="/src/theme.js"></script>
 </body>
 </html>

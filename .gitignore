@@ -13,3 +13,4 @@ pyproject.toml
 uv.lock
 
 .vercel_python_packages/
+.env*

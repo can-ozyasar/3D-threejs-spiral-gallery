@@ -11,7 +11,7 @@ CHUNKS: list[dict] = [
         "text": (
             "Ad: Muhammed Can Özyaşar. "
             "Ünvan: YZ/ML Araştırmacısı, TÜBİTAK Proje Yürütücüsü, ML Odaklı Backend Geliştirici. "
-            "E-posta: can.ozyasarr@gmail.com. Telefon: +90 540 034 21 35. "
+            "E-posta: can.ozyasarr@gmail.com. "
             "Web sitesi: canozyasar.dev. GitHub: github.com/can-ozyasar. "
             "LinkedIn: linkedin.com/in/muhammed-can-ozyasar. "
             "Konum: Sakarya / İzmir / İstanbul, Türkiye."

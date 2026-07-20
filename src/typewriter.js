@@ -58,8 +58,15 @@ function typeLoop() {
 
 document.addEventListener('DOMContentLoaded', () => {
   typeElement = document.getElementById('typewriter-text');
-  if (typeElement) {
-    // Start typing after a short delay
-    setTimeout(typeLoop, 500);
+  if (!typeElement) return;
+
+  // Honor reduced-motion: show the first phrase statically, no typing loop.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const lang = localStorage.getItem('portfolio-lang') || 'tr';
+    typeElement.textContent = (phrases[lang] || phrases.tr)[0];
+    return;
   }
+
+  // Start typing after a short delay
+  setTimeout(typeLoop, 500);
 });

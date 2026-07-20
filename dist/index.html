@@ -8,6 +8,9 @@
   <title>Muhammed Can Özyaşar — YZ/ML Araştırmacısı &amp; Backend Geliştirici</title>
   <meta name="description"
     content="YZ/ML Araştırmacısı, TÜBİTAK Proje Yürütücüsü ve ML odaklı backend geliştirici. Federe öğrenme, RAG pipeline ve üretim YZ sistemleri." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Apply the saved theme before first paint to avoid a flash of the wrong theme. -->
+  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.classList.add('theme-light')}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -15,7 +18,7 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="/src/styles.css" />
   <link rel="stylesheet" href="/src/overrides.css" />
-  <script type="module" crossorigin src="/assets/index-DcTfKPsO.js"></script>
+  <script type="module" crossorigin src="/assets/index-Br57DbUy.js"></script>
 </head>
 
 <body>
@@ -39,10 +42,21 @@
     </nav>
     <div class="nav__toggles">
       <button id="lang-toggle" aria-label="Dili değiştir">EN</button>
+      <button id="theme-toggle" type="button" aria-label="Açık temaya geç"></button>
     </div>
   </header>
 
   <main>
+    <!-- INTRO GATE — AXIOM 3D character + floating chat island -->
+    <section class="intro-gate" id="intro-gate" aria-label="AXIOM — giriş">
+      <a href="#hero" class="intro-gate__skip" data-en="Skip intro">Girişi atla</a>
+      <img class="intro-gate__poster" src="/images/caracter/canoz.jpeg" alt="" aria-hidden="true" />
+      <div class="intro-gate__stage"></div>
+      <div class="intro-gate__hint" aria-hidden="true">
+        <span data-en="Scroll to enter">Girmek için kaydır</span>
+      </div>
+    </section>
+
     <!-- HERO -->
     <section class="hero" id="hero" aria-label="Giriş">
       <div class="hero__topbar">
@@ -187,7 +201,7 @@
             data-project-tab="all" data-en="All projects">Tüm projeler</button>
         </div>
         <div class="field__grid" data-project-view="featured">
-          <a class="field__card field__card--lg" data-project-card="featured" data-project-disabled aria-disabled="true">
+          <article class="field__card field__card--lg" data-project-card="featured" data-project-disabled>
             <img src="/images/projects/bios.png" alt="Endüstriyel İstihbarat — RSS + LLaMA3" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -203,9 +217,9 @@
                 <p class="field__tags">Python · LLaMA3 · RSS Parser · Obsidian Graph</p>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="field__card field__card--sm" data-project-card="featured" data-project-disabled aria-disabled="true">
+          <article class="field__card field__card--sm" data-project-card="featured" data-project-disabled>
             <img src="/images/projects/ajanpazar-fitai.svg" alt="AjanPazar × FitAI — AI agent commerce analiz platformu" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -221,9 +235,9 @@
                 <p class="field__tags">Next.js · Gemini API · Claude API · 10 Persona Agents · Live Agent Test</p>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="field__card field__card--wide" data-project-card="featured" data-project-disabled aria-disabled="true">
+          <article class="field__card field__card--wide" data-project-card="featured" data-project-disabled>
             <img src="/images/proj_teklifakis.jpg" alt="TeklifAkış — OCR + LLM belge pipeline" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -239,9 +253,9 @@
                 <p class="field__tags">Python · OCR · LLM Structured Output · REST API</p>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="field__card field__card--tall" data-project-card="featured" data-project-disabled aria-disabled="true">
+          <article class="field__card field__card--tall" data-project-card="featured" data-project-disabled>
             <img src="/images/projects/federated.png" alt="Federe Öğrenme — dağıtık sinir ağı düğümleri" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -257,9 +271,9 @@
                 <p class="field__tags">Python · PyTorch · Flower Framework · FedAvg</p>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="field__card field__card--wide" data-project-card="archive" data-project-disabled aria-disabled="true">
+          <article class="field__card field__card--wide" data-project-card="archive" data-project-disabled>
             <img src="/images/projects/vocab.png" alt="Vocabulary Cards — SM-2 aralıklı tekrar" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -275,9 +289,9 @@
                 <p class="field__tags">.NET 8 · Entity Framework · React · TypeScript</p>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="field__card field__card--tall" data-project-card="archive" data-project-disabled aria-disabled="true">
+          <article class="field__card field__card--tall" data-project-card="archive" data-project-disabled>
             <img src="/images/projects/hayalperest.png" alt="Hayalperest Hikayeler — Üretken YZ" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -292,9 +306,9 @@
                 <p class="field__tags">Node.js · Google Gemini API · REST API</p>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="field__card field__card--med" data-project-card="archive" data-project-disabled aria-disabled="true">
+          <article class="field__card field__card--med" data-project-card="archive" data-project-disabled>
             <img src="/images/projects/rag.png" alt="RAG Portföy Asistanı — vektör embedding" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -310,9 +324,9 @@
                 <p class="field__tags">FastAPI · Qdrant · Gemini API · JavaScript</p>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="field__card field__card--med" data-project-card="archive" data-project-disabled aria-disabled="true">
+          <article class="field__card field__card--med" data-project-card="archive" data-project-disabled>
             <img src="/images/proj_battery.jpg" alt="BSM Batarya Yönetim — LSTM · Random Forest" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -328,9 +342,9 @@
                 <p class="field__tags">Python · TensorFlow/Keras · Scikit-Learn · Pandas</p>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="field__card field__card--med" data-project-card="archive" data-project-disabled aria-disabled="true">
+          <article class="field__card field__card--med" data-project-card="archive" data-project-disabled>
             <img src="/images/projects/gym.png" alt="Spor Salonu Yönetim Sistemi — ASP.NET Core" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -346,7 +360,7 @@
                 <p class="field__tags">C# · .NET MVC · PostgreSQL · Entity Framework</p>
               </div>
             </div>
-          </a>
+          </article>
         </div>
       </section>
 
@@ -359,7 +373,9 @@
           taşımak.</p>
 
         <!-- CAROUSEL WRAPPER -->
-        <div class="exp-carousel-scene" id="exp-scene">
+        <div class="exp-carousel-scene" id="exp-scene" tabindex="0" role="group"
+          aria-roledescription="karusel / carousel"
+          aria-label="Deneyim kartları — gezinmek için sol/sağ ok tuşlarını kullanın">
           <div class="exp-carousel-clip">
             <div class="exp-carousel-track" id="exp-track">
             <!-- CARDS -->
@@ -378,15 +394,15 @@
               <div class="exp-card__line"></div>
             </div>
             <div class="exp-card" data-index="2">
-              <div class="exp-card__logo"><img src="/images/logos/tubitak.png" alt="TÜBİTAK" onerror="this.style.display='none'"></div>
               <div class="exp-card__num">03</div>
+              <div class="exp-card__logo"><img src="/images/logos/tubitak.png" alt="TÜBİTAK" onerror="this.style.display='none'"></div>
               <h4 class="exp-card__title">TÜBİTAK 2209-A</h4>
               <p class="exp-card__body" data-en="Lead AI Researcher (2025–). Privacy-preserving Federated Learning pipeline with ResNet-18. Achieved 84% accuracy vs 81% baseline. KVKK/GDPR compliant.">Lider YZ Araştırmacısı (2025–). Gizlilik korumalı Federe Öğrenme (ResNet-18). Temel modeli (%81) geçen %84 doğruluk. KVKK/GDPR uyumlu güvenli düğüm iletişimi.</p>
               <div class="exp-card__line"></div>
             </div>
             <div class="exp-card" data-index="3">
-              <div class="exp-card__logo"><img src="/images/logos/tubitak.png" alt="TÜBİTAK" onerror="this.style.display='none'"></div>
               <div class="exp-card__num">04</div>
+              <div class="exp-card__logo"><img src="/images/logos/tubitak.png" alt="TÜBİTAK" onerror="this.style.display='none'"></div>
               <h4 class="exp-card__title">TÜBİTAK 1812 · TeklifAkış</h4>
               <p class="exp-card__body" data-en="Entrepreneurship track. Building TeklifAkış: OCR + LLM workflow for SME proposal management. Customer discovery, MVP scoping, investor-ready storytelling.">Girişimcilik süreci. TeklifAkış: OCR + LLM tabanlı KOBİ teklif yönetimi. Müşteri keşfi, MVP kapsam belirleme ve yatırımcıya yönelik teknik hikaye anlatımı.</p>
               <div class="exp-card__line"></div>
@@ -399,8 +415,8 @@
               <div class="exp-card__line"></div>
             </div>
             <div class="exp-card" data-index="5">
-              <div class="exp-card__logo"><img src="/images/logos/teknofest.png" alt="Teknofest" onerror="this.style.display='none'"></div>
               <div class="exp-card__num">06</div>
+              <div class="exp-card__logo logo-container-xl"><img src="/images/logos/teknofest.png" alt="Teknofest" class="logo-xl" onerror="this.style.display='none'"></div>
               <h4 class="exp-card__title">SAÜ SYNAPSE · Teknofest</h4>
               <p class="exp-card__body" data-en="Team Captain &amp; ML Architect. Ensemble ML models for healthcare diagnostics. Led multidisciplinary team under strict competition constraints.">Takım Kaptanı &amp; ML Mimarı. Sağlık teşhisi için ensemble ML modelleri. Sıkı yarışma kısıtları altında çok disiplinli mühendislik ekibini yönetti.</p>
               <div class="exp-card__line"></div>
@@ -413,8 +429,8 @@
               <div class="exp-card__line"></div>
             </div>
             <div class="exp-card" data-index="7">
-              <div class="exp-card__logo"><img src="/images/logos/sauLogo.png" alt="SAÜ" onerror="this.style.display='none'"></div>
               <div class="exp-card__num">08</div>
+              <div class="exp-card__logo"><img src="/images/logos/sauLogo.png" alt="SAÜ" class="logo-highlight" onerror="this.style.display='none'"></div>
               <h4 class="exp-card__title">Sakarya Üniversitesi</h4>
               <p class="exp-card__body" data-en="Computer Engineering B.Sc. (2023–). GPA 3.27/4.00. 1 High Honor + 4 Honor. YÖK AI Academy, Milli Teknoloji Akademisi.">Bilgisayar Mühendisliği (2023–). GNO 3,27/4,00. 1 Yüksek Onur + 4 Onur Belgesi. YÖK Yapay Zeka Akademisi, Milli Teknoloji Akademisi.</p>
               <div class="exp-card__line"></div>
@@ -432,12 +448,23 @@
           const track = document.getElementById('exp-track');
           if (!scene || !track) return;
 
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           const origCards = Array.from(track.children);
           const N = origCards.length;
 
-          // Build infinite set: [clone-set][original-set][clone-set]
-          origCards.forEach(c => track.appendChild(c.cloneNode(true)));
-          origCards.forEach(c => track.insertBefore(c.cloneNode(true), track.firstChild));
+          // Build infinite set: [clone-set][original-set][clone-set].
+          // Clones are hidden from assistive tech so screen readers announce
+          // each experience only once instead of three times.
+          origCards.forEach(c => {
+            const clone = c.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+          });
+          origCards.forEach(c => {
+            const clone = c.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.insertBefore(clone, track.firstChild);
+          });
 
           let current = N; // Start at middle set
           let isAnimating = false;
@@ -481,6 +508,7 @@
 
           function startAuto() {
             stopAuto();
+            if (prefersReducedMotion) return; // honor reduced-motion: no autoplay
             autoTimer = setInterval(() => advance(1), 4500);
           }
           function stopAuto() { clearInterval(autoTimer); }
@@ -522,6 +550,18 @@
             startAuto();
           }, {passive:true});
 
+          // Pause autoplay on hover and on keyboard focus (WCAG 2.2.2).
+          scene.addEventListener('mouseenter', stopAuto);
+          scene.addEventListener('mouseleave', startAuto);
+          scene.addEventListener('focusin', stopAuto);
+          scene.addEventListener('focusout', startAuto);
+
+          // Keyboard navigation for the focusable carousel.
+          scene.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft')  { e.preventDefault(); advance(-1); }
+            if (e.key === 'ArrowRight') { e.preventDefault(); advance(1); }
+          });
+
           // Reinit on resize
           window.addEventListener('resize', () => goTo(current, false));
         })();
@@ -543,8 +583,7 @@
                 Learning Nedir? Veri Gizliliğinde Yeni Çağ ↗</a></p>
             <p><a
                 href="https://medium.com/@canozyasar35/hibernate-orm-object-relational-mapping-nedir-temel-%C3%B6zellikler-f07aba72407c"
-                target="_blank" rel="noopener" data-en="Hibernate ORM: Object Relational Mapping Basics ↗">Hibernate ORM
-                (ORM) Nedir? Temel Özellikler ↗</a></p>
+                target="_blank" rel="noopener" data-en="Hibernate (ORM) Basics ↗">Hibernate (ORM) Nedir? Temel Özellikler ↗</a></p>
             <p><a
                 href="https://medium.com/@canozyasar35/slaytlar%C4%B1n-%C3%B6tesinde-bir-e-ticaret-yolculu%C4%9Fu-sisterslab-x-hepsiburadayar%C4%B1nlara-s%C3%B6z-program%C4%B1-1cd92c753840"
                 target="_blank" rel="noopener"
@@ -663,8 +702,9 @@
     </div>
   </main>
 
+  <script type="module" src="/src/theme.js"></script>
   <script type="module" src="/src/i18n.js"></script>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="/vendor/d3.v7.min.js" defer></script>
   <script type="module" src="/src/obsidian_graph.js"></script>
 </body>
 

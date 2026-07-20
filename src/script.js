@@ -1,9 +1,17 @@
-import * as THREE from 'three';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { vertexShader, fragmentShader } from './shaders.js';
+
+// Three.js is the single heaviest dependency (~170 KB gzipped). It is loaded
+// lazily via dynamic import() inside initThreeJs so the bundler code-splits it
+// into its own chunk that loads after idle, off the critical path. The hero
+// headline paints from the small initial bundle; the decorative WebGL spiral
+// streams in afterwards. (The deferred chunk currently contains the full
+// library; to also tree-shake it, move the spiral code into a dedicated module
+// that statically imports the named three exports and dynamic-import that.)
+let THREE;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -326,7 +334,8 @@ function tick() {
   requestAnimationFrame(tick);
 }
 
-function initThreeJs() {
+async function initThreeJs() {
+  THREE = await import('three');
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(
     45,
@@ -359,8 +368,14 @@ function initThreeJs() {
   renderer.domElement.classList.add('is-ready');
 }
 
+function startThreeJs() {
+  // The WebGL background is non-critical decoration; if the chunk fails to load
+  // or WebGL init throws, fail gracefully without blocking the rest of the page.
+  initThreeJs().catch((err) => console.error('Three.js init failed:', err));
+}
+
 if ('requestIdleCallback' in window) {
-  requestIdleCallback(initThreeJs, { timeout: 1500 });
+  requestIdleCallback(startThreeJs, { timeout: 1500 });
 } else {
-  requestAnimationFrame(() => requestAnimationFrame(initThreeJs));
+  requestAnimationFrame(() => requestAnimationFrame(startThreeJs));
 }

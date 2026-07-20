@@ -92,9 +92,6 @@ html.theme-light .nav__toggles {
   box-shadow: 0 4px 12px rgba(176, 124, 63, 0.3);
 }
 
-/* Force Canvas Visibility for Debugging */
-.hero__canvas { opacity: 1 !important; }
-
 /* ─── Readable font sizes (was 10–12px → now 13–14px) ───────────────── */
 .section-tag           { font-size: 13px !important; }
 .hero__eyebrow         { font-size: 13px !important; }
@@ -104,13 +101,11 @@ html.theme-light .nav__toggles {
 .practice__num         { font-size: 13px !important; }
 .practice__tags        { font-size: 12px !important; line-height: 2 !important; }
 .manifesto__col h3     { font-size: 13px !important; }
-.approach__step::before{ font-size: 12px !important; }
 .field__caption        { font-size: 12px !important; }
 .conversation__col h5  { font-size: 13px !important; }
 .footer__row           { font-size: 12px !important; }
 .nav__links a          { font-size: 13px !important; letter-spacing: 0.12em !important; }
 .nav__links            { gap: 14px !important; align-items: center !important; }
-.nav__status           { font-size: 12px !important; }
 
 /* ─── Spinning Blog badge ─────────────────────────────────────────── */
 .nav__links a[href="/blog.html"] {
@@ -333,27 +328,6 @@ html.theme-light .nav__toggles {
   outline: none;
 }
 
-.hero__proof {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 4px;
-  max-width: min(760px, 92vw);
-}
-
-.hero__proof span {
-  padding: 7px 10px;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.025);
-  color: var(--fg);
-  opacity: 0.86;
-  font-family: var(--sans);
-  font-size: 13px;
-  line-height: 1.2;
-}
-
 @keyframes signoff-sparkle {
   0%, 100% {
     opacity: 0.28;
@@ -491,6 +465,15 @@ html.theme-light .field__card::after {
   gap: 6px !important;
   text-transform: none !important;
   background: none !important;
+  padding: 32px 28px !important;
+  width: 100%;
+}
+.field__caption-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px;
 }
 .field__caption span:first-child {
   font-family: var(--serif);
@@ -718,145 +701,6 @@ html.theme-light .reference-card:hover {
   justify-self: end;
 }
 
-/* ─── Experience Cards ──────────────────────────────────────────────────────── */
-.approach__step {
-  position: relative;
-  border: none !important; /* override styles.css */
-  z-index: 1;
-}
-.approach__step::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 2px;
-  padding: 1.5px; /* Border thickness */
-  background: var(--exp-border, rgba(255,255,255,0.1));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: -1;
-}
-/* 1. Turkcell */
-.approach__step:nth-child(1) { --exp-border: linear-gradient(135deg, #facc15 22%, #ffffff 48%, #1d4ed8 78%); }
-/* 2-3. TUBITAK research */
-.approach__step:nth-child(2) { --exp-border: linear-gradient(to right, #ef4444 30%, #ffffff 80%); }
-.approach__step:nth-child(3) { --exp-border: linear-gradient(to bottom, #ef4444 30%, #ffffff 80%); }
-/* 4-5. Entrepreneurship */
-.approach__step:nth-child(4) { --exp-border: linear-gradient(135deg, #ef4444 18%, #f59e0b 52%, #ffffff 84%); }
-.approach__step:nth-child(5) { --exp-border: linear-gradient(135deg, #22c55e 15%, #facc15 48%, #38bdf8 82%); }
-/* 6. Synapse */
-.approach__step:nth-child(6) { --exp-border: #22c55e; }
-/* 7. Sakarya */
-.approach__step:nth-child(7) { --exp-border: linear-gradient(225deg, #3b82f6 30%, #ffffff 80%); }
-
-.approach__step h4 {
-  display: flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  gap: 12px !important;
-}
-
-.exp-brand {
-  width: 104px;
-  height: 44px;
-  flex: 0 0 104px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 7px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  border-radius: 14px;
-  background: #fff;
-  box-shadow:
-    0 12px 26px rgba(0, 0, 0, 0.30),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.04);
-}
-
-.exp-brand img {
-  width: 100%;
-  max-width: 88px;
-  max-height: 30px;
-  object-fit: contain;
-}
-
-.exp-brand--turkcell img { max-width: 92px; max-height: 32px; }
-.exp-brand--synapse img { max-width: 86px; max-height: 32px; }
-.exp-brand--teknofest {
-  width: 100%;
-  height: 82px;
-  flex: 0 0 100%;
-  justify-content: flex-start;
-  gap: 14px;
-  padding: 10px 16px 10px 10px;
-  border-color: rgba(255, 255, 255, 0.36);
-  background:
-    linear-gradient(135deg, #e33324 0%, #f26a2e 42%, #0b6fae 100%);
-  box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.34),
-    0 0 0 1px rgba(255, 255, 255, 0.10) inset;
-}
-
-.exp-brand--teknofest img {
-  width: 86px;
-  height: 66px;
-  max-width: none;
-  max-height: none;
-  object-fit: cover;
-  object-position: 50% 56%;
-  border-radius: 13px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 0;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
-}
-
-.exp-brand--teknofest strong {
-  display: block;
-  color: #ffffff;
-  font-family: var(--mono);
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.34);
-}
-
-.exp-brand--teknofest::before {
-  content: none;
-}
-
-.exp-brand--sau {
-  width: 100%;
-  height: 56px;
-  flex: 0 0 100%;
-  justify-content: flex-start;
-  padding: 8px 14px;
-}
-
-.exp-brand--sau img {
-  max-width: 176px;
-  max-height: 40px;
-}
-
-.exp-brand--text {
-  color: #0f172a;
-  font-family: var(--serif);
-  font-size: 18px;
-  font-style: italic;
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  text-transform: none;
-}
-
-.exp-brand--venture {
-  color: #0b0a08;
-  font-family: var(--mono);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
 /* ─── Contact Email Link ─────────────────────────────────────────────────────── */
 .conversation__email {
   position: relative;
@@ -941,7 +785,7 @@ html.theme-light .reference-card:hover {
   opacity: 0.9;
 }
 
-/* ─── AXIOM — The Iron Owl — RAG Chat Widget ─────────────────────────── */
+/* ─── AXIOM — RAG Chat Widget ──────────────────────────────────────────── */
 
 /* Toggle button: pulse ring to draw attention */
 #rag-toggle {
@@ -1020,7 +864,7 @@ html.theme-light .reference-card:hover {
   align-items: center;
   gap: 12px;
 }
-.rag-owl-icon {
+.rag-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1032,7 +876,7 @@ html.theme-light .reference-card:hover {
   color: var(--accent);
   flex-shrink: 0;
 }
-.rag-owl-icon svg { width: 18px; height: 18px; }
+.rag-icon svg { width: 18px; height: 18px; }
 .rag-title {
   display: block;
   font-family: var(--serif);
@@ -1108,22 +952,22 @@ html.theme-light .reference-card:hover {
   text-align: center;
 }
 
-/* Typing indicator with mini owl */
+/* Typing indicator with mini AXIOM glyph */
 .rag-message--typing {
   display: flex;
   gap: 6px;
   align-items: center;
   padding: 12px 14px;
 }
-.rag-typing-owl {
+.rag-typing-icon {
   display: flex;
   align-items: center;
   color: var(--accent);
   opacity: 0.7;
   margin-right: 2px;
 }
-.rag-typing-owl svg { width: 14px; height: 14px; }
-.rag-message--typing span:not(.rag-typing-owl) {
+.rag-typing-icon svg { width: 14px; height: 14px; }
+.rag-message--typing span:not(.rag-typing-icon) {
   display: inline-block;
   width: 6px;
   height: 6px;
@@ -1183,6 +1027,89 @@ html.theme-light .reference-card:hover {
 @media (max-width: 520px) {
   #rag-toggle { bottom: 20px; right: 20px; }
   #rag-panel { bottom: 90px; right: 16px; width: calc(100vw - 32px); }
+}
+
+/* The intro-gate has its own always-visible island chat (rag-gate.js) — hide
+   the corner FAB while the gate is in view so there aren't two chat entry
+   points on screen at once. */
+body.intro-gate-active #rag-toggle,
+body.intro-gate-active #rag-panel {
+  display: none;
+}
+
+/* The intro-gate is meant to read as a standalone, minimal, full-bleed
+   scene — the persistent site nav (fixed, z-index:50) would otherwise sit
+   on top of it always, since fixed positioning ignores document scroll.
+   Fade it out while the gate is in view; it reappears once you scroll into
+   the portfolio proper. */
+body.intro-gate-active .nav {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.nav {
+  transition: opacity 0.4s ease;
+}
+
+/* ─── AXIOM — floating chat island (intro-gate) ────────────────────────── */
+/* An earlier version used a near-elliptical border-radius (44-58%) for a
+   literal "island" silhouette — it looked broken in practice: an ellipse's
+   width narrows sharply away from vertical-center, so the header (title,
+   subtitle) and the input row, which both sit near the top/bottom edges,
+   got clipped and wrapped badly. Rectangular text/form content doesn't
+   reflow into an ellipse. This version keeps the "not a generic rounded
+   rectangle" character through modest, uneven per-corner radii (each
+   corner different, nothing near-circular) plus a soft warm glow, so the
+   full 420px width stays available everywhere content actually lives. */
+.axiom-island {
+  position: absolute;
+  right: clamp(16px, 4vw, 64px);
+  bottom: clamp(16px, 6vh, 96px);
+  width: min(420px, calc(100vw - 32px));
+  max-height: min(560px, calc(100vh - 160px));
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px 40px 20px 36px;
+  background: rgba(217, 167, 106, 0.07);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(217, 167, 106, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 100px rgba(217, 167, 106, 0.14);
+  animation: axiom-float 6s ease-in-out infinite;
+  overflow: hidden;
+}
+/* No reopen affordance exists for the island, so the close button is redundant */
+.axiom-island .rag-close {
+  display: none;
+}
+@keyframes axiom-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+html.theme-light .axiom-island {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(176, 124, 63, 0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 30px 80px rgba(0, 0, 0, 0.18),
+    0 0 100px rgba(176, 124, 63, 0.16);
+}
+@media (prefers-reduced-motion: reduce) {
+  .axiom-island { animation: none; }
+}
+@media (max-width: 520px) {
+  .axiom-island {
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: min(70vh, 520px);
+    border-radius: 24px 24px 0 0;
+    animation: none;
+  }
 }
 
 /* ─── Obsidian Graph ─────────────────────────────────────────────────────── */
@@ -1307,26 +1234,6 @@ html.theme-light .reference-card:hover {
 .field__tags {
   font-size: 12px !important;
   opacity: 1 !important;
-}
-
-.approach__step {
-  min-height: 270px !important;
-  padding: 32px 24px 28px !important;
-}
-
-.approach__step h4 {
-  font-family: var(--sans) !important;
-  font-size: clamp(21px, 1.55vw, 26px) !important;
-  line-height: 1.2 !important;
-  font-weight: 650 !important;
-  letter-spacing: 0 !important;
-}
-
-.approach__step p {
-  font-size: clamp(14.5px, 0.95vw, 16px) !important;
-  line-height: 1.64 !important;
-  opacity: 0.9 !important;
-  font-weight: 400 !important;
 }
 
 .manifesto__col a {
@@ -1485,10 +1392,10 @@ html.theme-light .reference-card:hover {
 }
 
 @media (max-width: 1100px) {
-  .nav {
-    display: none !important;
-  }
-
+  /* Collapse the desktop nav into a two-row mobile layout: brand + toggles on
+     row 1, horizontally scrollable section links on row 2. (Previously this
+     block set `display:none`, which hid the entire nav — brand, links and the
+     language toggle — on every viewport ≤1100px.) */
   .nav {
     grid-template-columns: 1fr auto !important;
     grid-template-rows: auto auto !important;
@@ -1542,10 +1449,6 @@ html.theme-light .reference-card:hover {
 
   .manifesto__img-col {
     grid-row: span 2;
-  }
-
-  .approach__steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
@@ -1696,7 +1599,6 @@ html.theme-light .reference-card:hover {
     gap: 8px !important;
   }
 
-  .approach__steps,
   .references__grid {
     grid-template-columns: 1fr !important;
   }
@@ -1772,11 +1674,6 @@ html.theme-light .reference-card:hover {
     max-width: 280px;
   }
 
-  .hero__proof {
-    justify-content: flex-start;
-    max-width: 300px;
-  }
-
   .hero__signoff::before {
     left: -10px;
   }
@@ -1818,11 +1715,6 @@ html.theme-light .reference-card:hover {
     line-height: 1.58 !important;
   }
 
-  .approach__step {
-    min-height: auto !important;
-    padding: 28px 22px 26px !important;
-  }
-
   .reference-card {
     padding: 26px !important;
   }
@@ -1834,5 +1726,33 @@ html.theme-light .reference-card:hover {
   .footer__row {
     gap: 10px !important;
     letter-spacing: 0.12em !important;
+  }
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────────
+   Respect the user's OS-level "reduce motion" setting. Neutralises the
+   decorative infinite animations (spinning badges, sparkles, glitter borders,
+   pulse rings, typewriter blink, drip line, RAG typing/fade) and forces the
+   scroll-reveal blocks visible so content never depends on motion. The
+   experience carousel autoplay is disabled separately in its inline script. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* GSAP sets the reveal opacity/transform inline; override so content is
+     visible immediately instead of stuck at opacity:0 / translated. */
+  .reveal-text {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero__canvas {
+    opacity: 1 !important;
   }
 }
