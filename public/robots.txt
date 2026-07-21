@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /projects.html
+
+Sitemap: https://canozyasar.dev/sitemap.xml

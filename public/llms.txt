@@ -1,0 +1,55 @@
+# Muhammed Can Özyaşar
+
+> YZ/ML Araştırmacısı & Backend Geliştirici. TÜBİTAK destekli araştırma
+> projeleri yürütüyor; PyTorch ile derin öğrenme, RAG (Retrieval-Augmented
+> Generation) ve üretim ortamında çalışan yapay zeka sistemleri üzerine
+> uygulamalı çalışıyor. Sakarya Üniversitesi Bilgisayar Mühendisliği
+> öğrencisi.
+
+Bu site kişisel bir araştırma portföyüdür ("Saha Defteri"). İçerik hem
+insan ziyaretçiler hem de AI arama/answer engine'leri için tasarlanmıştır;
+sayfadaki tüm metin sunucu tarafında (JS'e gerek kalmadan) doğrudan HTML
+içinde mevcuttur.
+
+## Kim
+
+- **İsim:** Muhammed Can Özyaşar
+- **Unvan:** YZ/ML Araştırmacısı, TÜBİTAK 2209-A Proje Yürütücüsü, TÜBİTAK
+  2247-C STAR Araştırmacısı
+- **Konum:** Sakarya / İzmir / İstanbul, Türkiye
+- **E-posta:** can.ozyasarr@gmail.com
+- **GitHub:** https://github.com/can-ozyasar
+- **LinkedIn:** https://linkedin.com/in/muhammed-can-ozyasar
+- **Medium:** https://medium.com/@canozyasar35
+
+## Ne yapıyor
+
+- **Yapay zeka / derin öğrenme:** PyTorch ve scikit-learn ile CNN/ResNet-18
+  sınıflandırıcılar, LSTM ve Random Forest regresyon modelleri, zaman
+  serisi tahmini, Bayesian hiperparametre optimizasyonu.
+- **RAG & LLM sistemleri:** Doküman ve embedding'leri güvenilir cevaplara
+  bağlayan RAG pipeline'ları; Google Gemini API, Qdrant vektör veritabanı,
+  prompt mühendisliği, yapılandırılmış LLM çıktısı. Bu sitenin kendisi
+  canlı bir örnek: sağ alttaki AXIOM asistanı, gerçek bir RAG backend'i
+  (FastAPI + Gemini) üzerinden CV ve proje arşivini kullanarak soru
+  cevaplıyor.
+- **Backend mühendisliği:** ASP.NET Core (.NET 8), Spring Boot, Node.js,
+  FastAPI ile REST API'ler ve ML servis eden backend sistemleri.
+- **Araştırma:** TÜBİTAK 2209-A ve 2247-C STAR programları kapsamında
+  gizlilik odaklı tıbbi görüntü sınıflandırma ve lityum-iyon batarya
+  sağlık durumu (SoH/SoC) tahmini üzerine yürütülen projeler.
+
+## Sayfalar
+
+- `/` — Ana portföy: özet, beceriler, projeler, deneyim, referanslar,
+  iletişim.
+- `/blog.html` — Applied AI, derin öğrenme, RAG ve backend mühendisliği
+  üzerine teknik yazılar.
+- `/hr.html` — İşe alımcılar için kanıt odaklı özet profil.
+
+## Canlı soru-cevap
+
+`/` adresindeki AXIOM sohbet asistanı, bu sayfadaki bilgilerin ötesinde
+CV ve proje arşivine dayalı gerçek zamanlı, gerekçeli cevaplar üretir.
+Backend endpoint'i `/api/chat` (POST, `{"question": "..."}`) — yalnızca
+site içeriğiyle sınırlı, oran sınırlamalı ve girdi/çıktı doğrulamalı.
