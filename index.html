@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=Caveat:wght@500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="/src/styles.css" />
   <link rel="stylesheet" href="/src/overrides.css" />
@@ -53,43 +53,47 @@
       </div>
     </section>
 
-    <!-- HERO — kapak sayfası: künye, özet ve Şekil 1 -->
+    <!-- HERO — poster kapak: dev isim + bantlanmış saha fotoğrafı -->
     <section class="hero" id="hero" aria-label="Giriş">
-      <div class="hero__masthead">
-        <span data-en="Field Notebook — Vol. I">Saha Defteri — Cilt I</span>
-        <span class="hero__masthead-mid" data-en="Applied AI/ML · Research → Production">Uygulamalı YZ/ML ·
-          Araştırma → Üretim</span>
-        <span>2023 —</span>
+      <div class="ink-dust" aria-hidden="true"></div>
+      <div class="hero__stage">
+        <h1 class="hero__title">
+          <span class="hero__line">Muhammed</span>
+          <span class="hero__line hero__line--indent"><span class="circled">Can<svg viewBox="0 0 200 90"
+                preserveAspectRatio="none" aria-hidden="true">
+                <path pathLength="100"
+                  d="M28,66 C10,52 14,26 48,15 C88,3 158,5 179,25 C196,42 179,66 132,77 C88,86 47,84 30,70 C22,63 26,55 36,49" />
+                <path class="circled__again" pathLength="100"
+                  d="M33,63 C18,51 21,29 52,19 C88,8 152,10 172,27 C186,41 172,61 128,71 C90,79 52,77 35,65" />
+                <path class="circled__comet" pathLength="100"
+                  d="M28,66 C10,52 14,26 48,15 C88,3 158,5 179,25 C196,42 179,66 132,77 C88,86 47,84 30,70 C22,63 26,55 36,49" />
+                <path class="circled__comet circled__comet--gold" pathLength="100"
+                  d="M28,66 C10,52 14,26 48,15 C88,3 158,5 179,25 C196,42 179,66 132,77 C88,86 47,84 30,70 C22,63 26,55 36,49" />
+                <g class="circled__splat">
+                  <circle cx="30" cy="52" r="2.6" style="--sx:-11px;--sy:7px" />
+                  <circle cx="36" cy="47" r="1.9" style="--sx:-7px;--sy:-9px" />
+                  <circle cx="42" cy="52" r="1.5" style="--sx:5px;--sy:11px" />
+                </g>
+              </svg></span></span>
+          <span class="hero__line">Özyaşar</span>
+        </h1>
+
+        <figure class="hero-snap">
+          <img src="/images/pic/pic9.jpeg" alt="Muhammed Can Özyaşar — Turkcell Global Bilgi" width="1296"
+            height="972" fetchpriority="high" />
+          <figcaption data-en="field record — Turkcell, summer &rsquo;25">saha kaydı — Turkcell, yaz '25</figcaption>
+        </figure>
       </div>
 
-      <h1 class="hero__title">
-        Muhammed <span class="circled">Can<svg viewBox="0 0 200 90" preserveAspectRatio="none" aria-hidden="true">
-            <path pathLength="100"
-              d="M28,66 C10,52 14,26 48,15 C88,3 158,5 179,25 C196,42 179,66 132,77 C88,86 47,84 30,70 C22,63 26,55 36,49" />
-          </svg></span><br />Özyaşar
-      </h1>
-
-      <p class="hero__abstract"
-        data-en="&lt;strong&gt;Abstract —&lt;/strong&gt; Computer Engineering student at Sakarya University. I train models in two TÜBİTAK-funded research projects, then wire those models into real backends. This site is not a showcase but &lt;em&gt;a working sample&lt;/em&gt;: the assistant in the corner is the RAG system I built myself.">
-        <strong>Özet —</strong> Sakarya Üniversitesi'nde bilgisayar mühendisliği okuyorum. TÜBİTAK destekli iki
-        araştırma projesinde model eğitiyor, sonra o modelleri gerçek backend'lere bağlıyorum. Bu site de bir vitrin
-        değil, <em>çalışan bir örnek</em>: köşedeki asistan, kendi kurduğum RAG sisteminin ta kendisi.</p>
-
-      <div class="hero__actions" aria-label="Hızlı bağlantılar">
-        <a href="/CV_MCanOzyasar.pdf" download data-en="Full text — CV (PDF)">Tam Metin — CV (PDF)</a>
-        <a href="#projeler" data-en="Findings ↓">Bulgular ↓</a>
-        <a href="https://github.com/can-ozyasar" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="#iletisim" data-en="Contact">İletişim</a>
+      <div class="hero__meta">
+        <p class="hero__tagline"
+          data-en="Applied AI/ML — I train models, then keep them alive in production.">Uygulamalı YZ/ML —
+          modeli eğitirim, sonra onu üretimde yaşatırım.</p>
+        <div class="hero__actions" aria-label="Hızlı bağlantılar">
+          <a href="/CV_MCanOzyasar.pdf" download data-en="Full text — CV (PDF)">Tam Metin — CV (PDF)</a>
+          <a href="#projeler" data-en="Findings ↓">Bulgular ↓</a>
+        </div>
       </div>
-
-      <ul class="hero__proof" aria-label="Kayıtlar">
-        <li data-en="&lt;b&gt;84%&lt;/b&gt; federated accuracy · 81% baseline — Fig. 3.4"><b>%84</b> federe doğruluk ·
-          baseline %81 — ŞEK. 3.4</li>
-        <li data-en="&lt;b&gt;2×&lt;/b&gt; TÜBİTAK — 2209-A lead · STAR researcher"><b>2×</b> TÜBİTAK — 2209-A
-          yürütücü · STAR araştırmacı</li>
-        <li data-en="RAG assistant &lt;b&gt;live now&lt;/b&gt; — bottom right corner">RAG asistan <b>şu an canlı</b> —
-          sağ alt köşe</li>
-      </ul>
 
       <div class="hero__bottom">
         <span class="hero__scroll" aria-hidden="true">
@@ -107,13 +111,16 @@
 
       <!-- 1 — GİRİŞ -->
       <section class="manifesto" id="hakkimda" aria-label="Hakkımda">
-        <p class="section-tag reveal-text" data-en="1 — Introduction">1 — Giriş</p>
-        <p class="manifesto__lede reveal-text"
+        <p class="section-tag reveal-text"><span data-en="1 — Introduction">1 — Giriş</span><svg class="ink-draw section-tag__stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2,8 C50,3 95,10 145,6 C195,2 245,9 298,5" /></svg></p>
+        <p class="manifesto__lede reveal-text ink-swipe"
           data-en="Training the model is half the job; keeping it &lt;em&gt;alive in production&lt;/em&gt; is the other half.">
           Modeli eğitmek işin yarısı; onu <em>üretimde yaşatmak</em> öteki yarısı.</p>
         <div class="manifesto__grid manifesto__grid--with-img">
           <div class="manifesto__img-col reveal-text">
-            <img src="/images/pic/pic4.jpeg" alt="Muhammed Can Özyaşar" class="about-img" loading="lazy" />
+            <figure class="about-snap">
+              <img src="/images/pic/pic4.jpeg" alt="Muhammed Can Özyaşar — sunum sırasında" loading="lazy" />
+              <figcaption data-en="field record — on stage">saha kaydı — sahnede</figcaption>
+            </figure>
           </div>
           <div class="manifesto__col reveal-text">
             <h3 data-en="Who I am">Ben Kimim</h3>
@@ -146,7 +153,7 @@
 
       <!-- 2 — YÖNTEM -->
       <section class="practice" id="beceriler" aria-label="Beceriler">
-        <p class="section-tag reveal-text" data-en="2 — Methods">2 — Yöntem</p>
+        <p class="section-tag reveal-text"><span data-en="2 — Methods">2 — Yöntem</span><svg class="ink-draw section-tag__stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2,8 C50,3 95,10 145,6 C195,2 245,9 298,5" /></svg></p>
         <ol class="practice__list">
           <li class="practice__row reveal-text">
             <span class="practice__num">2.1</span>
@@ -156,7 +163,7 @@
               PyTorch ve scikit-learn ile pratik ML sistemleri geliştiriyorum: CNN/ResNet-18 sınıflandırıcılar, LSTM ve
               Random Forest regresyon modelleri, FedAvg tabanlı federe öğrenme pipeline'ları, zaman serisi özellik
               çıkarımı ve Bayesian hiperparametre optimizasyonu.</p>
-            <span class="practice__tags">PyTorch<br />scikit-learn<br />ResNet · LSTM</span>
+            <div class="practice__tags"><span>PyTorch</span><span>scikit-learn</span><span>ResNet · LSTM</span></div>
           </li>
           <li class="practice__row reveal-text">
             <span class="practice__num">2.2</span>
@@ -166,7 +173,7 @@
               Dokümanları, embedding'leri ve vektör aramayı güvenilir cevaplara bağlayan RAG pipeline'ları
               tasarlıyorum. Gemini API, OpenAI API, Qdrant, prompt mühendisliği, anlamsal arama ve yapılandırılmış LLM
               çıktı akışlarında uygulamalı deneyime sahibim.</p>
-            <span class="practice__tags">Gemini API<br />Qdrant<br />RAG · Embedding</span>
+            <div class="practice__tags"><span>Gemini API</span><span>Qdrant</span><span>RAG · Embedding</span></div>
           </li>
           <li class="practice__row reveal-text">
             <span class="practice__num">2.3</span>
@@ -176,7 +183,7 @@
               ASP.NET Core (.NET 8), Spring Boot, Node.js ve FastAPI ile REST API'ler ve ML servis eden backend'ler
               geliştiriyorum. Temiz servis sınırları, veritabanı destekli iş akışları, Entity Framework, API güvenliği ve
               sürdürülebilir dağıtım alışkanlıklarına odaklanıyorum.</p>
-            <span class="practice__tags">.NET 8<br />Spring Boot<br />Node.js · FastAPI</span>
+            <div class="practice__tags"><span>.NET 8</span><span>Spring Boot</span><span>Node.js · FastAPI</span></div>
           </li>
           <li class="practice__row reveal-text">
             <span class="practice__num">2.4</span>
@@ -186,16 +193,16 @@
               Python'u veri ön işleme, NumPy/Pandas analizi, Matplotlib görselleştirme, kayan pencere özellik çıkarımı ve
               akademik literatür sentezi için birincil dil olarak kullanıyorum. Ürün katmanı gerektirdiğinde TypeScript,
               Java, C# ve SQL ile de çalışıyorum.</p>
-            <span class="practice__tags">Python<br />NumPy · Pandas<br />SQL · TypeScript</span>
+            <div class="practice__tags"><span>Python</span><span>NumPy · Pandas</span><span>SQL · TypeScript</span></div>
           </li>
         </ol>
       </section>
 
       <!-- 3 — BULGULAR -->
       <section class="field" id="projeler" aria-label="Projeler">
-        <p class="section-tag reveal-text" data-en="3 — Findings">3 — Bulgular</p>
+        <p class="section-tag reveal-text"><span data-en="3 — Findings">3 — Bulgular</span><svg class="ink-draw section-tag__stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2,8 C50,3 95,10 145,6 C195,2 245,9 298,5" /></svg></p>
         <div class="field__head">
-          <h2 class="field__heading reveal-text"
+          <h2 class="field__heading reveal-text ink-swipe"
             data-en="Nine figures; each one a &lt;em&gt;running&lt;/em&gt; system.">Dokuz şekil; her biri
             <em>çalışan</em> bir sistem.
           </h2>
@@ -386,8 +393,9 @@
 
       <!-- 4 — DENEYİM KAYITLARI -->
       <section class="approach" id="deneyim" aria-label="Deneyim">
-        <p class="section-tag reveal-text" data-en="4 — Records: Experience">4 — Kayıtlar: Deneyim</p>
-        <p class="approach__intro reveal-text"
+        <div class="ink-dust" aria-hidden="true"></div>
+        <p class="section-tag reveal-text"><span data-en="4 — Records: Experience">4 — Kayıtlar: Deneyim</span><svg class="ink-draw section-tag__stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2,8 C50,3 95,10 145,6 C195,2 245,9 298,5" /></svg></p>
+        <p class="approach__intro reveal-text ink-swipe"
           data-en="Different roles, one singular focus: carrying &lt;em&gt;applied AI research&lt;/em&gt; into scalable production.">
           Farklı roller, tek bir ortak hedef: <em>uygulamalı YZ araştırmalarını</em> ölçeklenebilir gerçek dünyaya
           taşımak.</p>
@@ -397,6 +405,44 @@
           aria-roledescription="karusel / carousel"
           aria-label="Deneyim kartları — gezinmek için sol/sağ ok tuşlarını kullanın">
           <div class="exp-carousel-clip">
+            <svg class="ink-draw ink-rope" viewBox="0 0 1200 20" preserveAspectRatio="none" aria-hidden="true">
+              <path id="rope-line" pathLength="100"
+                d="M0,11 C150,4 300,16 450,10 C600,4 750,17 900,9 C1050,3 1150,13 1200,8" />
+              <!-- İp üzerinde kayan şekiller: karusel 4 sn'de bir kart değiştirir,
+                   her şekil de tam 4 sn'de baştan sona gider — aynı ritimde. -->
+              <g class="rope-shape rope-shape--dot">
+                <circle r="3.2" />
+                <animateMotion dur="4s" begin="1.7s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#rope-line" />
+                </animateMotion>
+                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.92;1" dur="4s"
+                  begin="1.7s" repeatCount="indefinite" />
+              </g>
+              <g class="rope-shape rope-shape--square">
+                <rect x="-3" y="-3" width="6" height="6" />
+                <animateMotion dur="4s" begin="2.7s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#rope-line" />
+                </animateMotion>
+                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.92;1" dur="4s"
+                  begin="2.7s" repeatCount="indefinite" />
+              </g>
+              <g class="rope-shape rope-shape--tri">
+                <polygon points="4,0 -2.4,3 -2.4,-3" />
+                <animateMotion dur="4s" begin="3.7s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#rope-line" />
+                </animateMotion>
+                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.92;1" dur="4s"
+                  begin="3.7s" repeatCount="indefinite" />
+              </g>
+              <g class="rope-shape rope-shape--diamond">
+                <polygon points="0,-3.6 3.6,0 0,3.6 -3.6,0" />
+                <animateMotion dur="4s" begin="4.7s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#rope-line" />
+                </animateMotion>
+                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.92;1" dur="4s"
+                  begin="4.7s" repeatCount="indefinite" />
+              </g>
+            </svg>
             <div class="exp-carousel-track" id="exp-track">
             <!-- CARDS -->
             <div class="exp-card" data-index="0">
@@ -462,6 +508,21 @@
           </div>
         </div>
 
+        <!-- Gezinme: sol/sağ oklar + dosya sekmesi noktaları (JS ile doldurulur) -->
+        <div class="exp-nav" id="exp-nav">
+          <button type="button" class="exp-nav__arrow exp-nav__arrow--prev" aria-label="Önceki kayıt">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15,4.5 C11,8 7,10.3 4.5,12 C7,13.7 11,16 15,19.5" />
+            </svg>
+          </button>
+          <div class="exp-dots" id="exp-dots" aria-label="Kayıtlar arasında geç"></div>
+          <button type="button" class="exp-nav__arrow exp-nav__arrow--next" aria-label="Sonraki kayıt">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9,4.5 C13,8 17,10.3 19.5,12 C17,13.7 13,16 9,19.5" />
+            </svg>
+          </button>
+        </div>
+
         <script>
         (function() {
           const scene = document.getElementById('exp-scene');
@@ -492,6 +553,29 @@
           let dragDelta = 0;
           let autoTimer = null;
 
+          // Gezinme: büyük ok düğmeleri + tıklanabilir dosya sekmesi noktaları.
+          // Sürükleme ve ok tuşları hâlâ çalışır; bu, "seçimi" görünür ve
+          // dokunması kolay bir hedef hâline getiren asıl kontrol katmanı.
+          const nav = document.getElementById('exp-nav');
+          const dotsHost = document.getElementById('exp-dots');
+          const prevBtn = nav && nav.querySelector('.exp-nav__arrow--prev');
+          const nextBtn = nav && nav.querySelector('.exp-nav__arrow--next');
+          const dots = origCards.map((card, i) => {
+            const title = card.querySelector('.exp-card__title');
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'exp-dot';
+            dot.setAttribute('aria-label', title ? title.textContent : `Kayıt ${i + 1}`);
+            dotsHost && dotsHost.appendChild(dot);
+            dot.addEventListener('click', () => {
+              stopAuto();
+              current = N + i;
+              goTo(current, true);
+              startAuto();
+            });
+            return dot;
+          });
+
           function step() {
             const card = track.children[0];
             return card ? card.offsetWidth + 28 : 0; // 28 = gap
@@ -504,6 +588,13 @@
             track.style.transition = animate ? 'transform 0.65s cubic-bezier(0.4,0,0.2,1)' : 'none';
             track.style.transform = `translateX(${-offset}px)`;
             updateClasses(idx);
+            const activeDot = ((idx % N) + N) % N;
+            dots.forEach((d, i) => {
+              const isActive = i === activeDot;
+              d.classList.toggle('is-active', isActive);
+              if (isActive) d.setAttribute('aria-current', 'true');
+              else d.removeAttribute('aria-current');
+            });
           }
 
           function updateClasses(idx) {
@@ -527,9 +618,9 @@
 
           function startAuto() {
             stopAuto();
-            // A portfolio timeline should remain where the visitor leaves it.
-            // Navigation still works through drag, touch and arrow keys.
             if (prefersReducedMotion) return;
+            // İp 4 saniyede bir kendi kayar; hover/odak/dokunuşta durur.
+            autoTimer = setInterval(() => advance(1), 4000);
           }
           function stopAuto() { clearInterval(autoTimer); }
 
@@ -575,12 +666,21 @@
           scene.addEventListener('mouseleave', startAuto);
           scene.addEventListener('focusin', stopAuto);
           scene.addEventListener('focusout', startAuto);
+          if (nav) {
+            nav.addEventListener('mouseenter', stopAuto);
+            nav.addEventListener('mouseleave', startAuto);
+            nav.addEventListener('focusin', stopAuto);
+            nav.addEventListener('focusout', startAuto);
+          }
 
           // Keyboard navigation for the focusable carousel.
           scene.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft')  { e.preventDefault(); advance(-1); }
             if (e.key === 'ArrowRight') { e.preventDefault(); advance(1); }
           });
+
+          prevBtn && prevBtn.addEventListener('click', () => { stopAuto(); advance(-1); startAuto(); });
+          nextBtn && nextBtn.addEventListener('click', () => { stopAuto(); advance(1); startAuto(); });
 
           // Reinit on resize
           window.addEventListener('resize', () => goTo(current, false));
@@ -590,25 +690,30 @@
 
       <!-- 5 — İLGİLİ ÇALIŞMALAR -->
       <section class="manifesto" id="makaleler" aria-label="Makaleler ve notlar">
-        <p class="section-tag reveal-text" data-en="5 — Related Work">5 — İlgili Çalışmalar</p>
-        <p class="manifesto__lede reveal-text"
+        <p class="section-tag reveal-text"><span data-en="5 — Related Work">5 — İlgili Çalışmalar</span><svg class="ink-draw section-tag__stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2,8 C50,3 95,10 145,6 C195,2 245,9 298,5" /></svg></p>
+        <p class="manifesto__lede reveal-text ink-swipe"
           data-en="Research notes, paper reviews &amp; &lt;em&gt;technical writing.&lt;/em&gt;">Araştırma notları,
           makale incelemeleri ve <em>teknik yazılar.</em></p>
         <div class="manifesto__grid">
           <div class="manifesto__col reveal-text">
             <h3 data-en="Medium Posts">Medium Yazıları</h3>
-            <p><a
-                href="https://medium.com/@canozyasar35/federated-learning-nedir-veri-gizlili%C4%9Finde-yeni-%C3%A7a%C4%9F-86d750b8ad98"
-                target="_blank" rel="noopener" data-en="Federated Learning: The New Era in Data Privacy ↗">Federated
-                Learning Nedir? Veri Gizliliğinde Yeni Çağ ↗</a></p>
-            <p><a
-                href="https://medium.com/@canozyasar35/hibernate-orm-object-relational-mapping-nedir-temel-%C3%B6zellikler-f07aba72407c"
-                target="_blank" rel="noopener" data-en="Hibernate (ORM) Basics ↗">Hibernate (ORM) Nedir? Temel Özellikler ↗</a></p>
-            <p><a
-                href="https://medium.com/@canozyasar35/slaytlar%C4%B1n-%C3%B6tesinde-bir-e-ticaret-yolculu%C4%9Fu-sisterslab-x-hepsiburadayar%C4%B1nlara-s%C3%B6z-program%C4%B1-1cd92c753840"
-                target="_blank" rel="noopener"
-                data-en="SistersLab × Hepsiburada — Entrepreneurship Experience ↗">SistersLab × Hepsiburada —
-                Girişimcilik Deneyimim ↗</a></p>
+            <ol class="citations">
+              <li><a
+                  href="https://medium.com/@canozyasar35/federated-learning-nedir-veri-gizlili%C4%9Finde-yeni-%C3%A7a%C4%9F-86d750b8ad98"
+                  target="_blank" rel="noopener"
+                  data-en="Özyaşar, M. C. — &lt;i&gt;Federated Learning: The New Era in Data Privacy&lt;/i&gt; ↗">Özyaşar,
+                  M. C. — <i>Federated Learning Nedir? Veri Gizliliğinde Yeni Çağ</i> ↗</a></li>
+              <li><a
+                  href="https://medium.com/@canozyasar35/hibernate-orm-object-relational-mapping-nedir-temel-%C3%B6zellikler-f07aba72407c"
+                  target="_blank" rel="noopener"
+                  data-en="Özyaşar, M. C. — &lt;i&gt;Hibernate (ORM) Basics&lt;/i&gt; ↗">Özyaşar, M. C. —
+                  <i>Hibernate (ORM) Nedir? Temel Özellikler</i> ↗</a></li>
+              <li><a
+                  href="https://medium.com/@canozyasar35/slaytlar%C4%B1n-%C3%B6tesinde-bir-e-ticaret-yolculu%C4%9Fu-sisterslab-x-hepsiburadayar%C4%B1nlara-s%C3%B6z-program%C4%B1-1cd92c753840"
+                  target="_blank" rel="noopener"
+                  data-en="Özyaşar, M. C. — &lt;i&gt;SistersLab × Hepsiburada: Entrepreneurship Experience&lt;/i&gt; ↗">Özyaşar,
+                  M. C. — <i>SistersLab × Hepsiburada: Girişimcilik Deneyimim</i> ↗</a></li>
+            </ol>
           </div>
           <div class="manifesto__col reveal-text">
             <h3 data-en="Obsidian Research Notes">Obsidian Araştırma Notları</h3>
@@ -629,7 +734,7 @@
 
       <!-- 6 — REFERANSLAR -->
       <section class="references" id="referanslar" aria-label="Referanslar">
-        <p class="section-tag reveal-text" data-en="6 — References">6 — Referanslar</p>
+        <p class="section-tag reveal-text"><span data-en="6 — References">6 — Referanslar</span><svg class="ink-draw section-tag__stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2,8 C50,3 95,10 145,6 C195,2 245,9 298,5" /></svg></p>
         <p class="references__note reveal-text"
           data-en="Real professional references from academic, industry and startup contexts. Contact details can be shared when requested.">
           Akademi, sektör ve girişim ekosisteminden gerçek profesyonel referanslar. İletişim bilgileri talep edildiğinde
@@ -661,15 +766,21 @@
 
       <!-- 7 — SONUÇ -->
       <section class="conversation" id="iletisim" aria-label="İletişim">
-        <p class="section-tag reveal-text" data-en="7 — Conclusion &amp; Contact">7 — Sonuç &amp; İletişim</p>
-        <h2 class="conversation__headline reveal-text"
+        <p class="section-tag reveal-text"><span data-en="7 — Conclusion &amp; Contact">7 — Sonuç &amp; İletişim</span><svg class="ink-draw section-tag__stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M2,8 C50,3 95,10 145,6 C195,2 245,9 298,5" /></svg></p>
+        <h2 class="conversation__headline reveal-text ink-swipe"
           data-en="If you need someone who carries research into production: &lt;em&gt;write.&lt;/em&gt;">Aradığınız,
           araştırmayı üretime taşıyan biriyse: <em>yazın.</em></h2>
         <div class="conversation__row">
-          <a href="mailto:can.ozyasarr@gmail.com" class="conversation__email reveal-text" aria-label="E-posta gönder">
-            can.ozyasarr@gmail.com
-            <span aria-hidden="true">↗</span>
-          </a>
+          <div class="conversation__contact reveal-text">
+            <svg class="ink-arrow ink-draw" viewBox="0 0 140 96" aria-hidden="true">
+              <path pathLength="100" d="M128,6 C126,42 96,66 40,68" />
+              <path pathLength="100" d="M58,52 L36,68 L60,82" />
+            </svg>
+            <a href="mailto:can.ozyasarr@gmail.com" class="conversation__email" aria-label="E-posta gönder">
+              can.ozyasarr@gmail.com
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
           <div class="conversation__col reveal-text">
             <h5 data-en="Find me online">Çevrimiçi Bul</h5>
             <div class="social-links">
@@ -730,6 +841,7 @@
   <script type="module" src="/src/i18n.js"></script>
   <script type="module" src="/src/rag-gate.js"></script>
   <script type="module" src="/src/rag.js"></script>
+  <script type="module" src="/src/ink-fx.js"></script>
 </body>
 
 </html>

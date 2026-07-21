@@ -16,6 +16,25 @@ html[lang="en"] .lang-tr { display: none !important; }
    (index.html satır içi script'i 28px gap'e göre adım hesaplar; değiştirme)
    --------------------------------------------------------------------------- */
 
+/* Deneyim arkası: defter karalamaları — spiral, yıldız, ok, zikzak... */
+.approach {
+  position: relative;
+  isolation: isolate;
+}
+
+.approach::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='620'%20height='440'%3E%3Cg%20fill='none'%20stroke='%232547c0'%20stroke-width='2'%20stroke-linecap='round'%20opacity='0.09'%3E%3Cpath%20d='M84,70%20c-14,-2%20-20,-16%20-8,-24%20c12,-8%2028,2%2024,16%20c-4,16%20-26,20%20-36,8'/%3E%3Cpath%20d='M300,60%20l0,36%20M282,78%20l36,0%20M287,65%20l26,26%20M313,65%20l-26,26'/%3E%3Cpath%20d='M470,60%20c30,10%2044,34%2040,62%20m0,0%20l-10,-14%20m10,14%20l12,-12'/%3E%3Cpath%20d='M120,300%20l16,-18%2016,18%2016,-18%2016,18'/%3E%3Cpath%20d='M396,322%20l12,14%2026,-30'/%3E%3Cpath%20d='M500,250%20a20,20%200%201,1%2040,0%20a20,20%200%201,1%20-42,2'/%3E%3Cpath%20d='M240,196%20l28,0%20M254,182%20l0,28'/%3E%3Cpath%20d='M180,150%20c20,-14%2040,-14%2060,0'/%3E%3C/g%3E%3Cg%20fill='none'%20stroke='%23eab308'%20stroke-width='5'%20stroke-linecap='round'%20opacity='0.16'%3E%3Cpath%20d='M520,120%20l44,-10'/%3E%3Cpath%20d='M90,380%20l40,6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 620px 440px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+}
+
+.approach .ink-dust { z-index: -1; }
+
 .approach__intro {
   font-family: var(--serif);
   font-weight: 500;
@@ -45,6 +64,37 @@ html[lang="en"] .lang-tr { display: none !important; }
 .exp-carousel-clip {
   overflow: hidden;
   position: relative;
+  padding-top: 26px;
+}
+
+/* kayıtların asıldığı mürekkep ipi — bölüm göründüğünde kendini çizer */
+.ink-rope {
+  position: absolute;
+  top: 12px;
+  left: -1%;
+  width: 102%;
+  height: 20px;
+  color: var(--accent);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.ink-rope path { stroke-width: 2.4; }
+
+.ink-rope.is-inked path { animation-duration: 1.3s; }
+
+/* ip üzerinde kayan şekiller — karuselin 4 sn'lik ritmiyle senkron,
+   her biri farklı renk/biçimde baştan sona tam 4 sn'de gider */
+.rope-shape { opacity: 0; }
+
+.rope-shape--dot circle { fill: #2547c0; }
+.rope-shape--square rect { fill: #0f7a5c; }
+.rope-shape--tri polygon { fill: #9c6b10; }
+.rope-shape--diamond polygon { fill: #c8371f; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rope-shape { display: none; }
+  .approach::before { opacity: 0.6; }
 }
 
 .exp-carousel-track {
@@ -75,23 +125,44 @@ html[lang="en"] .lang-tr { display: none !important; }
 
 /* Kart = defterden bir fiş: beyaz yüzey, mono künye, mürekkep çizgisi */
 .exp-card {
+  position: relative;
+  margin-top: 12px;
   flex: 0 0 clamp(280px, 30vw, 350px);
   background: var(--surface);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   padding: 24px 22px 20px;
   opacity: 0.55;
-  transform: scale(0.96);
+  transform: scale(0.96) rotate(var(--tilt, 0deg));
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease),
     box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
   user-select: none;
 }
 
+.exp-card:nth-child(odd) { --tilt: 0.8deg; }
+.exp-card:nth-child(even) { --tilt: -0.7deg; }
+
+/* her fiş ipe sarı bantla asılı */
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 38px;
+  height: 15px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: rgba(255, 216, 77, 0.55);
+  border: 1px solid rgba(156, 107, 16, 0.14);
+  box-shadow: 0 1px 2px rgba(26, 39, 51, 0.1);
+}
+
+.exp-card:nth-child(even)::before { transform: translateX(-50%) rotate(2.5deg); }
+
 .exp-card.exp-card--near { opacity: 0.8; }
 
 .exp-card.exp-card--active {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) rotate(0deg);
   border-color: var(--fg);
   box-shadow: var(--shadow);
 }
@@ -165,6 +236,92 @@ html[lang="en"] .lang-tr { display: none !important; }
 @media (max-width: 900px) {
   .exp-card { flex: 0 0 clamp(260px, 75vw, 320px); }
   .exp-fade { width: 8%; }
+}
+
+/* --- Gezinme: sol/sağ ok düğmeleri + dosya sekmesi noktaları --------------- */
+/* Sürükleme/ok tuşu tek başına fark edilmiyordu; bu, görünür ve dokunması
+   kolay asıl "seçim" kontrolüdür. */
+
+.exp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 3vw, 28px);
+  margin-top: 8px;
+}
+
+.exp-nav__arrow {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid var(--fg);
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.exp-nav__arrow svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.exp-nav__arrow:hover,
+.exp-nav__arrow:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow);
+}
+
+.exp-nav__arrow:active { transform: translateY(0) scale(0.97); }
+
+.exp-dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 60vw;
+}
+
+.exp-dot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--rule);
+  background: var(--surface);
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.exp-dot:hover { border-color: var(--fg); transform: scale(1.2); }
+
+.exp-dot.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 4px var(--accent-dim);
+}
+
+@media (max-width: 640px) {
+  .exp-nav { gap: 12px; }
+  .exp-nav__arrow { width: 42px; height: 42px; }
+  .exp-dots { max-width: 68vw; gap: 8px; }
+  .exp-dot { width: 10px; height: 10px; }
 }
 
 /* ---------------------------------------------------------------------------
