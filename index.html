@@ -4,17 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
-  <meta name="theme-color" content="#0b0a08" />
+  <meta name="theme-color" content="#f7f8f6" />
   <title>Muhammed Can Özyaşar — YZ/ML Araştırmacısı &amp; Backend Geliştirici</title>
   <meta name="description"
     content="YZ/ML Araştırmacısı, TÜBİTAK Proje Yürütücüsü ve ML odaklı backend geliştirici. Federe öğrenme, RAG pipeline ve üretim YZ sistemleri." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <!-- Apply the saved theme before first paint to avoid a flash of the wrong theme. -->
-  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.classList.add('theme-light')}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="/src/styles.css" />
   <link rel="stylesheet" href="/src/overrides.css" />
@@ -26,7 +24,7 @@
   <header class="nav">
     <a href="#hero" class="nav__brand" aria-label="Ana sayfa">
       <span class="nav__mark" aria-hidden="true"></span>
-      <span>Canoz</span>
+      <span>Özyaşar, M. C.</span>
     </a>
     <nav class="nav__links" aria-label="Ana menü">
       <a href="#hakkimda" data-en="About">Hakkımda</a>
@@ -41,13 +39,12 @@
     </nav>
     <div class="nav__toggles">
       <button id="lang-toggle" aria-label="Dili değiştir">EN</button>
-      <button id="theme-toggle" type="button" aria-label="Açık temaya geç"></button>
     </div>
   </header>
 
   <main>
     <!-- INTRO GATE — AXIOM 3D character + floating chat island -->
-    <section class="intro-gate" id="intro-gate" aria-label="AXIOM — giriş">
+    <section class="intro-gate" id="intro-gate" aria-label="AXIOM — giriş" hidden>
       <a href="#hero" class="intro-gate__skip" data-en="Skip intro">Girişi atla</a>
       <img class="intro-gate__poster" src="/images/caracter/canoz.jpeg" alt="" aria-hidden="true" />
       <div class="intro-gate__stage"></div>
@@ -56,35 +53,51 @@
       </div>
     </section>
 
-    <!-- HERO -->
+    <!-- HERO — kapak sayfası: künye, özet ve Şekil 1 -->
     <section class="hero" id="hero" aria-label="Giriş">
-      <div class="hero__topbar">
-        <span></span>
-        <span></span>
+      <div class="hero__masthead">
+        <span data-en="Field Notebook — Vol. I">Saha Defteri — Cilt I</span>
+        <span class="hero__masthead-mid" data-en="Applied AI/ML · Research → Production">Uygulamalı YZ/ML ·
+          Araştırma → Üretim</span>
+        <span>2023 —</span>
       </div>
-      <div class="hero__core">
-        <p class="hero__eyebrow" data-en="AI/ML Research · Computer Engineering Student">YZ/ML
-          Araştırmaları · Bilgisayar Mühendisliği Öğrencisi</p>
-        <h1 class="hero__title" style="margin-bottom: 16px;">Muhammed Can Özyaşar</h1>
-        <div class="hero__typewriter"
-          style="font-family: var(--mono); font-size: clamp(16px, 2.5vw, 24px); color: var(--accent); min-height: 2em; letter-spacing: 0.05em; font-weight: 400;">
-          <span id="typewriter-text"></span><span class="cursor">|</span>
-        </div>
-        <div class="hero__actions" aria-label="Hızlı bağlantılar">
-          <a href="#projeler" data-en="View Projects">Projeleri Gör</a>
-          <a href="#iletisim" data-en="Contact">İletişim</a>
-          <a href="https://github.com/can-ozyasar" target="_blank" rel="noopener">GitHub</a>
-          <a href="/CV_MCanOzyasar.pdf" download data-en="Download CV">CV İndir</a>
-        </div>
+
+      <h1 class="hero__title">
+        Muhammed <span class="circled">Can<svg viewBox="0 0 200 90" preserveAspectRatio="none" aria-hidden="true">
+            <path pathLength="100"
+              d="M28,66 C10,52 14,26 48,15 C88,3 158,5 179,25 C196,42 179,66 132,77 C88,86 47,84 30,70 C22,63 26,55 36,49" />
+          </svg></span><br />Özyaşar
+      </h1>
+
+      <p class="hero__abstract"
+        data-en="&lt;strong&gt;Abstract —&lt;/strong&gt; Computer Engineering student at Sakarya University. I train models in two TÜBİTAK-funded research projects, then wire those models into real backends. This site is not a showcase but &lt;em&gt;a working sample&lt;/em&gt;: the assistant in the corner is the RAG system I built myself.">
+        <strong>Özet —</strong> Sakarya Üniversitesi'nde bilgisayar mühendisliği okuyorum. TÜBİTAK destekli iki
+        araştırma projesinde model eğitiyor, sonra o modelleri gerçek backend'lere bağlıyorum. Bu site de bir vitrin
+        değil, <em>çalışan bir örnek</em>: köşedeki asistan, kendi kurduğum RAG sisteminin ta kendisi.</p>
+
+      <div class="hero__actions" aria-label="Hızlı bağlantılar">
+        <a href="/CV_MCanOzyasar.pdf" download data-en="Full text — CV (PDF)">Tam Metin — CV (PDF)</a>
+        <a href="#projeler" data-en="Findings ↓">Bulgular ↓</a>
+        <a href="https://github.com/can-ozyasar" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="#iletisim" data-en="Contact">İletişim</a>
       </div>
+
+      <ul class="hero__proof" aria-label="Kayıtlar">
+        <li data-en="&lt;b&gt;84%&lt;/b&gt; federated accuracy · 81% baseline — Fig. 3.4"><b>%84</b> federe doğruluk ·
+          baseline %81 — ŞEK. 3.4</li>
+        <li data-en="&lt;b&gt;2×&lt;/b&gt; TÜBİTAK — 2209-A lead · STAR researcher"><b>2×</b> TÜBİTAK — 2209-A
+          yürütücü · STAR araştırmacı</li>
+        <li data-en="RAG assistant &lt;b&gt;live now&lt;/b&gt; — bottom right corner">RAG asistan <b>şu an canlı</b> —
+          sağ alt köşe</li>
+      </ul>
+
       <div class="hero__bottom">
-        <span></span>
         <span class="hero__scroll" aria-hidden="true">
           <span class="hero__scroll-line"></span>
-          <span data-en="Explore">Keşfet</span>
+          <span data-en="Section 1 ↓">Bölüm 1 ↓</span>
         </span>
         <span class="hero__signoff">
-          Muhammed Can Özyaşar<br />
+          canozyasar.dev<br />
           <span data-en="Sakarya · İzmir · İstanbul">Sakarya · İzmir · İstanbul</span>
         </span>
       </div>
@@ -92,12 +105,12 @@
 
     <div class="page-stack">
 
-      <!-- HAKKIMDA -->
+      <!-- 1 — GİRİŞ -->
       <section class="manifesto" id="hakkimda" aria-label="Hakkımda">
-        <p class="section-tag reveal-text" data-en="About · Chapter I">Hakkımda · Bölüm I</p>
+        <p class="section-tag reveal-text" data-en="1 — Introduction">1 — Giriş</p>
         <p class="manifesto__lede reveal-text"
-          data-en="Turning theoretical AI research into &lt;em&gt;production-ready&lt;/em&gt; software.">Teorik YZ
-          araştırmalarını <em>üretime hazır</em> yazılımlara dönüştürüyorum.</p>
+          data-en="Training the model is half the job; keeping it &lt;em&gt;alive in production&lt;/em&gt; is the other half.">
+          Modeli eğitmek işin yarısı; onu <em>üretimde yaşatmak</em> öteki yarısı.</p>
         <div class="manifesto__grid manifesto__grid--with-img">
           <div class="manifesto__img-col reveal-text">
             <img src="/images/pic/pic4.jpeg" alt="Muhammed Can Özyaşar" class="about-img" loading="lazy" />
@@ -118,10 +131,10 @@
           <div class="manifesto__col reveal-text">
             <h3 data-en="How I work">Nasıl Çalışırım</h3>
             <p
-              data-en="I read current AI/ML research, break it into structured notes, and test useful ideas in small but concrete engineering experiments. This keeps my projects connected to the field instead of frozen around old assumptions.">
-              Güncel YZ/ML araştırmalarını takip ediyor, bunları yapılandırılmış notlara dönüştürüyor ve işe yarayan
-              fikirleri küçük ama somut mühendislik deneyleriyle test ediyorum. Böylece projelerim eski varsayımlara
-              takılı kalmadan alanın gelişimiyle birlikte ilerliyor.</p>
+              data-en="I read current AI/ML research, break it into structured notes in an Obsidian graph, and test useful ideas in small but concrete engineering experiments. This notebook habit is also why this site is organized like a research paper.">
+              Güncel YZ/ML araştırmalarını okuyup Obsidian grafında yapılandırılmış notlara dönüştürüyor, işe yarayan
+              fikirleri küçük ama somut mühendislik deneyleriyle test ediyorum. Bu sitenin bir makale gibi
+              bölümlenmesinin sebebi de bu defter alışkanlığı.</p>
             <p
               data-en="I combine PyTorch, scikit-learn and data pipelines with .NET 8, Spring Boot, Node.js and REST APIs. My goal is not only to train models, but to place them inside reliable systems people can actually use.">
               PyTorch, scikit-learn ve veri pipeline'larını .NET 8, Spring Boot, Node.js ve REST API mimarileriyle
@@ -131,12 +144,12 @@
         </div>
       </section>
 
-      <!-- BECERİLER -->
+      <!-- 2 — YÖNTEM -->
       <section class="practice" id="beceriler" aria-label="Beceriler">
-        <p class="section-tag reveal-text" data-en="Skills · Chapter II">Beceriler · Bölüm II</p>
+        <p class="section-tag reveal-text" data-en="2 — Methods">2 — Yöntem</p>
         <ol class="practice__list">
           <li class="practice__row reveal-text">
-            <span class="practice__num">/ 01</span>
+            <span class="practice__num">2.1</span>
             <span class="practice__title" data-en="AI / ML Engineering">YZ / ML Mühendisliği</span>
             <p class="practice__body"
               data-en="I build practical ML systems with PyTorch and scikit-learn: CNN/ResNet-18 classifiers, LSTM and Random Forest regressors, FedAvg-based federated learning pipelines, time-series feature extraction and Bayesian hyperparameter optimization.">
@@ -146,7 +159,7 @@
             <span class="practice__tags">PyTorch<br />scikit-learn<br />ResNet · LSTM</span>
           </li>
           <li class="practice__row reveal-text">
-            <span class="practice__num">/ 02</span>
+            <span class="practice__num">2.2</span>
             <span class="practice__title" data-en="LLM &amp; RAG Systems">LLM &amp; RAG Sistemleri</span>
             <p class="practice__body"
               data-en="I design RAG pipelines that connect documents, embeddings and vector search to reliable answers. I have hands-on experience with Gemini API, OpenAI API, Qdrant, prompt engineering, semantic retrieval and structured LLM output workflows.">
@@ -156,7 +169,7 @@
             <span class="practice__tags">Gemini API<br />Qdrant<br />RAG · Embedding</span>
           </li>
           <li class="practice__row reveal-text">
-            <span class="practice__num">/ 03</span>
+            <span class="practice__num">2.3</span>
             <span class="practice__title" data-en="Backend Engineering">Backend Mühendisliği</span>
             <p class="practice__body"
               data-en="I develop REST APIs and ML-serving backends with ASP.NET Core (.NET 8), Spring Boot, Node.js and FastAPI. I focus on clean service boundaries, database-backed workflows, Entity Framework, API security and maintainable deployment habits.">
@@ -166,7 +179,7 @@
             <span class="practice__tags">.NET 8<br />Spring Boot<br />Node.js · FastAPI</span>
           </li>
           <li class="practice__row reveal-text">
-            <span class="practice__num">/ 04</span>
+            <span class="practice__num">2.4</span>
             <span class="practice__title" data-en="Data &amp; Research">Veri &amp; Araştırma</span>
             <p class="practice__body"
               data-en="I use Python as my primary language for data preprocessing, NumPy/Pandas analysis, Matplotlib visualization, sliding-window feature extraction and academic literature synthesis. I also work with TypeScript, Java, C# and SQL when the product layer needs them.">
@@ -178,19 +191,18 @@
         </ol>
       </section>
 
-      <!-- PROJELER -->
+      <!-- 3 — BULGULAR -->
       <section class="field" id="projeler" aria-label="Projeler">
-        <p class="section-tag reveal-text" data-en="Projects · Chapter III">Projeler · Bölüm III</p>
+        <p class="section-tag reveal-text" data-en="3 — Findings">3 — Bulgular</p>
         <div class="field__head">
           <h2 class="field__heading reveal-text"
-            data-en="Nine projects built &lt;em&gt;for production,&lt;/em&gt; not portfolios.">Portföy için değil,
-            <em>üretim için</em> dokuz proje.
+            data-en="Nine figures; each one a &lt;em&gt;running&lt;/em&gt; system.">Dokuz şekil; her biri
+            <em>çalışan</em> bir sistem.
           </h2>
           <p class="field__lede reveal-text"
             data-en="From TÜBİTAK-funded research to live systems processing real queries, these projects show how I move from problem definition to model design, backend architecture and deployable product output.">
-            TÜBİTAK destekli araştırmalardan gerçek sorguları işleyen canlı sistemlere uzanan bu projeler; problem
-            tanımından model tasarımına, backend mimarisinden dağıtılabilir ürün çıktısına kadar nasıl çalıştığımı
-            gösteriyor.
+            TÜBİTAK destekli araştırmalardan gerçek sorguları işleyen canlı sistemlere; problem tanımından model
+            tasarımına, backend mimarisinden dağıtılabilir ürüne nasıl gittiğimi bu şekiller anlatıyor.
           </p>
         </div>
         <div class="project-tabs reveal-text" role="tablist" aria-label="Proje görünümü">
@@ -200,7 +212,8 @@
             data-project-tab="all" data-en="All projects">Tüm projeler</button>
         </div>
         <div class="field__grid" data-project-view="featured">
-          <article class="field__card field__card--lg" data-project-card="featured" data-project-disabled>
+          <article class="field__card field__card--lg" data-project-card="featured" data-project-disabled
+            data-fig="ŞEK. 3.1" data-domain="ml">
             <img src="/images/projects/bios.png" alt="Endüstriyel İstihbarat — RSS + LLaMA3" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -218,7 +231,8 @@
             </div>
           </article>
 
-          <article class="field__card field__card--sm" data-project-card="featured" data-project-disabled>
+          <article class="field__card field__card--sm" data-project-card="featured" data-project-disabled
+            data-fig="ŞEK. 3.2" data-domain="ml">
             <img src="/images/projects/ajanpazar-fitai.svg" alt="AjanPazar × FitAI — AI agent commerce analiz platformu" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -236,7 +250,8 @@
             </div>
           </article>
 
-          <article class="field__card field__card--wide" data-project-card="featured" data-project-disabled>
+          <article class="field__card field__card--wide" data-project-card="featured" data-project-disabled
+            data-fig="ŞEK. 3.3" data-domain="venture">
             <img src="/images/proj_teklifakis.jpg" alt="TeklifAkış — OCR + LLM belge pipeline" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -254,7 +269,8 @@
             </div>
           </article>
 
-          <article class="field__card field__card--tall" data-project-card="featured" data-project-disabled>
+          <article class="field__card field__card--tall" data-project-card="featured" data-project-disabled
+            data-fig="ŞEK. 3.4" data-domain="ml">
             <img src="/images/projects/federated.png" alt="Federe Öğrenme — dağıtık sinir ağı düğümleri" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -265,14 +281,15 @@
                 <ul class="field__bullets">
                   <li data-en="Privacy-preserving medical image classification without centralizing raw patient data.">Hasta verilerini merkezileştirmeden tıbbi görüntü sınıflandırma.</li>
                   <li data-en="ResNet-18 and FedAvg training flow on HAM10000 across multiple client nodes.">HAM10000 üzerinde ResNet-18 ve FedAvg tabanlı çoklu istemci eğitim akışı.</li>
-                  <li data-en="Supported by TÜBİTAK 2209-A University Students Research Projects Support Program.">TÜBİTAK 2209-A programı kapsamında desteklenmektedir.</li>
+                  <li data-en="Converged at 84% accuracy vs 81% centralized baseline.">%84 doğrulukta yakınsadı; merkezi baseline %81.</li>
                 </ul>
                 <p class="field__tags">Python · PyTorch · Flower Framework · FedAvg</p>
               </div>
             </div>
           </article>
 
-          <article class="field__card field__card--wide" data-project-card="archive" data-project-disabled>
+          <article class="field__card field__card--wide" data-project-card="archive" data-project-disabled
+            data-fig="ŞEK. 3.5" data-domain="backend">
             <img src="/images/projects/vocab.png" alt="Vocabulary Cards — SM-2 aralıklı tekrar" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -290,7 +307,8 @@
             </div>
           </article>
 
-          <article class="field__card field__card--tall" data-project-card="archive" data-project-disabled>
+          <article class="field__card field__card--tall" data-project-card="archive" data-project-disabled
+            data-fig="ŞEK. 3.6" data-domain="ml">
             <img src="/images/projects/hayalperest.png" alt="Hayalperest Hikayeler — Üretken YZ" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -307,7 +325,8 @@
             </div>
           </article>
 
-          <article class="field__card field__card--med" data-project-card="archive" data-project-disabled>
+          <article class="field__card field__card--med" data-project-card="archive" data-project-disabled
+            data-fig="ŞEK. 3.7" data-domain="ml">
             <img src="/images/projects/rag.png" alt="RAG Portföy Asistanı — vektör embedding" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -325,7 +344,8 @@
             </div>
           </article>
 
-          <article class="field__card field__card--med" data-project-card="archive" data-project-disabled>
+          <article class="field__card field__card--med" data-project-card="archive" data-project-disabled
+            data-fig="ŞEK. 3.8" data-domain="ml">
             <img src="/images/proj_battery.jpg" alt="BSM Batarya Yönetim — LSTM · Random Forest" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -343,7 +363,8 @@
             </div>
           </article>
 
-          <article class="field__card field__card--med" data-project-card="archive" data-project-disabled>
+          <article class="field__card field__card--med" data-project-card="archive" data-project-disabled
+            data-fig="ŞEK. 3.9" data-domain="backend">
             <img src="/images/projects/gym.png" alt="Spor Salonu Yönetim Sistemi — ASP.NET Core" loading="lazy" />
             <div class="field__caption">
               <div class="field__caption-top">
@@ -363,11 +384,11 @@
         </div>
       </section>
 
-      <!-- DENEYİM -->
+      <!-- 4 — DENEYİM KAYITLARI -->
       <section class="approach" id="deneyim" aria-label="Deneyim">
-        <p class="section-tag reveal-text" data-en="Experience · Chapter IV">Deneyim · Bölüm IV</p>
+        <p class="section-tag reveal-text" data-en="4 — Records: Experience">4 — Kayıtlar: Deneyim</p>
         <p class="approach__intro reveal-text"
-          data-en="Different roles, one singular focus: &lt;em&gt;applied AI engineering&lt;/em&gt; from research to scalable production.">
+          data-en="Different roles, one singular focus: carrying &lt;em&gt;applied AI research&lt;/em&gt; into scalable production.">
           Farklı roller, tek bir ortak hedef: <em>uygulamalı YZ araştırmalarını</em> ölçeklenebilir gerçek dünyaya
           taşımak.</p>
 
@@ -422,7 +443,7 @@
             </div>
             <div class="exp-card exp-card--berlitz" data-index="6">
               <div class="exp-card__num">07</div>
-              <div class="exp-card__logo" style="font-weight:800;font-size:20px;color:#0ea5e9;letter-spacing:0.12em;">BERLITZ</div>
+              <div class="exp-card__logo" style="font-weight:800;font-size:20px;color:var(--green);letter-spacing:0.12em;">BERLITZ</div>
               <h4 class="exp-card__title">Hayırlı Sabancı &amp; Berlitz</h4>
               <p class="exp-card__body" data-en="English Ecosystem (12 Months). Selected among 5000+ candidates. Berlitz — a globally established institution. Bridging AI engineering with international communication.">İngilizce Ekosistemi (12 Ay). 5000 aday arasından seçildi. Berlitz — köklü global kurum. Teknik YZ mühendisliğini uluslararası iletişim vizyonuyla birleştiriyor.</p>
               <div class="exp-card__line"></div>
@@ -446,7 +467,6 @@
           const scene = document.getElementById('exp-scene');
           const track = document.getElementById('exp-track');
           if (!scene || !track) return;
-
           const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           const origCards = Array.from(track.children);
           const N = origCards.length;
@@ -507,8 +527,9 @@
 
           function startAuto() {
             stopAuto();
-            if (prefersReducedMotion) return; // honor reduced-motion: no autoplay
-            autoTimer = setInterval(() => advance(1), 4500);
+            // A portfolio timeline should remain where the visitor leaves it.
+            // Navigation still works through drag, touch and arrow keys.
+            if (prefersReducedMotion) return;
           }
           function stopAuto() { clearInterval(autoTimer); }
 
@@ -567,9 +588,9 @@
         </script>
       </section>
 
-      <!-- MAKALELER -->
+      <!-- 5 — İLGİLİ ÇALIŞMALAR -->
       <section class="manifesto" id="makaleler" aria-label="Makaleler ve notlar">
-        <p class="section-tag reveal-text" data-en="Articles · Chapter V">Makaleler · Bölüm V</p>
+        <p class="section-tag reveal-text" data-en="5 — Related Work">5 — İlgili Çalışmalar</p>
         <p class="manifesto__lede reveal-text"
           data-en="Research notes, paper reviews &amp; &lt;em&gt;technical writing.&lt;/em&gt;">Araştırma notları,
           makale incelemeleri ve <em>teknik yazılar.</em></p>
@@ -602,13 +623,13 @@
         </div>
 
         <div class="blog-cta-simple reveal-text">
-          <a href="/blog.html" class="blog-cta-pill" data-en="Check out my blogs →">Bloglarımı İncele →</a>
+          <a href="/blog.html" class="blog-cta-pill" data-en="Notebook &amp; knowledge graph →">Defter ve bilgi grafı →</a>
         </div>
       </section>
 
-      <!-- REFERANSLAR -->
+      <!-- 6 — REFERANSLAR -->
       <section class="references" id="referanslar" aria-label="Referanslar">
-        <p class="section-tag reveal-text" data-en="References · Chapter VI">Referanslar · Bölüm VI</p>
+        <p class="section-tag reveal-text" data-en="6 — References">6 — Referanslar</p>
         <p class="references__note reveal-text"
           data-en="Real professional references from academic, industry and startup contexts. Contact details can be shared when requested.">
           Akademi, sektör ve girişim ekosisteminden gerçek profesyonel referanslar. İletişim bilgileri talep edildiğinde
@@ -638,12 +659,12 @@
         </div>
       </section>
 
-      <!-- İLETİŞİM -->
+      <!-- 7 — SONUÇ -->
       <section class="conversation" id="iletisim" aria-label="İletişim">
-        <p class="section-tag reveal-text" data-en="Contact · Chapter VII">İletişim · Bölüm VII</p>
+        <p class="section-tag reveal-text" data-en="7 — Conclusion &amp; Contact">7 — Sonuç &amp; İletişim</p>
         <h2 class="conversation__headline reveal-text"
-          data-en="Let's build something &lt;em&gt;worth building.&lt;/em&gt;">Birlikte <em>değer yaratan</em> bir şey
-          inşa edelim.</h2>
+          data-en="If you need someone who carries research into production: &lt;em&gt;write.&lt;/em&gt;">Aradığınız,
+          araştırmayı üretime taşıyan biriyse: <em>yazın.</em></h2>
         <div class="conversation__row">
           <a href="mailto:can.ozyasarr@gmail.com" class="conversation__email reveal-text" aria-label="E-posta gönder">
             can.ozyasarr@gmail.com
@@ -693,7 +714,9 @@
 
       <footer class="footer">
         <div class="footer__row">
-          <span data-en="2026 © Muhammed Can Özyaşar">2026 © Muhammed Can Özyaşar</span>
+          <span
+            data-en="Özyaşar, M. C. (2026). &lt;em&gt;Field Notebook&lt;/em&gt; — personal research portfolio. canozyasar.dev">Özyaşar,
+            M. C. (2026). <em>Saha Defteri</em> — kişisel araştırma portfolyosu. canozyasar.dev</span>
           <span><a href="#" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});"
               data-en="Back to top ↑">Yukarı çık ↑</a></span>
         </div>
@@ -705,11 +728,8 @@
   <script type="module" src="/src/character.js"></script>
   <script type="module" src="/src/theme.js"></script>
   <script type="module" src="/src/i18n.js"></script>
-  <script type="module" src="/src/typewriter.js"></script>
   <script type="module" src="/src/rag-gate.js"></script>
   <script type="module" src="/src/rag.js"></script>
-  <script src="/vendor/d3.v7.min.js" defer></script>
-  <script type="module" src="/src/obsidian_graph.js"></script>
 </body>
 
 </html>

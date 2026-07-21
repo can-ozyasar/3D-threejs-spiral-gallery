@@ -11,7 +11,7 @@ import {
 } from "./rag-core.js";
 
 function initGate() {
-  const stage = document.querySelector(".intro-gate__stage");
+  const stage = document.querySelector(".intro-gate:not([hidden]) .intro-gate__stage");
   if (!stage) return;
 
   const island = document.createElement("div");

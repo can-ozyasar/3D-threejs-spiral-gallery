@@ -114,7 +114,7 @@ function renderGraph(data) {
   // Set colors for groups
   const color = d3.scaleOrdinal()
     .domain([0, 1, 2, 3])
-    .range(['#D9A76A', '#ffffff', '#8A9A5B', '#607D8B']); // Root=accent, Default=white, Papers=greenish, Concepts=blueish
+    .range(['#2547C0', '#1A2733', '#0F7A5C', '#9C6B10']); // Root=accent, Default=white, Papers=greenish, Concepts=blueish
 
   // Force simulation
   const simulation = d3.forceSimulation(data.nodes)
@@ -140,7 +140,7 @@ function renderGraph(data) {
 
   // Links
   const link = g.append('g')
-    .attr('stroke', 'rgba(217,167,106,0.2)')
+    .attr('stroke', 'rgba(26,39,51,0.18)')
     .attr('stroke-opacity', 0.6)
     .selectAll('line')
     .data(data.links)
@@ -178,14 +178,14 @@ function renderGraph(data) {
     .style('opacity', 0);
 
   node.on('mouseover', function(event, d) {
-    d3.select(this).attr('stroke', '#D9A76A').attr('stroke-width', 2);
+    d3.select(this).attr('stroke', '#2547C0').attr('stroke-width', 2);
     tooltip.transition().duration(200).style('opacity', .9);
     tooltip.html(d.label)
       .style('left', (event.pageX + 10) + 'px')
       .style('top', (event.pageY - 28) + 'px');
   })
   .on('mouseout', function(d) {
-    d3.select(this).attr('stroke', '#0b0a08').attr('stroke-width', 1.5);
+    d3.select(this).attr('stroke', '#f7f8f6').attr('stroke-width', 1.5);
     tooltip.transition().duration(500).style('opacity', 0);
   })
   .on('click', function(event, d) {

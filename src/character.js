@@ -81,7 +81,7 @@ const STATE_CLIPS = {
   [CharacterState.LOOK_AROUND]: { clip: 'No', loop: false },
 };
 
-const gateSection = document.querySelector('.intro-gate');
+const gateSection = document.querySelector('.intro-gate:not([hidden])');
 
 let scene, camera, renderer, clock, model;
 let mixer = null;

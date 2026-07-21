@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Projects — Muhammed Can Özyaşar</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-  <script>try{if(localStorage.getItem('portfolio-theme')==='light')document.documentElement.classList.add('theme-light')}catch(e){}</script>
+  <script>document.documentElement.classList.add('theme-light')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/src/styles.css"/>
   <link rel="stylesheet" href="/src/overrides.css"/>
   <style>
-    :root{--bg:#0b0a08;--bg2:#111;--fg:#f1ece1;--fg2:#a09880;--accent:#d9a76a;--rule:rgba(255,255,255,0.08);--serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace}
-    html.light{--bg:#fdfbf7;--bg2:#f0ece6;--fg:#1a1918;--fg2:#6b6863;--rule:rgba(0,0,0,0.1);--accent:#b07c3f}
+    :root{--bg:#f7f8f6;--bg2:#eef1ee;--fg:#1a2733;--fg2:#5b6b77;--accent:#2547c0;--rule:rgba(26,39,51,0.14);--serif:'STIX Two Text',serif;--sans:'Atkinson Hyperlegible',sans-serif;--mono:'IBM Plex Mono',monospace}
+    html.light{}
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:var(--bg);color:var(--fg);font-family:var(--sans);min-height:100vh}
     /* Hero */
     .proj-hero{position:relative;min-height:55vh;display:flex;align-items:flex-end;padding:80px 40px 60px;overflow:hidden;margin-top:0}
     .proj-hero__bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.35) saturate(.5)}
-    .proj-hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(11,10,8,.7) 60%,transparent 100%)}
-    html.light .proj-hero__overlay{background:linear-gradient(to top,var(--bg) 0%,rgba(253,251,247,.7) 60%,transparent 100%)}
+    .proj-hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(247,248,246,.75) 60%,rgba(247,248,246,.2) 100%)}
+    
     .proj-hero__content{position:relative;z-index:2;max-width:900px}
     .proj-badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:4px 12px;border-radius:2px;margin-bottom:20px}
     .proj-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:500;line-height:1.1;margin-bottom:16px}
