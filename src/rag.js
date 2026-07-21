@@ -1,63 +1,53 @@
-// rag.js — AXIOM corner chat widget (FAB + slide-out panel).
-// Thin shell around rag-core.js's shared chat logic/DOM. Same DOM ids and
-// visual behavior as before; now also emits chat-bus events like every
-// other AXIOM chat surface (see chat-bus.js / character.js).
+// rag.js — AXIOM corner FAB. Owns only the toggle button and its open/closed
+// bookkeeping; the actual chat surface (teaser → portal → sky world) lives in
+// rag-world.js. Same button id/behavior as before, now opening onto the
+// AXIOM Portal instead of a plain slide-out panel.
 
 import { emit, ChatEvent } from "./chat-bus.js";
-import {
-  AXIOM_ICON,
-  mountChatInterior,
-  updateLabels,
-  showWelcomeIfEmpty,
-  wireChatForm,
-} from "./rag-core.js";
+import { AXIOM_ICON, updateLabels, showWelcomeIfEmpty, wireChatForm } from "./rag-core.js";
+import { buildAxiomPortal } from "./rag-world.js";
 
-function buildWidget() {
+function buildToggle() {
   const toggle = document.createElement("button");
   toggle.id = "rag-toggle";
   toggle.setAttribute("aria-label", "AXIOM asistanını aç");
   toggle.setAttribute("aria-expanded", "false");
   toggle.innerHTML = AXIOM_ICON;
-
-  const panel = document.createElement("div");
-  panel.id = "rag-panel";
-  panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", "AXIOM Sohbet Asistanı");
-  panel.setAttribute("aria-hidden", "true");
-
   document.body.appendChild(toggle);
-  document.body.appendChild(panel);
-  return { toggle, panel };
+  return toggle;
 }
 
 function initRAG() {
-  const { toggle, panel } = buildWidget();
-  const chat = mountChatInterior(panel);
+  const toggle = buildToggle();
   let isOpen = false;
 
-  function openPanel() {
-    isOpen = true;
-    panel.classList.add("is-open");
-    panel.setAttribute("aria-hidden", "false");
-    toggle.setAttribute("aria-expanded", "true");
-    toggle.classList.add("is-open");
-    updateLabels(chat);
-    showWelcomeIfEmpty(chat);
-    emit(ChatEvent.OPENED);
-    setTimeout(() => chat.input.focus(), 300);
-  }
-
-  function closePanel() {
+  function setClosed() {
     isOpen = false;
-    panel.classList.remove("is-open");
-    panel.setAttribute("aria-hidden", "true");
     toggle.setAttribute("aria-expanded", "false");
     toggle.classList.remove("is-open");
     emit(ChatEvent.CLOSED);
   }
 
-  toggle.addEventListener("click", () => (isOpen ? closePanel() : openPanel()));
-  chat.closeBtn.addEventListener("click", closePanel);
+  const portal = buildAxiomPortal(setClosed);
+  const chat = portal.chat;
+
+  function open() {
+    isOpen = true;
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.classList.add("is-open");
+    updateLabels(chat);
+    showWelcomeIfEmpty(chat);
+    emit(ChatEvent.OPENED);
+    portal.openTeaserOrWorld(toggle);
+  }
+
+  function close() {
+    portal.closeWorld();
+    setClosed();
+  }
+
+  toggle.addEventListener("click", () => (isOpen ? close() : open()));
+  chat.closeBtn.addEventListener("click", close);
 
   wireChatForm(chat);
 

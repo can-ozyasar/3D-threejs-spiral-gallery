@@ -21,6 +21,13 @@ const UI = {
     errorGeneric: "AXIOM şu an ulaşılamıyor. Daha sonra tekrar deneyin.",
     welcome:
       "Merhaba. Ben AXIOM — Can Özyaşar'ın araştırmalarını, projelerini ve deneyimlerini sessizce izleyen dijital izdüşümüyüm. Ne öğrenmek istersin?",
+    teaserEyebrow: "Ek A — Canlı Arşiv",
+    teaserTitle: "AXIOM evrenine hazır mısın?",
+    teaserBody:
+      "Bulutların ardında, Can'ın arşivini bilen bir izdüşüm seni bekliyor. Sorularını oraya taşı.",
+    teaserEnter: "Evrene gir →",
+    teaserCancel: "Vazgeç",
+    worldClose: "Evreni kapat",
   },
   en: {
     title: "AXIOM",
@@ -34,6 +41,13 @@ const UI = {
     errorGeneric: "AXIOM is unreachable right now. Try again later.",
     welcome:
       "Greetings. I am AXIOM — the digital presence who quietly watches over Can Özyaşar's research, projects, and experience. What would you like to know?",
+    teaserEyebrow: "Appendix A — Live Archive",
+    teaserTitle: "Ready for the AXIOM universe?",
+    teaserBody:
+      "Behind the clouds, a digital presence who knows Can's archive is waiting. Bring your questions there.",
+    teaserEnter: "Enter the universe →",
+    teaserCancel: "Cancel",
+    worldClose: "Close the universe",
   },
 };
 

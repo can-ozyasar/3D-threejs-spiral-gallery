@@ -358,30 +358,407 @@ html[lang="en"] .lang-tr { display: none !important; }
 
 #rag-toggle.is-open { background: var(--accent); border-color: var(--accent); }
 
-#rag-panel {
+/* ─── AXIOM Portal — teaser + bulutlu dünya ───────────────────────────────
+   FAB'a basınca (ilk kez) bir "hazır mısın?" teaser'ı açılır; onaylanınca
+   FAB'ın konumundan büyüyen bir mürekkep çemberiyle (clip-path iris) tam
+   ekran bir gökyüzü dünyasına geçilir. Sohbetin kendisi (.rag-header/
+   .rag-messages/.rag-form) rag-core.js'ten aynen mountlanır — burada
+   sadece çevre/sahne değişiyor. ────────────────────────────────────────── */
+
+.rag-teaser {
   position: fixed;
-  right: clamp(16px, 3vw, 32px);
-  bottom: clamp(84px, 12vh, 104px);
-  z-index: 89;
-  width: min(380px, calc(100vw - 32px));
-  height: min(560px, 72vh);
-  display: flex;
-  flex-direction: column;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.rag-teaser[hidden] { display: none; }
+
+.rag-teaser__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 39, 51, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 300ms var(--ease);
+}
+
+.rag-teaser.is-open .rag-teaser__backdrop { opacity: 1; }
+
+.rag-teaser__card {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  padding: 32px 28px 28px;
   background: var(--surface);
   border: 1px solid var(--fg);
   border-radius: var(--radius);
-  box-shadow: 0 12px 40px rgba(26, 39, 51, 0.18);
+  box-shadow: 0 24px 60px rgba(26, 39, 51, 0.3);
+  text-align: center;
+  transform: translateY(18px) scale(0.96);
   opacity: 0;
-  transform: translateY(12px);
-  pointer-events: none;
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition: transform 300ms var(--ease), opacity 300ms var(--ease);
+}
+
+.rag-teaser.is-open .rag-teaser__card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.rag-teaser__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--fg);
+  color: var(--bg);
+  margin-bottom: 16px;
+}
+
+.rag-teaser__icon svg { width: 28px; height: 28px; }
+
+.rag-teaser__eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.rag-teaser__title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.rag-teaser__body {
+  font-size: 14.5px;
+  color: var(--fg-dim);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.rag-teaser__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rag-teaser__enter {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 13px 20px;
+  border: 1px solid var(--fg);
+  border-radius: var(--radius);
+  background: var(--fg);
+  color: var(--bg);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.rag-teaser__enter:hover,
+.rag-teaser__enter:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.rag-teaser__cancel {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  color: var(--fg-dim);
+  cursor: pointer;
+}
+
+.rag-teaser__cancel:hover { color: var(--fg); text-decoration: underline; }
+
+/* ─── Dünya — tam ekran gökyüzü portalı ──────────────────────────────────── */
+
+.rag-world {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #eaf1fb 0%, #f7f8f6 60%, #fdf6e3 100%);
+  clip-path: circle(0px at var(--iris-x, 50%) var(--iris-y, 50%));
+  opacity: 1;
+  transition: clip-path 720ms var(--ease);
+}
+
+.rag-world[hidden] { display: none; }
+
+.rag-world.is-open {
+  clip-path: circle(150% at var(--iris-x, 50%) var(--iris-y, 50%));
+}
+
+/* Kapanış çemberi geri sarmaz — sadece opacity söner, clip-path 150%'de sabit kalır. */
+.rag-world.is-closing {
+  transition: opacity 260ms var(--ease);
+  opacity: 0;
+}
+
+.rag-world__sky {
+  position: absolute;
+  inset: 0;
   overflow: hidden;
 }
 
-#rag-panel.is-open {
+.rag-world__silhouettes { position: absolute; inset: 0; }
+
+.rag-world__silhouette {
+  position: absolute;
+  color: rgba(37, 71, 192, 0.22);
+}
+
+.rag-world__silhouette--0 {
+  width: 44px; height: 28px; top: 20%; left: -8%;
+  animation: rag-silhouette-drift 48s linear infinite;
+}
+
+.rag-world__silhouette--1 {
+  width: 38px; height: 38px; top: 48%; left: -8%;
+  color: rgba(15, 122, 92, 0.2);
+  animation: rag-silhouette-drift 60s linear infinite 9s;
+}
+
+.rag-world__silhouette--2 {
+  width: 42px; height: 30px; top: 70%; left: -8%;
+  color: rgba(156, 107, 16, 0.2);
+  animation: rag-silhouette-drift 68s linear infinite 21s;
+}
+
+@keyframes rag-silhouette-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(122vw); }
+}
+
+/* Gerçek kümülüs siluetleri — üst üste binen daire kümesi, tek bir
+   tekrarlayan doku değil. Her bulut kendi <div>'i: konum sabit, hareket
+   sadece transform:translateX ile (kompozitör dostu, layout tetiklemez). */
+.rag-cloud {
+  position: absolute;
+  animation-name: rag-cloud-cross;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+
+@keyframes rag-cloud-cross {
+  from { transform: translateX(0); }
+  to { transform: translateX(148vw); }
+}
+
+.rag-cloud-shape {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow:
+    58px 10px 0 -10px #fff,
+    -50px 16px 0 -16px #fff,
+    26px -24px 0 -8px #fff,
+    86px -8px 0 -20px #fff,
+    -20px -22px 0 -18px #fff,
+    50px 24px 0 -12px #fff,
+    8px 34px 0 -22px #fff;
+}
+
+.rag-cloud--back { opacity: 0.5; filter: blur(1px); }
+.rag-cloud--mid { opacity: 0.78; }
+.rag-cloud--front { opacity: 0.95; }
+
+.rag-world__close {
+  position: absolute;
+  top: clamp(16px, 3vw, 28px);
+  right: clamp(16px, 3vw, 28px);
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--fg);
+  background: var(--surface);
+  color: var(--fg);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.rag-world__close:hover,
+.rag-world__close:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  transform: rotate(90deg);
+}
+
+/* Sinematik ışık — sabit bir güneş kaynağı + yatay puslu ufuk */
+.rag-world__sun {
+  position: absolute;
+  top: -12%;
+  right: 6%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 250, 228, 0.85) 0%, rgba(255, 250, 228, 0.3) 42%, transparent 72%);
+  filter: blur(2px);
+}
+
+.rag-world__haze {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42%;
+  background: linear-gradient(to top, rgba(253, 246, 227, 0.6), transparent);
+}
+
+/* Kuşun serbestçe dolaştığı sahne — sohbetle etkileşimi engellemesin diye
+   kendi katmanı, pointer-events kapalı (fare takibi world seviyesinde). */
+.rag-world__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rag-bird {
+  position: absolute;
+  left: 50%;
+  top: 26%;
+  width: clamp(76px, 9vw, 112px);
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 12px 20px rgba(26, 39, 51, 0.18));
   opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+  transition: opacity 0.5s var(--ease);
+}
+
+.rag-bird[data-mood="sleeping"] { opacity: 0; }
+
+.rag-bird__mood { width: 100%; }
+.rag-bird__art { width: 100%; transition: transform 0.5s var(--ease); }
+.rag-bird__art svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+.rag-bird__wing {
+  fill: var(--fg);
+  transform-box: fill-box;
+  transform-origin: 62% 62%;
+  animation: rag-wingbeat 4.6s ease-in-out infinite;
+}
+
+.rag-bird.is-flying .rag-bird__wing { animation-duration: 2.4s; }
+.rag-bird[data-mood="thinking"] .rag-bird__wing { animation-duration: 1s; }
+
+@keyframes rag-wingbeat {
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  50% { transform: rotate(-16deg) scaleY(0.88); }
+}
+
+.rag-bird__body {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke var(--dur) var(--ease);
+}
+
+.rag-bird__legs {
+  fill: none;
+  stroke: var(--fg-dim);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+
+/* dikkat hâlleri — bir ipucu kadar mürekkep mavisi, robotik parlama değil */
+.rag-bird[data-mood="listening"] .rag-bird__body,
+.rag-bird[data-mood="thinking"] .rag-bird__body {
+  stroke: var(--accent);
+}
+
+.rag-bird--flourish { animation: rag-bird-flourish 0.65s var(--ease); }
+.rag-bird--flinch { animation: rag-bird-flinch 0.6s var(--ease); }
+
+@keyframes rag-bird-flourish {
+  0% { transform: scale(1) translateY(0); }
+  40% { transform: scale(1.14) translateY(-9px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+@keyframes rag-bird-flinch {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(5px) rotate(-6deg); }
+  60% { transform: translateY(2px) rotate(4deg); }
+}
+
+/* Sohbet camı — ortama uygun: kağıt panel değil, bulut camı. Kendi
+   sahnesinde yükselerek girer (sinematik: gökyüzü → kuş → sohbet). */
+.rag-world__chat {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(18px, 5vh, 52px);
+  transform: translate(-50%, 22px);
+  z-index: 3;
+  width: min(480px, calc(100vw - 32px));
+  height: min(56vh, 500px);
+  opacity: 0;
+  transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
+}
+
+.rag-world__chat.is-risen { opacity: 1; transform: translate(-50%, 0); }
+
+.rag-world__chat-glass {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 26px;
+  box-shadow: 0 30px 70px rgba(26, 39, 51, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .rag-teaser__card { padding: 26px 20px 22px; }
+  .rag-bird { top: 16%; width: clamp(64px, 20vw, 84px); }
+  .rag-world__chat { width: calc(100vw - 20px); height: min(64vh, 540px); bottom: 12px; }
+  .rag-world__chat-glass { border-radius: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rag-world { transition: none; }
+  .rag-world.is-closing { transition: none; opacity: 0; }
+  .rag-teaser__backdrop,
+  .rag-teaser__card { transition: none; }
+  .rag-world__chat { transition: none; opacity: 1; transform: translate(-50%, 0); }
+  .rag-cloud,
+  .rag-world__silhouette,
+  .rag-bird__wing,
+  .rag-bird--flourish,
+  .rag-bird--flinch { animation: none !important; }
+  .rag-bird { transition: none; opacity: 1; }
+  .rag-bird__art { transition: none; }
 }
 
 .rag-header {
@@ -559,9 +936,83 @@ html[lang="en"] .lang-tr { display: none !important; }
 .rag-send:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
 .rag-send:disabled { opacity: 0.5; cursor: default; }
 
-@media (max-width: 520px) {
-  #rag-panel { height: min(520px, 78vh); }
+/* ─── Bulut dünyasındaki sohbet — aynı .rag-* iskeleti, farklı giysi ───────
+   Bilerek yalnızca .rag-world altında ezilir: .axiom-island (intro-gate,
+   şu an hidden) hâlâ yukarıdaki kağıt-panel görünümünü kullanmalı. */
+
+.rag-world .rag-header {
+  background: transparent;
+  border-bottom: 1px solid rgba(26, 39, 51, 0.1);
+  padding: 14px 16px;
 }
+
+.rag-world .rag-icon {
+  background: var(--fg);
+  box-shadow: 0 6px 16px rgba(26, 39, 51, 0.25);
+}
+
+.rag-world .rag-close { display: none; } /* × zaten dünyanın köşesinde var */
+
+.rag-world .rag-messages {
+  background-image: none;
+  padding: 16px;
+  gap: 12px;
+}
+
+.rag-world .rag-message {
+  max-width: 82%;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(26, 39, 51, 0.06);
+}
+
+.rag-world .rag-message--user {
+  background: linear-gradient(135deg, var(--fg), #2a3b4d);
+  border-bottom-right-radius: 4px;
+}
+
+.rag-world .rag-message--assistant {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-bottom-left-radius: 4px;
+}
+
+.rag-world .rag-message--error {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(200, 55, 31, 0.35);
+}
+
+.rag-world .rag-message--typing {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.rag-world .rag-form {
+  background: transparent;
+  border-top: 1px solid rgba(26, 39, 51, 0.1);
+  padding: 12px 14px 14px;
+}
+
+.rag-world .rag-input {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  padding: 10px 16px;
+}
+
+.rag-world .rag-input:focus { box-shadow: 0 0 0 3px var(--accent-dim); }
+
+/* gönder düğmesi bir kağıt uçak — bulut siluetleriyle aynı motif ailesinden */
+.rag-world .rag-send {
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.rag-world .rag-send:hover:not(:disabled) { transform: translate(2px, -2px) rotate(8deg); }
 
 /* ---------------------------------------------------------------------------
    Intro kapısı (AXIOM 3D) — şu an hidden; yeniden açılırsa kağıt kimliğinde
@@ -626,8 +1077,7 @@ html[lang="en"] .lang-tr { display: none !important; }
   overflow: hidden;
 }
 
-body.intro-gate-active #rag-toggle,
-body.intro-gate-active #rag-panel { display: none; }
+body.intro-gate-active #rag-toggle { display: none; }
 
 /* ---------------------------------------------------------------------------
    Obsidian grafı (blog.html) — "Şekil" muamelesi görür
