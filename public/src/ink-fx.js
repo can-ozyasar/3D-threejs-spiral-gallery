@@ -342,6 +342,18 @@ function wireVortex() {
   );
   io.observe(section);
   window.addEventListener('resize', () => { if (running) resize(); });
+
+  // Tuvalin CSS kutusu inset:0 ile her reflow'da otomatik takip eder, ama
+  // çizim çözünürlüğü (canvas.width/height) yalnızca JS ile güncellenir.
+  // Mobilde .conversation__row 3 sütundan 1 sütuna yığılınca bölüm boyu
+  // ciddi değişiyor ama bu bir 'resize' olayı tetiklemez (adres çubuğu
+  // kayması, kırılma noktası geçişi vb.) — tuval gerilip girdap mail'in
+  // üstünden kayardı. ResizeObserver, sebep ne olursa olsun asıl kutu
+  // boyu değiştiğinde haber verir.
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(() => { if (running) resize(); });
+    ro.observe(section);
+  }
 }
 
 /* --- görünüme girince çizilen mürekkep öğeleri (.ink-draw, .ink-swipe) --- */
